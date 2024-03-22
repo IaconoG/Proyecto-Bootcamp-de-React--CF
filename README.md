@@ -48,8 +48,23 @@
   - [ ] Implementar validaciones
   - [ ] Implementar mensajos de errores
 - [ ] Deploy a servidor
+  - [ ] Deploy en Vercel
+  - [ ] La url del proyecto debe ser de acceso publico
 - [ ] Testing
   - [ ] Al menos 2 componentes con test
+- [ ] Documentacion - PDF
+  - [ ] Informacion acerca del proyecto, quienes trabajaron en él.
+    - [ ] Que hace el proyecto.
+    - [ ] Tecnologias / Dependencias utilizadas.
+    - [ ] Descripción de los componentes y hooks utilizados.
+    - [ ] Descripción de la API utilizada.
+    - [ ] Descripción de los test realizados.
+    - [ ] Descripción de los stores utilizados.
+    - [ ] Capturas de pantalla del proyecto.
+  - [ ] Desafios que se presentaron en el desarrollo del proyecto y como los resolvieron.
+  - [ ] Puntos clave a destacar del proyecto.
+  - [ ] Instrucciones especiales para ejecutar si es que existen.
+    - [ ] Credencial de prueba.
 
 ### Hoooks & Components & Referencia de la API
 

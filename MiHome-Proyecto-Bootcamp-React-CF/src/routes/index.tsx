@@ -2,11 +2,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Suspense } from 'react';
 
 //* Import views
-// import Home from '../views/Home';
+import Home from '../views/Home';
 
 import Auth from '../views/Auth';
-// import Login from '../views/Auth/Login';
-// import Register from '../views/Auth/Register';
+import Login from '../views/Auth/Login';
+import Register from '../views/Auth/Register';
 
 import Dashboard from '../views/Dashboard';
 // import Setting from '../views/Dashboard/components/Setting';
@@ -22,7 +22,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <h1>Home</h1>,
+    element: <Home />,
     errorElement: <Error404 />,
   },
   {
@@ -35,11 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <h1>Login</h1>,
+        element: <Login />,
       },
       {
         path: 'register',
-        element: <h1>Register</h1>,
+        element: <Register />,
       },
     ],
   },

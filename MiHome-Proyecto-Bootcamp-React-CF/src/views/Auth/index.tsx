@@ -1,12 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
 const Auth: React.FunctionComponent = () => {
-  return (
-    <div>
-      <h1>Auth (no acceso)</h1>
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 };
 
 export default Auth;

@@ -1,0 +1,35 @@
+.navbar {
+  height: 4rem;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.homeContainer,
+.linksContainer {
+  display: flex;
+  border: 1px solid green;
+  padding: 0 2rem;
+}
+
+.homeContainer {
+  flex: 1;
+}
+.linksContainer {
+  display: flex;
+  gap: 1rem;
+  font-size: 18px;
+}
+
+.linksContainerRight {
+  /* justify-content: flex-end; */
+}
+
+.link {
+  padding: 0 1rem;
+}

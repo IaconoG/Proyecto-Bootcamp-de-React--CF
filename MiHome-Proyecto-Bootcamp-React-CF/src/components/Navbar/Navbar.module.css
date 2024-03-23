@@ -3,22 +3,32 @@
   border: 1px solid red;
   display: flex;
   align-items: center;
+  padding: 0 1.25rem;
 }
 
-.navbar a {
+a {
   font-size: 24px;
   line-height: 1;
+  transition: transform 0.05s ease-in-out;
 }
 
-.homeContainer,
+a:hover {
+  color: burlywood;
+}
+
+a:active {
+  transform: scale(0.9);
+}
+
 .linksContainer {
   display: flex;
   border: 1px solid green;
-  padding: 0 2rem;
+  align-items: center;
+  flex: 1 1 0%;
 }
 
 .homeContainer {
-  flex: 1;
+  margin-right: auto;
 }
 .linksContainer {
   display: flex;
@@ -26,10 +36,28 @@
   font-size: 18px;
 }
 
-.linksContainerRight {
-  /* justify-content: flex-end; */
-}
-
 .link {
   padding: 0 1rem;
+}
+
+/* Dashboard */
+.dashboardNavbar {
+  width: 14rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  padding: 1.25rem 0;
+}
+
+.dashboardLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0;
+}
+
+.widgetSettings {
+  order: 2;
 }

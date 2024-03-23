@@ -2,6 +2,12 @@
 
 ### Ecosistema
 
+### Tecnologías
+
+- [React](https://es.reactjs.org/)
+  - `Suspense`: Permite a los componentes mostrar un fallback mientras se cargan los datos.
+- [TypeScript](https://www.typescriptlang.org/)
+
 #### Sistema de Compilación
 
 - [Vite](https://vitejs.dev/)
@@ -17,6 +23,11 @@
 #### Enrutamiento
 
 - [React Router](https://reactrouter.com/en/main)
+  - `createBrowserHistory`: Utiliza la API DOM History para actualizar la URL y administrar la pila del historial.
+  - `RouterProvider`: Todos los objetos del router de datos se pasan a este componente para representar su aplicaoicn y habilitar el resto de las API de datos.
+  - `Outlet`: Permite que la interfaz de usuario anidada aparezca cuando se renderizan las child routes.
+  - `useRouteError`: Devuelve un objeto con la ruta actual y la información de error.
+  - `isRouteErrorResponse`: Verifica si el error de la ruta actual es una respuesta de error.
 
 #### Formularios
 
@@ -42,8 +53,8 @@
   - [ ] Almacenar inforamcion obtenida de una API
   - [ ] Herramientas o/y middleware de Zustand
 - [ ] Llamadas a la API
-- [ ] Routing
-  - [ ] Al menos 3 rutas
+- [x] Routing
+  - [x] Al menos 3 rutas
 - [ ] Formularios
   - [ ] Implementar validaciones
   - [ ] Implementar mensajos de errores

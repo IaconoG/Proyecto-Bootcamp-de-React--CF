@@ -5,8 +5,8 @@ import { Suspense } from 'react';
 import Home from '../views/Home';
 
 import Auth from '../views/Auth';
-import Login from '../views/Auth/Login';
-import Register from '../views/Auth/Register';
+import SingIn from '../views/Auth/SignIn';
+import SingUp from '../views/Auth/SingUp';
 
 import Dashboard from '../views/Dashboard';
 // import Setting from '../views/Dashboard/components/Setting';
@@ -34,12 +34,12 @@ const router = createBrowserRouter([
         element: <Error404 />,
       },
       {
-        path: 'login',
-        element: <Login />,
+        path: 'sing-in',
+        element: <SingIn />,
       },
       {
-        path: 'register',
-        element: <Register />,
+        path: 'sing-up',
+        element: <SingUp />,
       },
     ],
   },

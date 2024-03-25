@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
 const Home = (): JSX.Element => {
@@ -5,6 +6,9 @@ const Home = (): JSX.Element => {
     <>
       <Navbar page="" />
       <h1>Home</h1>
+      <button>
+        <Link to="/dashboard">Comenzar</Link>
+      </button>
     </>
   );
 };

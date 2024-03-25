@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 
-type Pages = '' | 'Login' | 'Register' | 'Dashboard';
+type Pages = '' | 'SingIn' | 'SingUp' | 'Dashboard';
 
 interface NavbarProps {
   page: Pages;
@@ -10,12 +10,12 @@ interface NavbarProps {
 
 const RenderLinks: React.FunctionComponent<NavbarProps> = ({ page }) => {
   // FIXME: Implementar lógica para mostrar los links correctos dependiendo de la página actual y la autenticación del usuario.
-  if (page === 'Login') {
-    return <Link to="/auth/Register">Registrarse</Link>;
+  if (page === 'SingIn') {
+    return <Link to="/auth/sing-up">Registrarse</Link>;
   }
 
-  if (page === 'Register') {
-    return <Link to="/auth/Login">Iniciar Sesion</Link>;
+  if (page === 'SingUp') {
+    return <Link to="/auth/sing-in">Iniciar Sesion</Link>;
   }
 
   if (page === 'Dashboard') {
@@ -36,16 +36,16 @@ const RenderLinks: React.FunctionComponent<NavbarProps> = ({ page }) => {
   // Este return es para el HOME y para el Error404 (solo cuando el usuario no está autenticado)
   return (
     <>
-      <Link to="/auth/Login">Iniciar Sesion</Link>
+      <Link to="/auth/sing-in">Iniciar Sesion</Link>
 
-      <Link to="/auth/Register">Registrarse</Link>
+      <Link to="/auth/sing-up">Registrarse</Link>
     </>
   );
 };
 
 const Navbar: React.FunctionComponent<NavbarProps> = ({ page }) => {
   return (
-    <nav className={`${styles.navbar} ${page === 'Dashboard' ? styles.dashboardNavbar : ''}`}>
+    <nav className={`${page === 'Dashboard' ? styles.dashboardNavbar : styles.navbar}`}>
       <div
         className={`${styles.linksContainer} ${page === 'Dashboard' ? styles.dashboardLinks : ''}`}
       >

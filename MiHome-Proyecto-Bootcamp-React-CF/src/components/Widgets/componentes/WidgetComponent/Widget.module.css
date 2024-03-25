@@ -1,0 +1,39 @@
+.container {
+  align-self: start;
+  border: 1px solid blue;
+  padding: 1rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+.title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.openWidget svg {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 30px;
+  color: hsl(0, 70%, 50%);
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+.openWidget svg:active {
+  transform: scale(0.9);
+}
+
+.body {
+  border: 1px solid grey;
+  min-height: 50px;
+}

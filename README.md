@@ -15,6 +15,9 @@
 #### Manejo de Estado
 
 - [Zustand](https://zustand-demo.pmnd.rs/)
+- [LocalStorage](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)
+  - `setItem`: Almacena un par clave-valor.
+  - `getItem`: Obtiene el valor asociado con la clave especificada.
 
 #### Llamadas a la API
 
@@ -32,6 +35,7 @@
 #### Formularios
 
 - [React Hook Form](https://react-hook-form.com/)
+  - `useForm`: Devuelve todos los métodos necesarios para construir un formulario.
 
 ### Dates
 
@@ -47,7 +51,7 @@
 
 ### Lineamientos
 
-- [ ] Hooks Reusables
+- [x] Hooks Reusables
 - [ ] Zustand
   - [ ] Minimo 2 stores
   - [ ] Almacenar inforamcion obtenida de una API
@@ -55,9 +59,9 @@
 - [ ] Llamadas a la API
 - [x] Routing
   - [x] Al menos 3 rutas
-- [ ] Formularios
+- [x] Formularios
   - [ ] Implementar validaciones
-  - [ ] Implementar mensajos de errores
+  - [x] Implementar mensajos de errores
 - [ ] Deploy a servidor
   - [ ] Deploy en Vercel
   - [ ] La url del proyecto debe ser de acceso publico

@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
-import Widgets from '../../components/Widgets';
+import Widgets from './components/Widgets';
 
 import styles from './Dashboard.module.css';
 

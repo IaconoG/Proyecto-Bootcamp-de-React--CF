@@ -1,10 +1,20 @@
+/* 
+  Colores q fui usando
+  border | links: naranja rgba(222, 184, 135, 0.9);
+  backgorund rojo: rgba(255, 0, 0, 0.3); 
+  backgorund gris: rgba(255, 255, 255, 0.1) * Depende del color de fondo
+  backgorund negro,azul,gris: rgba(0, 0, 0, 0.4) * Depende del color de fondo
+  letras blanco no tan blanco: rgba(255, 255, 255, 0.87) 
+  
+ */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424;  buscar un color de fondo */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,7 +52,7 @@ body {
 
 main {
   /* flex: 1 0 auto; */
-  /* border: 1px solid #ff0000; */
+  /* border: 1px dotted #ff0000; */
 }
 
 a {
@@ -56,31 +66,40 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  /* border: 1px solid transparent; */
+input {
+  border: none;
+  background: none;
+  color: inherit;
+}
+input:focus {
+  outline: none;
+}
+
+button,
+input[type='submit'] {
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+input[type='submit']:focus {
+  border-color: rgba(222, 184, 135, 0.9);
+}
+
+button:active,
+input[type='submit']:active {
+  transform: scale(0.95);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }

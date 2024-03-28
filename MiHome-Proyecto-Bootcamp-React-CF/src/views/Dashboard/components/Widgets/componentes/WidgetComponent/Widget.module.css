@@ -1,6 +1,6 @@
 .container {
   align-self: start;
-  border: 1px solid blue;
+  border: 1px solid green;
   padding: 1rem;
   border-radius: 12px;
   position: relative;
@@ -35,5 +35,8 @@
 
 .body {
   border: 1px solid grey;
-  min-height: 50px;
+  border-radius: 6px;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
 }

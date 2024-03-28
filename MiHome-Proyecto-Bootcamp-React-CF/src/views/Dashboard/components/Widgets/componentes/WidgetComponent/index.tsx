@@ -18,7 +18,7 @@ const WidgetComponent: React.FunctionComponent<WidgetDefaultProps> = ({ title, b
       <div className={styles.header}>
         <p className={styles.title}>{title}</p>
         <div className={styles.openWidget}>
-          {path !== 'default' && (
+          {path !== 'dont' && (
             <Link to={`/dashboard/${path}`}>
               <IoExpand></IoExpand>
             </Link>

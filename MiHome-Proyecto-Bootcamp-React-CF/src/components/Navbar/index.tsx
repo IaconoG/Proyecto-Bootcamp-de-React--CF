@@ -49,7 +49,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ page }) => {
       <div
         className={`${styles.linksContainer} ${page === 'Dashboard' ? styles.dashboardLinks : ''}`}
       >
-        <Link to="/" className={styles.homeContainer}>
+        <Link to="/dashboard" className={styles.homeContainer}>
           MiHome
         </Link>
         <RenderLinks page={page} />

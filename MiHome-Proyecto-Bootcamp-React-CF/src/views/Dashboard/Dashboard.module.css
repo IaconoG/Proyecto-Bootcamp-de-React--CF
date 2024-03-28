@@ -6,14 +6,15 @@ main {
 .dashboardContent {
   margin-left: 14rem;
   padding: 1rem;
-  border: 1px solid green;
+  border: 1px dotted green;
 }
 
 .widgetsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(Min(20em, 100%), 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(Min(40em, 100%), 1fr)); */
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid red;
+  border: 1px dotted red;
 }

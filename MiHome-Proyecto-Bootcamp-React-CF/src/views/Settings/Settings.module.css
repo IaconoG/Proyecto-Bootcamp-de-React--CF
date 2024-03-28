@@ -1,0 +1,57 @@
+.settingsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.container {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* User */
+.form {
+  display: flex;
+  gap: 1.5rem;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.form label {
+  font-size: 1.1rem;
+}
+.form label input:not([type='submit']),
+.form label select {
+  box-sizing: border-box;
+  height: 2.5rem;
+  margin-left: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-inline: 1rem;
+  font-size: 1.2rem;
+  transition: border-color 0.2s ease;
+}
+
+.form label input:focus {
+  border-color: rgba(222, 184, 135, 0.9);
+}
+
+.errorFormContainer {
+  align-self: center;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.paragraphErroForm {
+  font-weight: 600;
+}
+
+/* Google Sync */
+
+/* Reset */

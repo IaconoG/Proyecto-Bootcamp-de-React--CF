@@ -8,8 +8,9 @@ import Auth from '../views/Auth';
 import SingIn from '../views/Auth/SignIn';
 import SingUp from '../views/Auth/SingUp';
 
+import Settings from '../views/Settings';
+
 import Dashboard from '../views/Dashboard';
-// import Setting from '../views/Dashboard/components/Setting';
 // import Balance from '../views/Dashboard/components/Balance';
 // import Calendar from '../views/Dashboard/components/Calendar';
 // import Focus from '../views/Dashboard/components/Focus';
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'settings',
-        element: <h1>Settings</h1>,
+        element: <Settings />,
       },
       {
         path: 'balance',

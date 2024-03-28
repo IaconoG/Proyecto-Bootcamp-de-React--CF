@@ -1,6 +1,6 @@
 .navbar {
   height: 4rem;
-  /* border: 1px solid red; */
+  /* border: 1px dotted red; */
   display: flex;
   align-items: center;
   padding: 0 1.25rem;
@@ -22,7 +22,7 @@ a:active {
 
 .linksContainer {
   display: flex;
-  /* border: 1px solid green; */
+  /* border: 1px dotted green; */
   align-items: center;
   flex: 1 1 0%;
 }

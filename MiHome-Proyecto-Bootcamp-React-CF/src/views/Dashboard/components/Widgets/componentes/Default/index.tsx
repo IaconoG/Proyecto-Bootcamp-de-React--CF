@@ -4,10 +4,9 @@ import styles from './Default.module.css';
 import { IoAddCircleOutline, IoClose } from 'react-icons/io5';
 
 import Widget from '../WidgetComponent';
-import Box from '../../../Box';
 
-import useSelectWidgets from '../../../../hooks/useSelectWidgets';
-import { WidgetName } from '../../../../utils/types';
+import useSelectWidgets from '../../../../../../hooks/useUserWidgetsFromStorage';
+import { WidgetName } from '../../../../../../utils/types';
 
 interface DefaultProps {
   onAddWidget: (name: WidgetName) => void;
@@ -35,7 +34,7 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
     return (
       <div className={styles.containerOptions}>
         {notAddedWidgets.map((widget, index) => (
-          <Box key={index}>
+          <div key={index} className={styles.box}>
             <div className={styles.widgetOptionContainer}>
               <p className={styles.widgetOptionName}>{widget.name}</p>
               <button
@@ -45,7 +44,7 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
                 Agregar
               </button>
             </div>
-          </Box>
+          </div>
         ))}
       </div>
     );
@@ -63,7 +62,7 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
     </div>
   );
 
-  return <Widget title="Agrega un Widget" body={body} path={'default'} />;
+  return <Widget title="Agrega un Widget" body={body} path={'dont'} />;
 };
 
 export default Default;

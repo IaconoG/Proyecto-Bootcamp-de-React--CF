@@ -40,7 +40,7 @@ const Settings = (): JSX.Element => {
         <h3 className={styles.title}>Informacion de Usuario</h3>
         <form onSubmit={handleSubmit(handleSubmitForm)} className={styles.form}>
           <label htmlFor="username">
-            Username:
+            <span>Username:</span>
             <input
               type="text"
               {...register('username', { maxLength: 20 })}
@@ -48,6 +48,7 @@ const Settings = (): JSX.Element => {
             />
           </label>
           <label htmlFor="oficio">
+            <span>Oficio:</span>
             <select {...register('oficio')}>
               <option value="" defaultChecked>
                 Selecciona una opcion

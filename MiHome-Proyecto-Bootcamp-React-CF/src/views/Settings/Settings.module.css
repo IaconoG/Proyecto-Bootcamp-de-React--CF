@@ -10,12 +10,15 @@
   background-color: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* User */
 .form {
+  width: 100%;
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
   border-radius: 8px;
   align-items: center;
 }
@@ -23,11 +26,14 @@
 .form label {
   font-size: 1.1rem;
 }
+.form label span {
+  min-width: 90px;
+}
+
 .form label input:not([type='submit']),
 .form label select {
-  box-sizing: border-box;
   height: 2.5rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   border-radius: 6px;
   border: 1px solid transparent;
   background-color: rgba(0, 0, 0, 0.4);
@@ -50,6 +56,24 @@
 
 .paragraphErroForm {
   font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .form label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form label input:not([type='submit']),
+  .form label select {
+    width: 85%;
+    flex-shrink: 1;
+  }
+
+  .submitBtn {
+    margin-left: auto;
+  }
 }
 
 /* Google Sync */

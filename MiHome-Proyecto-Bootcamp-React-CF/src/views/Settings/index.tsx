@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import styles from './Settings.module.css';
+import { FaGoogleDrive } from 'react-icons/fa';
 
 import { UserData } from '../../utils/types';
 
@@ -68,12 +69,22 @@ const Settings = (): JSX.Element => {
           </div>
         )}
       </div>
-      <div className={styles.container}>Sincronizar informacion con google</div>
       <div className={styles.container}>
-        Restear informacion cuenta 🫠
+        <p>Sincronizar informacion con google</p>
+        <button>
+          {/* XXX: Imposible :(, pense q era mas simple*/}
+          {/* TODO: Seguir buscando info y leer sobre firebase */}
+          <FaGoogleDrive className={styles.googleIcon} />
+          <span>Iniciar sesión en Google Drive</span>
+        </button>
+      </div>
+      <div className={styles.container}>
+        Restear informacion de la cuenta 🫠
         {/* FIXME: Elimnar el boton, solo es de prueba */}
         <div>
-          <button onClick={handleClickClearWidgetFromLocalStorage}>Clear Local Storage</button>
+          <button onClick={handleClickClearWidgetFromLocalStorage}>
+            <span>Clear Local Storage</span>
+          </button>
         </div>
       </div>
     </div>

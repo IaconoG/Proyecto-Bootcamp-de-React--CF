@@ -33,7 +33,7 @@
 .form label input:not([type='submit']),
 .form label select {
   height: 2.5rem;
-  margin-left: 1rem;
+  margin-left: 0.7rem;
   border-radius: 6px;
   border: 1px solid transparent;
   background-color: rgba(0, 0, 0, 0.4);
@@ -77,5 +77,9 @@
 }
 
 /* Google Sync */
+.googleIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 
 /* Reset */

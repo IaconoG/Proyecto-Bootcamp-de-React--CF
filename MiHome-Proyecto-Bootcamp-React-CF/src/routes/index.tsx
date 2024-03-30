@@ -11,11 +11,11 @@ import SingUp from '../views/Auth/SingUp';
 import Settings from '../views/Settings';
 
 import Dashboard from '../views/Dashboard';
-// import Balance from '../views/Dashboard/components/Balance';
-// import Calendar from '../views/Dashboard/components/Calendar';
-// import Focus from '../views/Dashboard/components/Focus';
-// import InfoMicro from '../views/Dashboard/components/InfoMicro';
-// import ToDo from '../views/Dashboard/components/ToDo';
+// import Balance from '../views/Dashboard/components/FullView/Balance';
+// import Calendar from '../views/Dashboard/components/FullView/Calendar';
+// import Focus from '../views/Dashboard/components/FullView/Focus';
+// import InfoMicro from '../views/Dashboard/components/FullView/InfoMicro';
+import ToDo from '../views/Dashboard/components/FullView/ToDo';
 
 import Error404 from '../views/Error404';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'to-do',
-        element: <h1>ToDo</h1>,
+        element: <ToDo />,
       },
     ],
   },

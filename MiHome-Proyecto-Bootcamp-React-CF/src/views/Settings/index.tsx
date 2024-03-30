@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 
 import styles from './Settings.module.css';
 import { FaGoogleDrive } from 'react-icons/fa';
@@ -6,8 +7,6 @@ import { FaGoogleDrive } from 'react-icons/fa';
 import { UserData } from '../../utils/types';
 
 import useUserDataFromStorage from '../../hooks/useUserDataFromStorage';
-
-import { useEffect } from 'react';
 
 // FIXME: Eliminar este método, solo es de preuba
 const handleClickClearWidgetFromLocalStorage = () => {
@@ -23,16 +22,27 @@ const Settings = (): JSX.Element => {
     formState: { errors },
     setValue,
   } = useForm<UserData>();
+  const [isFormUpdated, setIsFormUpdated] = useState(false);
 
   useEffect(() => {
-    setValue('username', getUserName());
-    setValue('oficio', getUserOficio());
-  }, [setValue]); // FIXME: Porque me pide las otras dependencias?
+    try {
+      setValue('username', getUserName());
+      setValue('oficio', getUserOficio());
+    } catch (error) {
+      console.error('Error al obtener la informacion del usuario', error);
+    }
+  }, [setValue, getUserName, getUserOficio]);
 
-  // const onSubmit = (data: DataFormUser) => {
   const handleSubmitForm: SubmitHandler<UserData> = (data) => {
+    if (data.username === getUserName() && data.oficio === getUserOficio()) return;
+
     addUserName(data.username);
     addUserOficio(data.oficio);
+    setIsFormUpdated(true);
+
+    setTimeout(() => {
+      setIsFormUpdated(false);
+    }, 1500);
   };
 
   return (
@@ -40,17 +50,19 @@ const Settings = (): JSX.Element => {
       <div className={styles.container}>
         <h3 className={styles.title}>Informacion de Usuario</h3>
         <form onSubmit={handleSubmit(handleSubmitForm)} className={styles.form}>
-          <label htmlFor="username">
+          <label htmlFor="username" className={styles.label}>
             <span>Username:</span>
             <input
               type="text"
-              {...register('username', { maxLength: 20 })}
+              {...register('username', { maxLength: 36 })}
               placeholder="Tu nombre de usuario"
+              className={styles.input}
+              maxLength={30}
             />
           </label>
-          <label htmlFor="oficio">
+          <label htmlFor="oficio" className={styles.label}>
             <span>Oficio:</span>
-            <select {...register('oficio')}>
+            <select {...register('oficio')} className={styles.select}>
               <option value="" defaultChecked>
                 Selecciona una opcion
               </option>
@@ -59,20 +71,27 @@ const Settings = (): JSX.Element => {
               <option value="otro">Otro</option>
             </select>
           </label>
-          <input type="submit" value="Guardar" className={styles.submitBtn} />
+          <button type="submit" value="Guardar" className={styles.submitBtn}>
+            Guardar
+          </button>
         </form>
         {errors.username && (
-          <div className={styles.errorFormContainer}>
-            <p className={styles.paragraphErroForm}>
+          <div className={styles.messageFormContainer + ' ' + styles.errorMessageContainer}>
+            <p className={styles.paragraphMessageForm}>
               El nombre de usuario no puede tener más de 20 caracteres.
             </p>
+          </div>
+        )}
+        {isFormUpdated && (
+          <div className={styles.messageFormContainer + ' ' + styles.submitMessageContianer}>
+            <p className={styles.paragraphMessageForm}>Formulario Actualizado</p>
           </div>
         )}
       </div>
       <div className={styles.container}>
         <p>Sincronizar informacion con google</p>
         <button>
-          {/* XXX: Imposible :(, pense q era mas simple*/}
+          {/* XXX: Imposible :'(, pense q era mas simple*/}
           {/* TODO: Seguir buscando info y leer sobre firebase */}
           <FaGoogleDrive className={styles.googleIcon} />
           <span>Iniciar sesión en Google Drive</span>

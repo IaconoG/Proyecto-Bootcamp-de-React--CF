@@ -26,12 +26,12 @@ const useUserWidgetsFromStorage = (): WidgetOptionsHook => {
       ? JSON.parse(userInformationFromStorage)
       : INITIAL_USER_INFORMATION;
 
-    setStoredUserData(storedUserData);
+    setStoredUserData(storedUserInformation);
     localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(storedUserInformation));
   }, []);
 
   const getAddedWidgets = (): WidgetOption[] => {
-    return storedUserData?.userWidgetsOptions || [];
+    return storedUserData?.widgetsOptions || [];
   };
 
   const getNotAddedWidgets = (): WidgetOption[] => {
@@ -64,7 +64,7 @@ const useUserWidgetsFromStorage = (): WidgetOptionsHook => {
 
     if (!widgetToAdd) return;
 
-    updatedStoredUserData.userWidgetsOptions.push(widgetToAdd);
+    updatedStoredUserData.widgetsOptions.push(widgetToAdd);
 
     setStoredUserData(updatedStoredUserData);
     localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(updatedStoredUserData));

@@ -21,7 +21,7 @@ const useUserDataFromStorage = (): UserDataFromStorageHook => {
       ? JSON.parse(userInformationFromStorage)
       : INITIAL_USER_INFORMATION;
 
-    setStoredUserData(storedUserData);
+    setStoredUserData(storedUserInformation);
     localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(storedUserInformation));
   }, []);
 

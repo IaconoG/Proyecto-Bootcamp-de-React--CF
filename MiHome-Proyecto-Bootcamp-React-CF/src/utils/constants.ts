@@ -1,11 +1,19 @@
 import { WidgetOption, UserInformation, UserData } from './types';
 
+import {
+  INITIAL_BALANCE_CONFIG,
+  INITIAL_CALENDAR_CONFIG,
+  INITIAL_FOCUS_CONFIG,
+  INITIAL_INFOMICROS_CONFIG,
+  INITIAL_TODO_CONFIG,
+} from '../views/Dashboard/components/FullView/ToDo/utils/constants';
+
 export const OPTIONS_WIDGETS: WidgetOption[] = [
-  { name: 'Balance', path: 'balance' },
-  { name: 'Calendar', path: 'calendar' },
-  { name: 'Focus', path: 'focus' },
-  { name: 'Info Micros', path: 'info-micros' },
-  { name: 'ToDo', path: 'to-do' },
+  { name: 'Balance', path: 'balance', config: INITIAL_BALANCE_CONFIG },
+  { name: 'Calendar', path: 'calendar', config: INITIAL_CALENDAR_CONFIG },
+  { name: 'Focus', path: 'focus', config: INITIAL_FOCUS_CONFIG },
+  { name: 'Info Micros', path: 'info-micros', config: INITIAL_INFOMICROS_CONFIG },
+  { name: 'ToDo', path: 'to-do', config: INITIAL_TODO_CONFIG },
 ];
 
 const INITIAL_WIDGETS_OPTIONS: WidgetOption[] = []; // FIXME: Es necesario que exporte esto?
@@ -19,5 +27,5 @@ const INITIAL_USER_DATA: UserData = {
 
 export const INITIAL_USER_INFORMATION: UserInformation = {
   userData: INITIAL_USER_DATA,
-  userWidgetsOptions: INITIAL_WIDGETS_OPTIONS,
+  widgetsOptions: INITIAL_WIDGETS_OPTIONS,
 };

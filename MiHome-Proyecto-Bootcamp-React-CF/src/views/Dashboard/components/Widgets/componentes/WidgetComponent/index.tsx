@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { WidgetName, Path } from '../../../../utils/types';
+import { WidgetName, Path } from '../../../../../../utils/types';
 
 import styles from './Widget.module.css';
 import { IoExpand } from 'react-icons/io5';

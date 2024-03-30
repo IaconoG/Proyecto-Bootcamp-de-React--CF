@@ -1,7 +1,7 @@
 import Default from './componentes/Default';
 import WidgetComponent from './componentes/WidgetComponent';
 
-import useSelectWidgets from '../../../../hooks/useUserWidgetsFromStorage';
+import useUserWidgetsFromStorage from '../../../../hooks/useUserWidgetsFromStorage';
 
 import { WidgetName } from '../../../../utils/types';
 
@@ -21,7 +21,7 @@ const Widget: React.FunctionComponent = () => {
     </div>
   );
 
-  const { getAddedWidgets, areAllWidgetsAdded, addWidgets } = useSelectWidgets();
+  const { getAddedWidgets, areAllWidgetsAdded, addWidgets } = useUserWidgetsFromStorage();
 
   const handleAddWidget = (name: WidgetName) => {
     addWidgets(name);

@@ -3,7 +3,9 @@ import WidgetComponent from './componentes/WidgetComponent';
 
 import useUserWidgetsFromStorage from '../../../../hooks/useUserWidgetsFromStorage';
 
-import { WidgetName } from '../../../../utils/types';
+import { WidgetType } from '../../../../utils/types';
+import { WidgetName } from './utils/types';
+import { Path } from '../../../../utils/types';
 
 const Widget: React.FunctionComponent = () => {
   const bodyExample = (widgetName: WidgetName): React.ReactElement => (
@@ -27,18 +29,21 @@ const Widget: React.FunctionComponent = () => {
     addWidgets(name);
   };
 
-  const addedWidgets = getAddedWidgets();
+  const renderWidgets = (): React.ReactElement[] => {
+    const addedWidgets = getAddedWidgets();
+    return addedWidgets.map((widget: WidgetType, index: number) => (
+      <WidgetComponent
+        key={index}
+        title={widget.title}
+        body={bodyExample(widget.title)}
+        path={widget?.path as Path}
+      />
+    ));
+  };
 
   return (
     <>
-      {addedWidgets.map((widget, idx) => (
-        <WidgetComponent
-          key={idx}
-          title={widget.name}
-          body={bodyExample(widget.name)}
-          path={widget?.path}
-        />
-      ))}
+      {renderWidgets()}
       {!areAllWidgetsAdded() && <Default onAddWidget={handleAddWidget} />}
     </>
   );

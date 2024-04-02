@@ -1,0 +1,23 @@
+.form {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  /* gap: 0.5rem 0; */
+  border-radius: 8px;
+  padding: 0.875rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+label,
+select {
+  width: 100%;
+}
+label span {
+  min-width: 90px;
+  display: inline-block;
+}
+
+button[type='submit'] {
+  align-self: flex-end;
+}

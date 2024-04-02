@@ -1,17 +1,17 @@
-export const generateId = (): number => {
-  //  Buscar desde el localstorege
-  return Math.random();
+export const generateId = (title: string): string => {
+  return title.replace(/\s/g, '-').toLowerCase() + Math.random();
 };
 
-export const generateDate = (): string => {
-  const date: Date = new Date();
+export const formatDate = (date: Date): string => {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
-    month: 'short',
+    month: 'long',
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
   };
+
+  date = new Date(date);
 
   const formatNumber = (num: number): string => (num < 10 ? `0${num}` : `${num}`);
 

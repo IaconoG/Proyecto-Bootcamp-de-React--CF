@@ -1,0 +1,15 @@
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0 0.75rem 0.3rem 0;
+  width: fit-content;
+  border-bottom: 3px solid rgba(222, 184, 135, 0.9);
+}
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

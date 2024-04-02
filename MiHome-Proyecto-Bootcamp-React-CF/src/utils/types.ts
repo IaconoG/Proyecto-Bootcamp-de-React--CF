@@ -4,24 +4,9 @@ import {
   Focus,
   InfoMicros,
   ToDo,
-} from '../views/Dashboard/components/FullView/ToDo/utils/types';
-
-export type WidgetName =
-  | 'Agrega un Widget'
-  | 'Balance'
-  | 'Calendar'
-  | 'Focus'
-  | 'Info Micros'
-  | 'ToDo';
+} from '../views/Dashboard/components/Widgets/utils/types';
 
 export type Path = 'settings' | 'balance' | 'calendar' | 'focus' | 'info-micros' | 'to-do' | 'dont';
-type Config = Balance | Calendar | Focus | InfoMicros | ToDo;
-export interface WidgetOption {
-  name: WidgetName;
-  body?: React.ReactElement;
-  path: Path;
-  config: Config;
-}
 
 export type OccupationTypeUser = 'Estudiante' | 'Trabajador' | 'Otro';
 
@@ -30,7 +15,20 @@ export interface UserData {
   oficio: OccupationTypeUser | null;
 }
 
+export type WidgetKeys = 'balance' | 'calendar' | 'focus' | 'infoMicros' | 'toDo';
+export type WidgetType = Balance | Calendar | Focus | InfoMicros | ToDo;
+
+export type Widgets = Record<WidgetKeys, WidgetType>;
+
+export interface WidgetsOptions {
+  balance: Balance;
+  calendar: Calendar;
+  focus: Focus;
+  infoMicros: InfoMicros;
+  toDo: ToDo;
+}
+
 export interface UserInformation {
   userData: UserData;
-  widgetsOptions: WidgetOption[];
+  widgetsOptions: WidgetsOptions;
 }

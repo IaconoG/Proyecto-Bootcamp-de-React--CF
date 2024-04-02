@@ -1,0 +1,93 @@
+.taskContainer {
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    'title title input'
+    'description description input'
+    'buttons date date';
+  gap: 0.3rem 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.baja {
+  border-color: rgba(0, 255, 0, 0.5);
+}
+.media {
+  border-color: rgba(255, 255, 0, 0.6);
+}
+.alta {
+  border-color: rgba(255, 0, 0, 0.6);
+}
+
+.taskTitle {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.taskTitle,
+.taskDesciption {
+  width: 100%;
+  word-wrap: break-word;
+  white-space: break-spaces;
+  overflow: hidden;
+}
+.taskDesciption {
+  grid-area: description;
+  font-size: 0.875rem;
+  width: 100%;
+  height: auto;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.taskDate {
+  grid-area: date;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: end;
+}
+
+.taskComplete {
+  width: fit-content;
+  grid-area: input;
+}
+.taskComplete input {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.buttons {
+  margin-top: 0.3rem;
+  grid-area: buttons;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.editButton,
+.deleteButton {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(42, 42, 42);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.editButton:hover {
+  color: rgba(222, 184, 135, 0.9);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.deleteButton:hover {
+  border-color: rgba(255, 0, 0, 0.5);
+  color: rgba(255, 0, 0, 0.9);
+}

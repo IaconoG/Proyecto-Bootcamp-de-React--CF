@@ -1,0 +1,91 @@
+.formLayout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 150px;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    'title title priority'
+    'description description description'
+    'formBtn formBtn formBtn';
+}
+
+.title,
+.description {
+  border-bottom: 1px solid #ededed;
+  height: auto;
+  min-height: 1.5rem;
+  background-color: transparent;
+  transition: border-color 0.2s ease;
+}
+
+.title {
+  grid-area: title;
+  font-size: 1.2rem;
+  font-weight: 600;
+  max-width: 575px;
+}
+
+.description {
+  grid-area: description;
+  border: 1px solid rgba(237, 237, 237, 0.5);
+  border-radius: 4px;
+  font-size: 1rem;
+  overflow: hidden;
+  letter-spacing: 0;
+  height: 65px;
+}
+
+.priority {
+  width: 100%;
+  grid-area: priority;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  height: 100%;
+  color: rgba(0, 255, 0, 0.7);
+  background-color: rgb(42, 42, 42);
+}
+
+.priority,
+.priority option {
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+.optionLow {
+  color: rgba(0, 255, 0, 0.7);
+}
+.optionMedium {
+  color: rgba(255, 255, 0, 0.8);
+}
+.optionHigh {
+  color: rgba(255, 0, 0, 0.9);
+}
+
+.formBtn {
+  grid-area: formBtn;
+  justify-self: end;
+  width: 100%;
+  max-width: 150px;
+  background-color: rgb(42, 42, 42);
+}
+
+@media screen and (max-width: 1024px) {
+  .priority {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .formLayout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'description'
+      'priority'
+      'formBtn';
+  }
+  .formBtn {
+    max-width: 100%;
+  }
+}

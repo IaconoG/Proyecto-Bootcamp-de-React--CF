@@ -1,0 +1,17 @@
+.messageFormContainer {
+  align-self: center;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.paragraphMessageForm {
+  font-weight: 600;
+}
+
+.errorMessageContainer {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+.submitMessageContainer {
+  background-color: rgba(0, 255, 0, 0.3);
+}

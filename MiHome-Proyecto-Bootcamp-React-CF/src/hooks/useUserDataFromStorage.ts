@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import { UserInformation, OccupationTypeUser } from '../utils/types';
-import { LOCAL_STORAGE_USER_INFORMATION, INITIAL_USER_INFORMATION } from '../utils/constants';
+import { INITIAL_USER_INFORMATION } from '../utils/constants';
+import {
+  getUserInformationFromLocalStorage,
+  setUserInformationToLocalStorage,
+} from '../utils/helpers';
 
 interface UserDataFromStorageHook {
   getUserName: () => string;
@@ -16,13 +20,9 @@ const useUserDataFromStorage = (): UserDataFromStorageHook => {
   );
 
   useEffect(() => {
-    const userInformationFromStorage = localStorage.getItem(LOCAL_STORAGE_USER_INFORMATION);
-    const storedUserInformation = userInformationFromStorage
-      ? JSON.parse(userInformationFromStorage)
-      : INITIAL_USER_INFORMATION;
-
+    const storedUserInformation = getUserInformationFromLocalStorage();
     setStoredUserData(storedUserInformation);
-    localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(storedUserInformation));
+    setUserInformationToLocalStorage(storedUserInformation);
   }, []);
 
   const getUserName = (): string => {
@@ -40,7 +40,7 @@ const useUserDataFromStorage = (): UserDataFromStorageHook => {
     updatedStoredUserData.userData.username = username?.trim() || '';
 
     setStoredUserData(updatedStoredUserData);
-    localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(updatedStoredUserData));
+    setUserInformationToLocalStorage(updatedStoredUserData);
   };
 
   const addUserOficio = (oficio: OccupationTypeUser | null): void => {
@@ -50,7 +50,7 @@ const useUserDataFromStorage = (): UserDataFromStorageHook => {
     updatedStoredUserData.userData.oficio = oficio;
 
     setStoredUserData(updatedStoredUserData);
-    localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(updatedStoredUserData));
+    setUserInformationToLocalStorage(updatedStoredUserData);
   };
 
   return {

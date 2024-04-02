@@ -14,33 +14,19 @@
 }
 
 /* User */
-.form {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
+.formLayout {
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   gap: 0.5rem 0;
-  border-radius: 8px;
 }
-
-.label {
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-}
-
 .input,
 .select {
-  flex-grow: 2; /* Permitir que el input/select crezca más */
-  flex-shrink: 1;
-  min-width: 0;
-  width: 325px;
+  width: 100%;
   height: 2.5rem;
-  margin-left: 0.7rem;
   border-radius: 6px;
   border: 1px solid transparent;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(42, 42, 42, 0.5);
   padding-inline: 1rem;
   font-size: 1.2rem;
 }
@@ -49,42 +35,8 @@
   font-size: 1rem;
 }
 
-.messageFormContainer {
-  align-self: center;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-}
-.errorMessageContainer {
-  background-color: rgba(255, 0, 0, 0.3);
-}
-.submitMessageContianer {
-  background-color: rgba(0, 255, 0, 0.3);
-}
-
-.paragraphMessageForm {
-  font-weight: 600;
-}
-
-@media (max-width: 1240px) {
-  .form {
-    flex-direction: column;
-    align-items: start;
-  }
-  .label {
-    width: 100%;
-  }
-  .label span {
-    display: inline-block;
-    min-width: 90px;
-  }
-  .input,
-  .select {
-    flex-grow: 1;
-  }
-  .submitBtn {
-    margin-left: auto;
-  }
+.btn {
+  border: 1px solid rgba(42, 42, 42);
 }
 
 /* Google Sync */

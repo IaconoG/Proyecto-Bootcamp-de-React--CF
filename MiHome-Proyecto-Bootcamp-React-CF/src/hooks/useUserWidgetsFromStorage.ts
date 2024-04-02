@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import { UserInformation, WidgetOption, WidgetName } from '../utils/types';
+import { UserInformation, WidgetType, WidgetKeys } from '../utils/types';
+import { INITIAL_USER_INFORMATION } from '../utils/constants';
+import { WidgetName } from '../views/Dashboard/components/Widgets/utils/types';
 import {
-  LOCAL_STORAGE_USER_INFORMATION,
-  INITIAL_USER_INFORMATION,
-  OPTIONS_WIDGETS,
-} from '../utils/constants';
+  getUserInformationFromLocalStorage,
+  setUserInformationToLocalStorage,
+} from '../utils/helpers';
 
 interface WidgetOptionsHook {
-  getAddedWidgets: () => WidgetOption[];
-  getNotAddedWidgets: () => WidgetOption[];
+  getAddedWidgets: () => WidgetType[];
+  getNotAddedWidgets: () => WidgetType[];
   areAllWidgetsAdded: () => boolean;
   addWidgets: (widgetName: WidgetName) => void;
   deleteWidgets: (widgetName: WidgetName) => void;
@@ -21,53 +22,68 @@ const useUserWidgetsFromStorage = (): WidgetOptionsHook => {
   );
 
   useEffect(() => {
-    const userInformationFromStorage = localStorage.getItem(LOCAL_STORAGE_USER_INFORMATION);
-    const storedUserInformation = userInformationFromStorage
-      ? JSON.parse(userInformationFromStorage)
-      : INITIAL_USER_INFORMATION;
-
+    const storedUserInformation = getUserInformationFromLocalStorage();
+    setUserInformationToLocalStorage(storedUserInformation);
     setStoredUserData(storedUserInformation);
-    localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(storedUserInformation));
   }, []);
 
-  const getAddedWidgets = (): WidgetOption[] => {
-    return storedUserData?.widgetsOptions || [];
+  const getAddedWidgets = (): WidgetType[] => {
+    if (!storedUserData) return [];
+
+    const arrayWidgets: WidgetType[] = [];
+    const widgets = storedUserData.widgetsOptions;
+    for (const key of Object.keys(widgets) as WidgetKeys[]) {
+      const widget = widgets[key];
+      if (widget.active) {
+        arrayWidgets.push(widget);
+      }
+    }
+    return arrayWidgets;
   };
 
-  const getNotAddedWidgets = (): WidgetOption[] => {
-    const userWidgetsOptions = getAddedWidgets();
+  const getNotAddedWidgets = (): WidgetType[] => {
+    const storedUserInformation = getUserInformationFromLocalStorage();
+    if (!storedUserInformation) return [];
 
-    const listAllWidgets = OPTIONS_WIDGETS;
+    const arrayWidgets: WidgetType[] = [];
+    const widgets = storedUserInformation.widgetsOptions;
+    for (const key of Object.keys(widgets) as WidgetKeys[]) {
+      const widget = widgets[key];
+      if (!widget.active) {
+        arrayWidgets.push(widget);
+      }
+    }
 
-    const notAddedWidgets = listAllWidgets.filter(
-      (widget) => !userWidgetsOptions.some((userWidget) => userWidget.name === widget.name)
-    );
-
-    return notAddedWidgets;
+    return arrayWidgets;
   };
 
   const areAllWidgetsAdded = (): boolean => {
-    const userWidgetsOptions = getAddedWidgets();
+    if (!storedUserData) return false;
+    const widgets = storedUserData.widgetsOptions;
 
-    const allWidgetsAdded = OPTIONS_WIDGETS.every((widget) =>
-      userWidgetsOptions.some((userWidget) => userWidget.name === widget.name)
-    );
-
-    return allWidgetsAdded;
+    for (const key of Object.keys(widgets) as WidgetKeys[]) {
+      const widget = widgets[key];
+      if (!widget.active) {
+        return false;
+      }
+    }
+    return true;
   };
 
   const addWidgets = (widgetName: WidgetName): void => {
     if (!storedUserData) return;
 
+    widgetName = widgetName.charAt(0).toLowerCase() + widgetName.slice(1);
+
+    let widgetKey = widgetName as WidgetKeys;
+    const shouldModifyName = widgetName === 'info Micros';
+    if (shouldModifyName) widgetKey = 'infoMicros' as WidgetKeys;
+
     const updatedStoredUserData = { ...storedUserData };
-    const widgetToAdd = OPTIONS_WIDGETS.find((widget) => widget.name === widgetName);
+    updatedStoredUserData.widgetsOptions[widgetKey].active = true;
 
-    if (!widgetToAdd) return;
-
-    updatedStoredUserData.widgetsOptions.push(widgetToAdd);
-
+    setUserInformationToLocalStorage(updatedStoredUserData);
     setStoredUserData(updatedStoredUserData);
-    localStorage.setItem(LOCAL_STORAGE_USER_INFORMATION, JSON.stringify(updatedStoredUserData));
   };
 
   const deleteWidgets = (widgetName: WidgetName): void => {

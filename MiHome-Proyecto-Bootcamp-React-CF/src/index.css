@@ -1,9 +1,22 @@
 /* 
+CALRO Q SI
+background-color: rgb(15, 15, 15); GRIS
+background-color: rgb(25, 25, 25); GRIS/NEGRO
+background-color: rgb(42, 42, 42); NEGRO
   Colores q fui usando
   border | links: naranja rgba(222, 184, 135, 0.9);
   backgorund rojo: rgba(255, 0, 0, 0.3); 
   backgorund gris: rgba(255, 255, 255, 0.1) * Depende del color de fondo
   backgorund negro,azul,gris: rgba(0, 0, 0, 0.4) * Depende del color de fondo
+  .optionLow {
+  color: rgba(0, 255, 0, 0.7);
+}
+.optionMedium {
+  color: rgba(255, 255, 0, 0.8);
+}
+.optionHigh {
+  color: rgba(255, 0, 0, 0.9);
+}
   letras blanco no tan blanco: rgba(255, 255, 255, 0.87) 
   
  */
@@ -92,12 +105,13 @@ input[type='submit'] {
   cursor: pointer;
   border-radius: 6px;
   border: 1px solid transparent;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgb(25, 25, 25);
   transition: border-color 0.2s ease;
   max-width: fit-content;
   gap: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 input:focus,

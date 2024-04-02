@@ -6,18 +6,23 @@ import { IoAddCircleOutline, IoClose } from 'react-icons/io5';
 import Widget from '../WidgetComponent';
 
 import useSelectWidgets from '../../../../../../hooks/useUserWidgetsFromStorage';
-import { WidgetName } from '../../../../../../utils/types';
+import { WidgetName } from '../../utils/types';
+import { WidgetType } from '../../../../../../utils/types';
 
 interface DefaultProps {
   onAddWidget: (name: WidgetName) => void;
 }
 
 const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
+  const { getNotAddedWidgets } = useSelectWidgets();
   const [optionsVisible, setOptionsVisible] = useState(false);
 
-  const { getNotAddedWidgets } = useSelectWidgets();
-
   const handleClickViewWidget = () => {
+    setOptionsVisible(!optionsVisible);
+  };
+
+  const handleAddWidget = (name: WidgetName) => {
+    onAddWidget(name);
     setOptionsVisible(!optionsVisible);
   };
 
@@ -30,16 +35,16 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
   };
 
   const renderWidgetsOptions = () => {
-    const notAddedWidgets = getNotAddedWidgets();
+    const notAddedWidgets: WidgetType[] = getNotAddedWidgets();
     return (
       <div className={styles.containerOptions}>
         {notAddedWidgets.map((widget, index) => (
           <div key={index} className={styles.box}>
             <div className={styles.widgetOptionContainer}>
-              <p className={styles.widgetOptionName}>{widget.name}</p>
+              <p className={styles.widgetOptionName}>{widget.title}</p>
               <button
                 className={styles.widgetOptionAddBtn}
-                onClick={() => onAddWidget(widget.name)}
+                onClick={() => handleAddWidget(widget.title)}
               >
                 Agregar
               </button>

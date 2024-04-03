@@ -19,6 +19,7 @@ const RenderLinks: React.FunctionComponent<NavbarProps> = ({ page }) => {
   }
 
   if (page === 'Dashboard') {
+    // FIXME: Solo se debe mostrar los widgets que el usuario haya activado. obviando el settings
     return (
       <>
         <Link to="/dashboard/calendar">Calendar</Link>

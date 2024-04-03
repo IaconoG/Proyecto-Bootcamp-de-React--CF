@@ -1,12 +1,12 @@
 .formLayout {
   display: grid;
-  gap: 1rem;
   grid-template-columns: 1fr 1fr 150px;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
     'title title priority'
     'description description description'
-    'formBtn formBtn formBtn';
+    'formBtn formBtn formBtn'
+    'message message message';
 }
 
 .title,
@@ -19,10 +19,12 @@
 }
 
 .title {
+  width: auto;
   grid-area: title;
   font-size: 1.2rem;
   font-weight: 600;
   max-width: 575px;
+  margin-right: 1rem;
 }
 
 .description {
@@ -41,7 +43,6 @@
   padding: 8px;
   border-radius: 6px;
   border: 1px solid transparent;
-  height: 100%;
   color: rgba(0, 255, 0, 0.7);
   background-color: rgb(42, 42, 42);
 }
@@ -68,6 +69,7 @@
   width: 100%;
   max-width: 150px;
   background-color: rgb(42, 42, 42);
+  margin-bottom: 0rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -83,7 +85,8 @@
       'title'
       'description'
       'priority'
-      'formBtn';
+      'formBtn'
+      'message';
   }
   .formBtn {
     max-width: 100%;

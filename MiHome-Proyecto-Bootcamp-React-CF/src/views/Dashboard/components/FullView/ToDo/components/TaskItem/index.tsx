@@ -7,6 +7,7 @@ import { MdDeleteForever } from 'react-icons/md';
 
 interface TaskItemProps extends Task {
   onDelete: (id: string) => void;
+  onComplete: (id: string) => void;
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({
@@ -14,9 +15,10 @@ const TaskItem: React.FC<TaskItemProps> = ({
   date,
   title,
   description,
+  completed,
   priority,
   onDelete,
-  // onEdit,
+  onComplete,
 }) => {
   const handleDelete = (id: string) => {
     onDelete(id);
@@ -24,14 +26,21 @@ const TaskItem: React.FC<TaskItemProps> = ({
   // const handleEdit = (id: number) => {
   //   onEdit(id);
   // };
+  const handleComplete = (id: string) => {
+    onComplete(id);
+  };
 
   return (
     <div className={styles.taskContainer + ' ' + styles[priority.toLocaleLowerCase()]}>
       <h4 className={styles.taskTitle}>{title}</h4>
       <p className={styles.taskDesciption}>{description}</p>
       <p className={styles.taskDate}>{formatDate(date)}</p>
-      <label htmlFor="taskComplete" className={styles.taskComplete}>
-        <input type="checkbox" id="taskComplete" />
+      <label
+        htmlFor="taskComplete"
+        className={styles.taskComplete}
+        onClick={() => handleComplete(id)}
+      >
+        <input type="checkbox" id="taskComplete" defaultChecked={completed} />
       </label>
       <div className={styles.buttons}>
         {/* <button name="edit" className={styles.editButton} onClick={() => handleEdit(id)}>

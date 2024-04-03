@@ -8,11 +8,11 @@ import {
 
 export type Path = 'settings' | 'balance' | 'calendar' | 'focus' | 'info-micros' | 'to-do' | 'dont';
 
-export type OccupationTypeUser = 'Estudiante' | 'Trabajador' | 'Otro';
+export type OficioTypeUser = 'Estudiante' | 'Trabajador' | 'Otro' | '';
 
 export interface UserData {
-  username: string | null;
-  oficio: OccupationTypeUser | null;
+  username: string;
+  oficio: OficioTypeUser;
 }
 
 export type WidgetKeys = 'balance' | 'calendar' | 'focus' | 'infoMicros' | 'toDo';

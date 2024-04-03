@@ -9,9 +9,11 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-label,
-select {
+input,
+select,
+textarea {
   width: 100%;
+  margin-bottom: 1rem;
 }
 label span {
   min-width: 90px;
@@ -20,4 +22,5 @@ label span {
 
 button[type='submit'] {
   align-self: flex-end;
+  margin-bottom: 0;
 }

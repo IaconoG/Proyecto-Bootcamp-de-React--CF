@@ -116,16 +116,16 @@ input[type='submit'] {
 
 input:focus,
 textarea:focus,
-button:hover {
+button:hover,
+select:focus {
   border-color: rgba(222, 184, 135, 0.9);
+}
+select {
+  outline: none;
 }
 
 button:active {
   transform: scale(0.95);
-}
-
-select {
-  height: 100%;
 }
 
 /* rest textarea */

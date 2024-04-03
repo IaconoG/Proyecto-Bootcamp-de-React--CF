@@ -20,6 +20,25 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
     completed: false,
   };
 
+  const validationRules = {
+    title: {
+      maxLength: {
+        value: 40,
+        message: 'El titulo de la tarea no puede tener mas de 40 caracteres.',
+      },
+      required: 'El titulo de la tarea es requerido.',
+    },
+    description: {
+      maxLength: {
+        value: 175,
+        message: 'La descripcion de la tarea no puede tener mas de 175 caracteres.',
+      },
+    },
+    priority: {
+      required: 'Debe seleccionar una prioridad para la tarea.',
+    },
+  };
+
   // const [textAreaValue, setTextAreaValue] = useState<string>('');
   // const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   // useAutoSizeHeightTextArea(textAreaRef.current, textAreaValue);
@@ -45,6 +64,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
         defaultValues={defaultValues}
         onSubmit={handleSubmitForm}
         formLayout={styles.formLayout}
+        validationRules={validationRules}
       >
         <input
           type="text"
@@ -81,7 +101,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
           placeholder="Descripcion de la Tarea"
           className={styles.description}
           // rows={1}
-          maxLength={175}
+          maxLength={200}
           // ref={textAreaRef}
           // value={textAreaValue}
           // onChange={(e) => setTextAreaValue(e.target.value)}
@@ -90,64 +110,6 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
           Añadir
         </button>
       </Form>
-      {/* <form onSubmit={handleSubmit(onSubmitForm)} className={styles.form}>
-        <div className={styles.containerData}>
-          <div className={styles.dataHeader}>
-            <input
-              type="text"
-              placeholder="Título de la Tarea"
-              {...register('title', { required: true, maxLength: 40 })}
-              maxLength={40}
-              // ref={selectRef}
-              className={styles.title}
-            />
-            <select
-              {...register('priority', { required: true })}
-              className={styles.priority}
-              onChange={(e) => handleOptionSelected(e.target)}
-              defaultValue={''}
-              // ref={selectRef}
-              id="priority-select"
-            >
-              <option value="" disabled hidden>
-                Prioridad
-              </option>
-              <option value="Baja" className={styles.optionLow}>
-                Baja
-              </option>
-              <option value="Media" className={styles.optionMedium}>
-                Media
-              </option>
-              <option value="Alta" className={styles.optionHigh}>
-                Alta
-              </option>
-            </select>
-          </div>
-
-          <textarea
-            placeholder="Descripcion de la Tarea"
-            {...register('description', { maxLength: 175 })}
-            className={styles.description}
-            // rows={1}
-            maxLength={175}
-            // ref={textAreaRef}
-            // value={textAreaValue}
-            // onChange={(e) => setTextAreaValue(e.target.value)}
-          />
-        </div>
-        <div className={styles.containerButtons}>
-          {errors.title?.type === 'required' && <span>El campo title es requerido</span>}
-          {errors.title?.type === 'maxLength' && (
-            <span>El campo title no puede superar los 40 caracteres</span>
-          )}
-          {errors.description?.type === 'maxLength' && (
-            <span>El campo description no puede superar los 150 caracteres</span>
-          )}
-          <button type="submit" className={styles.formBtn}>
-            Añadir
-          </button>
-        </div>
-      </form> */}
     </>
   );
 };

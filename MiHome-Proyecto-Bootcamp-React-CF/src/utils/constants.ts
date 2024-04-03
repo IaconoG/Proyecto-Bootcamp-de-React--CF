@@ -17,8 +17,8 @@ const INITIAL_WIDGETS_OPTIONS: WidgetsOptions = {
 };
 
 const INITIAL_USER_DATA: UserData = {
-  username: null,
-  oficio: null,
+  username: '',
+  oficio: '',
 };
 
 export const LOCAL_STORAGE_USER_INFORMATION = 'userInformation';

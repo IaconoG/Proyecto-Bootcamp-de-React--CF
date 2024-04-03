@@ -20,9 +20,21 @@ const Settings = (): JSX.Element => {
   const { getUserName, getUserOficio, addUserName, addUserOficio } = useUserDataFromStorage();
 
   const [defaultValues, setDefaultValues] = useState<UserData>({
-    username: '',
-    oficio: null,
+    username: getUserName(),
+    oficio: getUserOficio(),
   });
+
+  const validationRules = {
+    username: {
+      maxLength: {
+        value: 50,
+        message: 'El nombre de usuario no puede tener más de 50 caracteres.',
+      },
+    },
+    oficio: {
+      required: 'Debe seleccionar un oficio.',
+    },
+  };
 
   useEffect(() => {
     try {
@@ -38,29 +50,32 @@ const Settings = (): JSX.Element => {
   const handleSubmitForm: (data: FormDataType) => void = (data) => {
     console.log('data:', data);
 
-    // data = data as UserData;
-    // if (data.username === getUserName() && data.oficio === getUserOficio()) {
-    //   throw new Error('No se ha modificado la informacion del usuario');
-    // }
-    // addUserName(data.username);
-    // addUserOficio(data.oficio);
+    data = data as UserData;
+    if (data.username === getUserName() && data.oficio === getUserOficio()) {
+      throw new Error(
+        'No hubo necesidad de actualizar la informacion del usuario, era la misma que la anterior.'
+      );
+    }
+    addUserName(data.username);
+    addUserOficio(data.oficio);
   };
 
   return (
     <div className={styles.settingsContainer}>
       <div className={styles.container}>
-        <h3 className={styles.title}>Informacion de Usuario</h3>
+        <h2 className={styles.title}>Informacion de Usuario</h2>
         <Form
           defaultValues={defaultValues}
           onSubmit={handleSubmitForm}
           formLayout={styles.formLayout}
+          validationRules={validationRules}
         >
           <input
             type="text"
             name="username"
             placeholder="Tu nombre de usuario"
             className={styles.input}
-            maxLength={30}
+            maxLength={60}
           />
 
           <select name="oficio" className={styles.select}>
@@ -76,7 +91,7 @@ const Settings = (): JSX.Element => {
         </Form>
       </div>
       <div className={styles.container}>
-        <p>Sincronizar informacion con google</p>
+        <h3>Sincronizar informacion con google</h3>
         <button>
           {/* XXX: Imposible :'(, pense q era mas simple*/}
           {/* TODO: Seguir buscando info y leer sobre firebase */}

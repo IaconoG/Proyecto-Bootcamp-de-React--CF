@@ -8,4 +8,5 @@ export interface FormProps {
   children: React.ReactNode;
   onSubmit: (data: FormDataType) => void;
   formLayout?: string;
+  validationRules?: Record<string, Record<string, unknown>>;
 }

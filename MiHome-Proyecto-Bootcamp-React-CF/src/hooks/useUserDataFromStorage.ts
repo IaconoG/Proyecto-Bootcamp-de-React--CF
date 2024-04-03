@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { UserInformation, OccupationTypeUser } from '../utils/types';
+import { UserInformation, OficioTypeUser } from '../utils/types';
 import { INITIAL_USER_INFORMATION } from '../utils/constants';
 import {
   getUserInformationFromLocalStorage,
@@ -9,31 +9,31 @@ import {
 
 interface UserDataFromStorageHook {
   getUserName: () => string;
-  getUserOficio: () => OccupationTypeUser | null;
-  addUserName: (name: string | null) => void;
-  addUserOficio: (oficio: OccupationTypeUser | null) => void;
+  getUserOficio: () => OficioTypeUser;
+  addUserName: (name: string) => void;
+  addUserOficio: (oficio: OficioTypeUser) => void;
 }
 
 const useUserDataFromStorage = (): UserDataFromStorageHook => {
-  const [storedUserData, setStoredUserData] = useState<UserInformation | null>(
-    INITIAL_USER_INFORMATION
-  );
+  const [storedUserData, setStoredUserData] = useState<UserInformation>(INITIAL_USER_INFORMATION);
 
   useEffect(() => {
     const storedUserInformation = getUserInformationFromLocalStorage();
+    if (!storedUserInformation) return;
     setStoredUserData(storedUserInformation);
-    setUserInformationToLocalStorage(storedUserInformation);
   }, []);
 
   const getUserName = (): string => {
-    return storedUserData?.userData.username || '';
+    const storedUserInformation = getUserInformationFromLocalStorage();
+    return storedUserInformation?.userData.username || '';
   };
 
-  const getUserOficio = (): OccupationTypeUser | null => {
-    return storedUserData?.userData.oficio || null;
+  const getUserOficio = (): OficioTypeUser => {
+    const storedUserInformation = getUserInformationFromLocalStorage();
+    return storedUserInformation?.userData.oficio || '';
   };
 
-  const addUserName = (username: string | null): void => {
+  const addUserName = (username: string): void => {
     if (!storedUserData) return;
 
     const updatedStoredUserData = { ...storedUserData };
@@ -43,11 +43,11 @@ const useUserDataFromStorage = (): UserDataFromStorageHook => {
     setUserInformationToLocalStorage(updatedStoredUserData);
   };
 
-  const addUserOficio = (oficio: OccupationTypeUser | null): void => {
+  const addUserOficio = (oficio: OficioTypeUser): void => {
     if (!storedUserData) return;
 
     const updatedStoredUserData = { ...storedUserData };
-    updatedStoredUserData.userData.oficio = oficio;
+    updatedStoredUserData.userData.oficio = oficio || '';
 
     setStoredUserData(updatedStoredUserData);
     setUserInformationToLocalStorage(updatedStoredUserData);

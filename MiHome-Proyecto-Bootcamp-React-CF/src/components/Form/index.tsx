@@ -6,7 +6,13 @@ import { FormDataType, FormProps } from './utils/types';
 
 import styles from './Form.module.css';
 
-const Form: React.FC<FormProps> = ({ defaultValues, children, onSubmit, formLayout }) => {
+const Form: React.FC<FormProps> = ({
+  defaultValues,
+  children,
+  onSubmit,
+  formLayout,
+  validationRules = {},
+}) => {
   const {
     register,
     handleSubmit,
@@ -23,7 +29,7 @@ const Form: React.FC<FormProps> = ({ defaultValues, children, onSubmit, formLayo
       setIsFormUpdated(true);
       setTimeout(() => {
         setIsFormUpdated(false);
-      }, 2000);
+      }, 1500);
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
     }
@@ -32,31 +38,35 @@ const Form: React.FC<FormProps> = ({ defaultValues, children, onSubmit, formLayo
     <>
       <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form + ' ' + formLayout}>
         {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.props.name) {
-            if (child.type === 'button') {
-              return child;
-            }
+          if (React.isValidElement(child) && child.props.name && child.props.type !== 'button') {
             return React.createElement(child.type, {
               ...{
                 ...child.props,
-                ...register(child.props.name),
+                ...register(child.props.name, { ...validationRules[child.props.name] }),
                 key: child.props.name,
               },
             });
           }
           return child;
         })}
-      </form>
+        {isFormUpdated && <FormMessage message="Formulario Actualizado" submit={true} />}
 
-      {/* {errors.username && (
-        <FormMessage
-          message="El nombre de usuario no puede tener más de 20 caracteres."
-          error={true}
-        />
-      )} */}
-      {isFormUpdated && <FormMessage message="Formulario Actualizado" submit={true} />}
+        {errors && Object.keys(errors).length !== 0 && (
+          <>
+            {Object.keys(errors).map((key) => (
+              <FormMessage
+                key={key}
+                message={errors[key as keyof FormDataType]['message']}
+                error={true}
+              />
+            ))}
+          </>
+        )}
+      </form>
     </>
   );
 };
 
 export default Form;
+
+// TODO: FALTA LAS VALIDACIONES

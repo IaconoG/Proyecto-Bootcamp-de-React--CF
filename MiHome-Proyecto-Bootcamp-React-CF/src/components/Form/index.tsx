@@ -12,11 +12,13 @@ const Form: React.FC<FormProps> = ({
   onSubmit,
   formLayout,
   validationRules = {},
+  resetForm = true,
 }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormDataType>({
     defaultValues,
   });
@@ -33,6 +35,7 @@ const Form: React.FC<FormProps> = ({
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
     }
+    if (resetForm) reset();
   };
   return (
     <>

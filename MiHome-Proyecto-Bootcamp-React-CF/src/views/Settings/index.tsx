@@ -1,63 +1,45 @@
-import { useEffect, useState } from 'react';
-
 import styles from './Settings.module.css';
 import { FaGoogleDrive } from 'react-icons/fa';
 
-import { FormDataType } from '../../components/Form/utils/types';
-import { UserData } from '../../utils/types';
-
-import useUserDataFromStorage from '../../hooks/useUserDataFromStorage';
+import { FormDataType, UserData } from '../../state/utils/types';
 
 import Form from '../../components/Form';
+
+import userInfo from '../../state/stores/user-info';
 
 // FIXME: Eliminar este método, solo es de preuba
 const handleClickClearWidgetFromLocalStorage = () => {
   localStorage.removeItem('userInformation');
+  localStorage.removeItem('toDoWidget');
   window.location.reload();
 };
 
-const Settings = (): JSX.Element => {
-  const { getUserName, getUserOficio, addUserName, addUserOficio } = useUserDataFromStorage();
+const Settings: React.FC = () => {
+  const { userData, updateUserData } = userInfo();
 
-  const [defaultValues, setDefaultValues] = useState<UserData>({
-    username: getUserName(),
-    oficio: getUserOficio(),
-  });
+  console.log('userData zustand:', userData);
+  console.log(userInfo((state) => state));
 
-  const validationRules = {
-    username: {
+  const VALIDATION_RULES = {
+    userName: {
       maxLength: {
         value: 50,
         message: 'El nombre de usuario no puede tener más de 50 caracteres.',
       },
     },
-    oficio: {
-      required: 'Debe seleccionar un oficio.',
-    },
   };
 
-  useEffect(() => {
-    try {
-      setDefaultValues({
-        username: getUserName(),
-        oficio: getUserOficio(),
-      });
-    } catch (error) {
-      console.error('Error al obtener la informacion del usuario', error);
-    }
-  }, []);
-
   const handleSubmitForm: (data: FormDataType) => void = (data) => {
-    console.log('data:', data);
-
     data = data as UserData;
-    if (data.username === getUserName() && data.oficio === getUserOficio()) {
+    if (
+      data.userName === userData.userName &&
+      data.occupation === userData.occupation
+    ) {
       throw new Error(
         'No hubo necesidad de actualizar la informacion del usuario, era la misma que la anterior.'
       );
     }
-    addUserName(data.username);
-    addUserOficio(data.oficio);
+    updateUserData(data);
   };
 
   return (
@@ -65,20 +47,21 @@ const Settings = (): JSX.Element => {
       <div className={styles.container}>
         <h2 className={styles.title}>Informacion de Usuario</h2>
         <Form
-          defaultValues={defaultValues}
+          defaultValues={userData}
           onSubmit={handleSubmitForm}
           formLayout={styles.formLayout}
-          validationRules={validationRules}
+          validationRules={VALIDATION_RULES}
+          resetForm={false}
         >
           <input
             type="text"
-            name="username"
+            name="userName"
             placeholder="Tu nombre de usuario"
             className={styles.input}
             maxLength={60}
           />
 
-          <select name="oficio" className={styles.select}>
+          <select name="occupation" className={styles.select}>
             <option value="">Selecciona una opcion</option>
             <option value="estudiante">Estudiante</option>
             <option value="trabajador">Trabajador</option>

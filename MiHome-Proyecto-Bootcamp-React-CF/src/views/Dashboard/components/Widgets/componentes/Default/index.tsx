@@ -3,26 +3,35 @@ import React, { useState } from 'react';
 import styles from './Default.module.css';
 import { IoAddCircleOutline, IoClose } from 'react-icons/io5';
 
-import Widget from '../WidgetComponent';
+import WidgetComponent from '../WidgetComponent';
 
-import useSelectWidgets from '../../../../../../hooks/useUserWidgetsFromStorage';
-import { WidgetName } from '../../utils/types';
-import { WidgetType } from '../../../../../../utils/types';
+// import useSelectWidgets from '../../../../../../hooks/useUserWidgetsFromStorage';
+import {
+  Widget,
+  WidgetKeys,
+  WidgetTitle,
+} from '../../../../../../state/utils/types';
+
+import userInfo from '../../../../../../state/stores/user-info';
 
 interface DefaultProps {
-  onAddWidget: (name: WidgetName) => void;
+  onAddWidget: (name: WidgetKeys) => void;
 }
 
 const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
-  const { getNotAddedWidgets } = useSelectWidgets();
+  const getNotAddedWidgets = userInfo((state) => state.getNotAddedWidgets);
   const [optionsVisible, setOptionsVisible] = useState(false);
 
   const handleClickViewWidget = () => {
     setOptionsVisible(!optionsVisible);
   };
 
-  const handleAddWidget = (name: WidgetName) => {
-    onAddWidget(name);
+  const handleAddWidget = (name: WidgetTitle) => {
+    const widgetName = (name.charAt(0).toLowerCase() + name.slice(1)).replace(
+      ' ',
+      ''
+    ) as WidgetKeys;
+    onAddWidget(widgetName);
     setOptionsVisible(!optionsVisible);
   };
 
@@ -35,7 +44,7 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
   };
 
   const renderWidgetsOptions = () => {
-    const notAddedWidgets: WidgetType[] = getNotAddedWidgets();
+    const notAddedWidgets: Widget[] = getNotAddedWidgets();
     return (
       <div className={styles.containerOptions}>
         {notAddedWidgets.map((widget, index) => (
@@ -58,7 +67,9 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
   const body: React.ReactElement = (
     <div className={styles.container}>
       <div
-        className={`${styles.closeOptions} ${!optionsVisible ? styles.hiddenIcon : ''}`}
+        className={`${styles.closeOptions} ${
+          !optionsVisible ? styles.hiddenIcon : ''
+        }`}
         onClick={handleClickViewWidget}
       >
         <IoClose />
@@ -67,7 +78,7 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
     </div>
   );
 
-  return <Widget title="Agrega un Widget" body={body} path={'dont'} />;
+  return <WidgetComponent title="Agrega un Widget" body={body} path={'dont'} />;
 };
 
 export default Default;

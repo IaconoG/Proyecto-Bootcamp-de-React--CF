@@ -9,10 +9,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-input,
-select,
-textarea {
-  width: 100%;
+form > *:not(:last-child) {
   margin-bottom: 1rem;
 }
 label span {

@@ -1,0 +1,11 @@
+.title {
+  margin-bottom: 2rem;
+}
+.todoContainer {
+  background-color: rgb(42, 42, 42);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

@@ -1,14 +1,22 @@
 import Default from './componentes/Default';
 import WidgetComponent from './componentes/WidgetComponent';
 
-import useUserWidgetsFromStorage from '../../../../hooks/useUserWidgetsFromStorage';
+// import useUserWidgetsFromStorage from '../../../../hooks/useUserWidgetsFromStorage';
 
-import { WidgetType } from '../../../../utils/types';
-import { WidgetName } from './utils/types';
-import { Path } from '../../../../utils/types';
+import {
+  WidgetKeys,
+  Widget,
+  WidgetPath,
+  WidgetTitle,
+} from '../../../../state/utils/types';
 
-const Widget: React.FunctionComponent = () => {
-  const bodyExample = (widgetName: WidgetName): React.ReactElement => (
+import userInfo from '../../../../state/stores/user-info';
+
+const Widgets: React.FunctionComponent = () => {
+  const { addWidget, getAddedWidgets, areAllWidgetsAdded } = userInfo();
+
+  // FIXME: Suplantar por las mini view de los widgets
+  const bodyExample = (widgetName: WidgetTitle): React.ReactElement => (
     <div
       style={{
         width: '100%',
@@ -23,20 +31,17 @@ const Widget: React.FunctionComponent = () => {
     </div>
   );
 
-  const { getAddedWidgets, areAllWidgetsAdded, addWidgets } = useUserWidgetsFromStorage();
-
-  const handleAddWidget = (name: WidgetName) => {
-    addWidgets(name);
+  const handleAddWidget = (name: WidgetKeys) => {
+    addWidget(name);
   };
-
   const renderWidgets = (): React.ReactElement[] => {
     const addedWidgets = getAddedWidgets();
-    return addedWidgets.map((widget: WidgetType, index: number) => (
+    return addedWidgets.map((widget: Widget, index: number) => (
       <WidgetComponent
         key={index}
         title={widget.title}
         body={bodyExample(widget.title)}
-        path={widget?.path as Path}
+        path={widget?.path as WidgetPath}
       />
     ));
   };
@@ -49,4 +54,4 @@ const Widget: React.FunctionComponent = () => {
   );
 };
 
-export default Widget;
+export default Widgets;

@@ -1,0 +1,144 @@
+.taskContainer {
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  padding: 0.4rem 12px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    'buttons title  input'
+    'buttons date  input';
+  gap: 0.3rem 1rem;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.2s ease-in-out;
+  cursor: pointer;
+  /* transition: height 0.3s ease-in-out; */
+}
+
+.taskContainer:hover {
+  transform: scale(1.01);
+}
+
+.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+  cursor: auto;
+}
+.completed:hover {
+  transform: none;
+}
+
+.gridWithDescription {
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    'buttons title  input'
+    'buttons description  input'
+    'buttons date  input';
+}
+
+.opacityContainer {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}
+
+.taskTitle,
+.taskDesciption {
+  word-wrap: break-word;
+  white-space: break-spaces;
+  overflow: hidden;
+}
+
+.taskDescriptionContainer {
+  grid-area: description;
+}
+
+.taskTitle {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+.taskTitle,
+.taskDescriptionContainer {
+  width: fit-content;
+}
+
+.taskDesciption {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+}
+
+.taskDate {
+  grid-area: date;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.taskComplete {
+  justify-self: center;
+  width: fit-content;
+  grid-area: input;
+}
+.taskComplete input {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.buttons {
+  grid-area: buttons;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.editButton,
+.deleteButton {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(42, 42, 42);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.editButton:hover {
+  color: rgba(222, 184, 135, 0.9);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.deleteButton:hover {
+  border-color: rgba(255, 0, 0, 0.5);
+  color: rgba(255, 0, 0, 0.9);
+}
+
+.low {
+  border-color: rgba(0, 255, 0, 0.5);
+}
+.medium {
+  border-color: rgba(255, 255, 0, 0.6);
+}
+.high {
+  border-color: rgba(255, 0, 0, 0.6);
+}
+
+/* XXX: Lo que esta comentado sirve para ocultar y mostrar contenido segun hover, podria servir mas adelante */
+/* .taskDescriptionContainer { */
+/* grid-area: description; */
+/* border: none; */
+/* display: grid; */
+/* grid-template-rows: 0fr; */
+/* transition: grid-template-rows 0.3s ease-in-out; */
+/* } */
+/* .taskDescriptionContainer > .taskDescription { */
+/* overflow: hidden; */
+/* } */
+
+/* .taskContainer:hover > .taskDescriptionContainer { */
+/* grid-template-rows: 1fr; */
+/* } */

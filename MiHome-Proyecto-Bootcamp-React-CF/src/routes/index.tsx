@@ -11,11 +11,11 @@ import SingUp from '../views/Auth/SingUp';
 import Settings from '../views/Settings';
 
 import Dashboard from '../views/Dashboard';
-// import Balance from '../views/Dashboard/components/FullView/Balance';
-// import Calendar from '../views/Dashboard/components/FullView/Calendar';
-// import Focus from '../views/Dashboard/components/FullView/Focus';
-// import InfoMicro from '../views/Dashboard/components/FullView/InfoMicro';
-import ToDo from '../views/Dashboard/components/FullView/ToDo';
+// import Balance from '../views/Dashboard/components/Balance/FullView';
+// import Calendar from '../views/Dashboard/components/Calendar/FullView';
+// import Focus from '../views/Dashboard/components/Focus/FullView';
+// import InfoMicro from '../views/Dashboard/components/InfoMicro/FullView';
+import ToDo from '../views/Dashboard/components/ToDo/FullView';
 
 import Error404 from '../views/Error404';
 import ErrorBoundary from '../components/ErrorBoundary';

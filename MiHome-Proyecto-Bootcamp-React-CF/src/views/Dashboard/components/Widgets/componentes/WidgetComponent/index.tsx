@@ -1,18 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { WidgetName, Path } from '../../../../../../utils/types';
+import { WidgetTitle, WidgetPath } from '../../../../../../state/utils/types';
 
 import styles from './Widget.module.css';
 import { IoExpand } from 'react-icons/io5';
 
 interface WidgetDefaultProps {
-  title: WidgetName;
+  title: WidgetTitle;
   body: React.ReactElement;
-  path: Path;
+  path: WidgetPath;
 }
 
-const WidgetComponent: React.FunctionComponent<WidgetDefaultProps> = ({ title, body, path }) => {
+const WidgetComponent: React.FunctionComponent<WidgetDefaultProps> = ({
+  title,
+  body,
+  path,
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>

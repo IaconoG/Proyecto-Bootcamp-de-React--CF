@@ -93,7 +93,7 @@ const todoInfo = create<State & Actions>()(
         },
         setTaskCompletedConfig: (config: TaskListConfig) => {
           set((state) => {
-            state.data.completedTasks.config.search = config.search;
+            state.data.completedTasks.config = config;
           });
         },
 

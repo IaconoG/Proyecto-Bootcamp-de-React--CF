@@ -4,6 +4,7 @@ export const INITIAL_TASK_CONFIG: TaskListConfig = {
   filter: 'date',
   subFilter: 'all',
   order: 'desc',
+  search: '',
 };
 
 export const INITIAL_TODO_STATE: ToDo = {

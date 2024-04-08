@@ -18,5 +18,12 @@ export const filterTasks = (tasks: Task[], config: TaskListConfig) => {
 
   if (order === 'asc') filteredTasks = filteredTasks.reverse();
 
+  // Filter by search
+  if (config.search.length > 0) {
+    filteredTasks = filteredTasks.filter((task) =>
+      task.title.toLowerCase().includes(config.search.toLowerCase())
+    );
+  }
+
   return filteredTasks;
 };

@@ -1,13 +1,30 @@
 .taskContainer {
   max-width: 900px;
 }
+
+.headerTaskList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 .title {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
   padding: 0 0.75rem 0.3rem 0;
   width: fit-content;
   border-bottom: 3px solid rgba(222, 184, 135, 0.9);
+}
+
+.searchInput {
+  background-color: transparent;
+  color: white;
+  font-style: italic;
+  border: none;
+  border: 1px solid rgba(222, 184, 135, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin-right: 5px;
 }
 
 .tasksList {

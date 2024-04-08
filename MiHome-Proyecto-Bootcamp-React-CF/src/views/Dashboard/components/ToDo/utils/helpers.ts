@@ -1,5 +1,3 @@
-import { Task, TaskListConfig } from '../../../utils/types';
-
 export const generateId = (title: string): string => {
   return title.replace(/\s/g, '-').toLowerCase() + Math.random();
 };

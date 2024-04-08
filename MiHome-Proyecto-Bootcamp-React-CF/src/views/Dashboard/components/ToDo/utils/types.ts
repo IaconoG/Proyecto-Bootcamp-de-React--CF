@@ -18,6 +18,7 @@ export interface TaskListConfig {
   filter: TaskFilter;
   subFilter: SubTaskPriorityFilter;
   order: TaskOrder;
+  search: string;
 }
 interface TaskList {
   tasks: Task[];

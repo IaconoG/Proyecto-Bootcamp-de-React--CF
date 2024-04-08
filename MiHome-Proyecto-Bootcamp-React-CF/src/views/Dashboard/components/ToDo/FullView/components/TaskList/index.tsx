@@ -25,6 +25,7 @@ const TaksList: React.FC<TaskListProps> = () => {
     haveCompletedAllTasks,
     deleteTaskById,
     markTaskAsIncompleteOrCompletedById,
+    setSearchTask,
     //
     getFilteredIncompletedTasks,
     getTaskIncompletedConfig,
@@ -118,10 +119,26 @@ const TaksList: React.FC<TaskListProps> = () => {
   const handleDeleteTask = (id: string, completed: boolean) => {
     deleteTaskById(id, completed);
   };
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTask(event.target.value);
+  };
 
   return (
     <div className={styles.taskContainer}>
-      <h2 className={styles.title}>Lista de tareas</h2>
+      <div className={styles.headerTaskList}>
+        <h2 className={styles.title}>Lista de tareas</h2>
+        <input
+          className={styles.searchInput}
+          type="text"
+          name="search"
+          placeholder="Buscar por nombre"
+          maxLength={40}
+          onChange={(event) => {
+            handleSearch(event);
+          }}
+        />
+      </div>
+
       <div className={styles.tasksList}>
         {!haveAnyTask() ? (
           <div className={styles.messageContainer}>

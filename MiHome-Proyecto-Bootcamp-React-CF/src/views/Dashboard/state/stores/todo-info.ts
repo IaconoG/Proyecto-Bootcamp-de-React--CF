@@ -28,7 +28,7 @@ type Actions = {
   setTaskCompletedConfig: (config: TaskListConfig) => void;
   //***** Trabajamos con todos las tasks *****//
   getTaskById: (id: string) => Task | undefined;
-  // getTaskByName: (name: string) => Task;
+  setSearchTask: (title: string) => void;
   // updateTaskById: (id: number, updatedTask: Task) => {};
   haveAnyTask: () => boolean;
   haveCompletedAllTasks: () => boolean;
@@ -93,7 +93,7 @@ const todoInfo = create<State & Actions>()(
         },
         setTaskCompletedConfig: (config: TaskListConfig) => {
           set((state) => {
-            state.data.completedTasks.config = config;
+            state.data.completedTasks.config.search = config.search;
           });
         },
 
@@ -117,6 +117,13 @@ const todoInfo = create<State & Actions>()(
             .getCompletedTasks()
             .find((task) => task.id === id);
         },
+        setSearchTask: (search: string) => {
+          set((state) => {
+            state.data.completedTasks.config.search = search;
+            state.data.incompletedTasks.config.search = search;
+          });
+        },
+
         deleteTaskById: (id: string, completed: boolean) => {
           set((state) => {
             if (completed) {
@@ -147,6 +154,7 @@ const todoInfo = create<State & Actions>()(
 
             // Eliminamos la task de la lista de tasks
             // XXX: No se porque no funciona cunado llamamos a deleteTaskById directamente :(
+            // set((en vez de STATE enviar la info [probar esto]) ) => {
             if (task.completed) {
               state.data.completedTasks.tasks =
                 state.data.completedTasks.tasks.filter(

@@ -5,9 +5,13 @@
   display: flex;
   flex-direction: column;
   align-items: space-between;
-  gap: 0.5rem;
+  gap: 0.35rem;
   flex-grow: 1;
   border-radius: 6px;
+}
+
+.container h3 {
+  margin-top: 0;
 }
 
 .subtitles {

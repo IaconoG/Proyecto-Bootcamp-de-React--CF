@@ -26,11 +26,9 @@ const ToDo: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className={styles.todoContainer}>
-        <AddTaskForm onAdd={handleAddTask} />
-        <TaskListFullView />
-      </div>
+    <div className={styles.todoContainer}>
+      <AddTaskForm onAdd={handleAddTask} />
+      <TaskListFullView />
     </div>
   );
 };

@@ -9,13 +9,14 @@
   grid-template-areas:
     'buttons title  input'
     'buttons date  input';
-  gap: 0.3rem 1rem;
+  gap: 0.25rem 1rem;
   justify-content: center;
   align-items: center;
   opacity: 1;
   transition: opacity 0.3s ease, transform 0.2s ease-in-out;
   cursor: pointer;
-  /* transition: height 0.3s ease-in-out; */
+  transition: height 0.3s ease-in-out;
+  line-height: 1;
 }
 
 .taskContainer:hover {
@@ -128,17 +129,17 @@
 }
 
 /* XXX: Lo que esta comentado sirve para ocultar y mostrar contenido segun hover, podria servir mas adelante */
-/* .taskDescriptionContainer { */
-/* grid-area: description; */
-/* border: none; */
-/* display: grid; */
-/* grid-template-rows: 0fr; */
-/* transition: grid-template-rows 0.3s ease-in-out; */
-/* } */
-/* .taskDescriptionContainer > .taskDescription { */
-/* overflow: hidden; */
-/* } */
+/* .taskDescriptionContainer {
+  grid-area: description;
+  border: none;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+.taskDescriptionContainer > .taskDescription {
+  overflow: hidden;
+}
 
-/* .taskContainer:hover > .taskDescriptionContainer { */
-/* grid-template-rows: 1fr; */
-/* } */
+.taskContainer:hover > .taskDescriptionContainer {
+  grid-template-rows: 1fr;
+} */

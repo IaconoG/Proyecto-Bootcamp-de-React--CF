@@ -61,6 +61,12 @@ pre {
   margin: 0;
 }
 
+h2 {
+  padding: 0 0.75rem 0.3rem 0;
+  width: fit-content;
+  border-bottom: 3px solid rgba(222, 184, 135, 0.9);
+}
+
 body {
   box-sizing: border-box;
   display: flex;

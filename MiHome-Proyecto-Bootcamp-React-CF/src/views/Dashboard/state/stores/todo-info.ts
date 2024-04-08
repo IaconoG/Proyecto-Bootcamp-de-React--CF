@@ -132,7 +132,6 @@ const todoInfo = create<State & Actions>()(
                   (task) => task.id !== id
                 );
             } else {
-              console.log('delete id', id);
               state.data.incompletedTasks.tasks =
                 state.data.incompletedTasks.tasks.filter(
                   (task) => task.id !== id
@@ -161,7 +160,6 @@ const todoInfo = create<State & Actions>()(
                   (task) => task.id !== id
                 );
             } else {
-              console.log('delete id', id);
               state.data.incompletedTasks.tasks =
                 state.data.incompletedTasks.tasks.filter(
                   (task) => task.id !== id

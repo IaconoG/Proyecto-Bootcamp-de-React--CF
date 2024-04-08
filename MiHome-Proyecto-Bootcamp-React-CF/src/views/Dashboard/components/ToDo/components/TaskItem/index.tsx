@@ -1,8 +1,8 @@
 import styles from './TaskItem.module.css';
-import { formatDate } from '../../../utils/helpers';
+import { formatDate } from '../../utils/helpers';
 
 import { MdDeleteForever } from 'react-icons/md';
-import { Task } from '../../../utils/types';
+import { Task } from '../../utils/types';
 
 interface TaskItemProps extends Task {
   onDelete: (id: string, completed: boolean) => void;

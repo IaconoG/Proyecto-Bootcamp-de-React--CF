@@ -78,7 +78,14 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
     </div>
   );
 
-  return <WidgetComponent title="Agrega un Widget" body={body} path={'dont'} />;
+  return (
+    <WidgetComponent
+      title="Agrega un Widget"
+      body={body}
+      path={'dont'}
+      isDefault={true}
+    />
+  );
 };
 
 export default Default;

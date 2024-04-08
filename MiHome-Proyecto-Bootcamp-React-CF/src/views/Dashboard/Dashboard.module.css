@@ -5,14 +5,13 @@ main {
 
 .dashboardContent {
   margin-left: 14rem;
-  padding: 1rem;
   border: 1px dotted green;
 }
 
 .widgetsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(Min(20em, 100%), 1fr));
-  /* grid-template-columns: repeat(auto-fill, minmax(Min(40em, 100%), 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(Max(40em, 500px), 1fr)); */
   justify-content: center;
   gap: 1rem;
   padding: 1rem;

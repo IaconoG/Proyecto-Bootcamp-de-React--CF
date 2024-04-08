@@ -1,0 +1,54 @@
+.taskHeaderContainer {
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.subtitles {
+  color: rgba(255, 255, 255, 0.8);
+  width: fit-content;
+}
+.orderAndFilterContainer {
+  display: flex;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.orderAndFilterContainer > div {
+  display: flex;
+}
+
+.orderContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* estándar */
+}
+.orderContainer > svg {
+  transition: transform 0.5s ease-in-out;
+}
+.desc > svg {
+  transform: rotate(180deg);
+}
+
+.selectStyles {
+  min-width: 12.5ch;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.selectTextStyles {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+.selectArrowStyles::after {
+  background-color: rgba(255, 255, 255, 0.7);
+}

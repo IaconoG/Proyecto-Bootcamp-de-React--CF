@@ -10,17 +10,19 @@ interface WidgetDefaultProps {
   title: WidgetTitle;
   body: React.ReactElement;
   path: WidgetPath;
+  isDefault?: boolean;
 }
 
 const WidgetComponent: React.FunctionComponent<WidgetDefaultProps> = ({
   title,
   body,
   path,
+  isDefault,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className={`${isDefault ? styles.default : ''} ${styles.container} `}>
       <div className={styles.header}>
-        <p className={styles.title}>{title}</p>
+        <h2 className={styles.title}>{title}</h2>
         <div className={styles.openWidget}>
           {path !== 'dont' && (
             <Link to={`/dashboard/${path}`}>
@@ -29,7 +31,7 @@ const WidgetComponent: React.FunctionComponent<WidgetDefaultProps> = ({
           )}
         </div>
       </div>
-      <div className={styles.body}>{body}</div>
+      {body}
     </div>
   );
 };

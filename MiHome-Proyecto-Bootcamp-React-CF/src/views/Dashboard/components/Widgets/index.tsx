@@ -1,7 +1,7 @@
 import Default from './componentes/Default';
 import WidgetComponent from './componentes/WidgetComponent';
 
-// import useUserWidgetsFromStorage from '../../../../hooks/useUserWidgetsFromStorage';
+import TodoMiniView from '../ToDo/MiniView';
 
 import {
   WidgetKeys,
@@ -15,7 +15,6 @@ import userInfo from '../../../../state/stores/user-info';
 const Widgets: React.FunctionComponent = () => {
   const { addWidget, getAddedWidgets, areAllWidgetsAdded } = userInfo();
 
-  // FIXME: Suplantar por las mini view de los widgets
   const bodyExample = (widgetName: WidgetTitle): React.ReactElement => (
     <div
       style={{
@@ -30,6 +29,20 @@ const Widgets: React.FunctionComponent = () => {
       BODY de {widgetName}
     </div>
   );
+  // FIXME: Suplantar por las mini view de los widgets
+  const body = (widgetTitle: WidgetTitle): React.ReactElement => {
+    switch (widgetTitle) {
+      case 'Balance':
+      case 'Calendar':
+      case 'Focus':
+      case 'Info Micros':
+        return bodyExample(widgetTitle);
+      case 'ToDo':
+        return <TodoMiniView />;
+      default:
+        return <div>No se ha proporcionado un componente para este título</div>;
+    }
+  };
 
   const handleAddWidget = (name: WidgetKeys) => {
     addWidget(name);
@@ -40,7 +53,7 @@ const Widgets: React.FunctionComponent = () => {
       <WidgetComponent
         key={index}
         title={widget.title}
-        body={bodyExample(widget.title)}
+        body={body(widget.title)}
         path={widget?.path as WidgetPath}
       />
     ));
@@ -50,6 +63,8 @@ const Widgets: React.FunctionComponent = () => {
     <>
       {renderWidgets()}
       {!areAllWidgetsAdded() && <Default onAddWidget={handleAddWidget} />}
+      <Default onAddWidget={handleAddWidget} />
+      <Default onAddWidget={handleAddWidget} />
     </>
   );
 };

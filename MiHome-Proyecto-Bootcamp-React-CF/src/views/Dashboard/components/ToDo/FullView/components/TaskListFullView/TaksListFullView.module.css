@@ -1,0 +1,42 @@
+.taskContainer {
+  max-width: 900px;
+}
+
+.headerTaskList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.searchInput {
+  background-color: transparent;
+  color: white;
+  font-style: italic;
+  border: none;
+  border: 1px solid rgba(222, 184, 135, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin-right: 5px;
+}
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.messageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background: transparent;
+}
+
+.message {
+  color: rgba(222, 184, 135, 0.8);
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+}

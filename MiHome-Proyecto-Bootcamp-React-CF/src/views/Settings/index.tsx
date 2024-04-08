@@ -17,9 +17,6 @@ const handleClickClearWidgetFromLocalStorage = () => {
 const Settings: React.FC = () => {
   const { userData, updateUserData } = userInfo();
 
-  console.log('userData zustand:', userData);
-  console.log(userInfo((state) => state));
-
   const VALIDATION_RULES = {
     userName: {
       maxLength: {

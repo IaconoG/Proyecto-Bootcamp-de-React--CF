@@ -9,9 +9,7 @@ const useRedirectIfWidgetNotActive = (widgetName: WidgetKeys) => {
 
   useEffect(() => {
     const userWidgetToDo = getUserWidgets()[widgetName];
-    if (!userWidgetToDo.active) {
-      navigate('/dashboard');
-    }
+    if (!userWidgetToDo.active) navigate('/dashboard');
   }, [widgetName, navigate]);
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AddTaskForm from './components/AddTaskForm';
-import TaskList from './components/TaskList';
+import TaskListFullView from './components/TaskListFullView';
 
 import styles from './ToDo.module.css';
 
@@ -29,7 +29,7 @@ const ToDo: React.FC = () => {
     <div>
       <div className={styles.todoContainer}>
         <AddTaskForm onAdd={handleAddTask} />
-        <TaskList />
+        <TaskListFullView />
       </div>
     </div>
   );

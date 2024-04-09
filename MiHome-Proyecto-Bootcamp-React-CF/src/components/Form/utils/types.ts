@@ -1,5 +1,5 @@
 import { UserData } from '../../../state/utils/types';
-import { FormNewTask } from '../../../views/Dashboard/utils/types';
+import { FormNewTask } from '../../../views/Dashboard/components/ToDo/utils/types';
 
 export type FormDataType = UserData | FormNewTask;
 

@@ -13,6 +13,10 @@
   flex-wrap: wrap;
 }
 
+.container > button {
+  background-color: rgb(25, 25, 25);
+}
+
 /* User */
 .formLayout {
   flex-direction: column;
@@ -35,7 +39,7 @@
 }
 
 .btn {
-  border: 1px solid rgba(42, 42, 42);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* Google Sync */

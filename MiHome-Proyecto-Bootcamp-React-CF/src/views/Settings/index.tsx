@@ -82,11 +82,9 @@ const Settings: React.FC = () => {
       <div className={styles.container}>
         Restear informacion de la cuenta 🫠
         {/* FIXME: Elimnar el boton, solo es de prueba */}
-        <div>
-          <button onClick={handleClickClearWidgetFromLocalStorage}>
-            <span>Clear Local Storage</span>
-          </button>
-        </div>
+        <button onClick={handleClickClearWidgetFromLocalStorage}>
+          <span>Clear Local Storage</span>
+        </button>
       </div>
     </div>
   );

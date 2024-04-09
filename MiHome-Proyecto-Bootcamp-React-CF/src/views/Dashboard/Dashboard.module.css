@@ -8,6 +8,13 @@ main {
   border: 1px dotted green;
 }
 
+.dashboardContent > div {
+  padding: 1rem;
+}
+.outlet > div {
+  border-radius: 10px;
+}
+
 .widgetsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));

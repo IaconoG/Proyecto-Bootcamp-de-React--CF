@@ -4,17 +4,13 @@ import { Suspense } from 'react';
 //* Import views
 import Home from '../views/Home';
 
-import Auth from '../views/Auth';
-import SingIn from '../views/Auth/SignIn';
-import SingUp from '../views/Auth/SingUp';
-
 import Settings from '../views/Settings';
 
 import Dashboard from '../views/Dashboard';
 // import Balance from '../views/Dashboard/components/Balance/FullView';
 // import Calendar from '../views/Dashboard/components/Calendar/FullView';
 // import Focus from '../views/Dashboard/components/Focus/FullView';
-// import InfoMicro from '../views/Dashboard/components/InfoMicro/FullView';
+import InfoMicro from '../views/Dashboard/components/InfoMicros/FullView';
 import ToDo from '../views/Dashboard/components/ToDo/FullView';
 
 import Error404 from '../views/Error404';
@@ -27,29 +23,15 @@ const router = createBrowserRouter([
     errorElement: <Error404 />,
   },
   {
-    path: '/auth',
-    element: <Auth />,
-    children: [
-      {
-        path: '',
-        element: <Error404 />,
-      },
-      {
-        path: 'sing-in',
-        element: <SingIn />,
-      },
-      {
-        path: 'sing-up',
-        element: <SingUp />,
-      },
-    ],
-  },
-  {
     path: '/dashboard',
     element: (
       <Suspense fallback={<h1>Loading with Suspense...</h1>}>
         <ErrorBoundary
-          fallback={<div>Ha ocurrido un error al obtener el dashboard con ErrorBoundary</div>}
+          fallback={
+            <div>
+              Ha ocurrido un error al obtener el dashboard con ErrorBoundary
+            </div>
+          }
         >
           <Dashboard />
         </ErrorBoundary>
@@ -74,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'info-micros',
-        element: <h1>InfoMicros</h1>,
+        element: <InfoMicro />,
       },
       {
         path: 'to-do',

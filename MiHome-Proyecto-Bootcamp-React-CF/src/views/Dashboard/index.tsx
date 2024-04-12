@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 
-import Navbar from '../../components/Navbar';
+import Sidebar from '../../components/Sidebar';
 import Widgets from './components/Widgets';
 
 import styles from './Dashboard.module.css';
@@ -11,7 +11,7 @@ const Dashboard: React.FunctionComponent = () => {
 
   return (
     <>
-      <Navbar page="Dashboard" />
+      <Sidebar page="Dashboard" />
       <main>
         <div className={styles.dashboardContent}>
           {isDashboardMain ? (

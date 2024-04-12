@@ -1,23 +1,15 @@
 import { Link } from 'react-router-dom';
 
-import styles from './Navbar.module.css';
+import styles from './Sidebar.module.css';
 
 type Pages = '' | 'SingIn' | 'SingUp' | 'Dashboard';
 
-interface NavbarProps {
+interface SidebarProps {
   page: Pages;
 }
 
-const RenderLinks: React.FunctionComponent<NavbarProps> = ({ page }) => {
+const RenderLinks: React.FunctionComponent<SidebarProps> = ({ page }) => {
   // FIXME: Implementar lógica para mostrar los links correctos dependiendo de la página actual y la autenticación del usuario.
-  if (page === 'SingIn') {
-    return <Link to="/auth/sing-up">Registrarse</Link>;
-  }
-
-  if (page === 'SingUp') {
-    return <Link to="/auth/sing-in">Iniciar Sesion</Link>;
-  }
-
   if (page === 'Dashboard') {
     // FIXME: Solo se debe mostrar los widgets que el usuario haya activado. obviando el settings
     return (
@@ -33,30 +25,27 @@ const RenderLinks: React.FunctionComponent<NavbarProps> = ({ page }) => {
       </>
     );
   }
-
-  // Este return es para el HOME y para el Error404 (solo cuando el usuario no está autenticado)
-  return (
-    <>
-      <Link to="/auth/sing-in">Iniciar Sesion</Link>
-
-      <Link to="/auth/sing-up">Registrarse</Link>
-    </>
-  );
 };
 
-const Navbar: React.FunctionComponent<NavbarProps> = ({ page }) => {
+const Sidebar: React.FunctionComponent<SidebarProps> = ({ page }) => {
   return (
-    <nav className={`${page === 'Dashboard' ? styles.dashboardNavbar : styles.navbar}`}>
+    <div
+      className={`${
+        page === 'Dashboard' ? styles.dashboardSidebar : styles.sidebar
+      }`}
+    >
       <div
-        className={`${styles.linksContainer} ${page === 'Dashboard' ? styles.dashboardLinks : ''}`}
+        className={`${styles.linksContainer} ${
+          page === 'Dashboard' ? styles.dashboardLinks : ''
+        }`}
       >
         <Link to="/dashboard" className={styles.homeContainer}>
           MiHome
         </Link>
         <RenderLinks page={page} />
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+export default Sidebar;

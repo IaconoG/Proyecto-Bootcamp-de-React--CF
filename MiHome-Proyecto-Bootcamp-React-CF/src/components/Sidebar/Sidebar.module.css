@@ -1,7 +1,7 @@
 nav {
   background-color: rgb(20, 20, 20);
 }
-.navbar {
+.sidebar {
   height: 4rem;
   /* border: 1px dotted red; */
   display: flex;
@@ -44,7 +44,7 @@ a:active {
 }
 
 /* Dashboard */
-.dashboardNavbar {
+.dashboardSidebar {
   width: 14rem;
   height: 100%;
   display: flex;

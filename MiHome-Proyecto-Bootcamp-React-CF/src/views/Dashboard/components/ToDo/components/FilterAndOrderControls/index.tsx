@@ -89,7 +89,6 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
             defaultValue={filter}
             options={filterOptions}
             selectStyles={styles.selectStyles}
-            selectArrowStyles={styles.selectArrowStyles}
             onChange={(event) => {
               handleChangeFilter(event);
             }}
@@ -100,7 +99,6 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
               defaultValue={subFilter}
               options={priorityOptions}
               selectStyles={styles.selectStyles}
-              selectArrowStyles={styles.selectArrowStyles}
               onChange={(event) => {
                 handleChangeSubFilter(event);
               }}

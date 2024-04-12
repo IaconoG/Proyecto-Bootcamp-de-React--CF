@@ -63,8 +63,6 @@ const Widgets: React.FunctionComponent = () => {
     <>
       {renderWidgets()}
       {!areAllWidgetsAdded() && <Default onAddWidget={handleAddWidget} />}
-      <Default onAddWidget={handleAddWidget} />
-      <Default onAddWidget={handleAddWidget} />
     </>
   );
 };

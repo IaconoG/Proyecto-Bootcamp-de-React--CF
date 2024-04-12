@@ -7,69 +7,18 @@ background-color: rgb(42, 42, 42); NEGRO
 
 */
 :root {
-  --select-color: rgba(255, 255, 255, 0.8);
+  --select-color: rgba(255, 255, 255, 0.7);
   --select-border: white;
   --select-focus: rgba(222, 184, 135, 0.9);
 }
 
 .select {
   color: var(--select-color);
-  box-sizing: border-box;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  padding: 0.25em 0.5em;
-  margin: 0;
   width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
-  outline: none;
-  z-index: 1;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* estándar */
-}
-.select::-ms-expand {
-  display: none;
-}
-
-.customSelect {
-  position: relative;
-  width: 100%;
-  min-width: 15ch;
-  max-width: 30ch;
-  border: 1px solid var(--select-border);
-  border-radius: 0.25em;
+  max-width: fit-content;
   line-height: 1;
   background-color: field;
-  display: grid;
-  grid-template-areas: 'select';
-  align-items: center;
-  cursor: pointer;
-}
-
-.customSelect:focus {
-  border-color: var(--select-focus);
-}
-
-.customSelect::after {
-  content: '';
-  width: 0.8em;
-  height: 0.5em;
-  background-color: var(--select-color);
-  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-  justify-self: end;
-  margin-right: 0.5em;
-}
-
-.select,
-.customSelect::after {
-  grid-area: select;
-}
-
-.select option {
-  background-color: rgb(42, 42, 42);
+  box-sizing: border-box;
+  border: none;
+  padding: 8px;
 }

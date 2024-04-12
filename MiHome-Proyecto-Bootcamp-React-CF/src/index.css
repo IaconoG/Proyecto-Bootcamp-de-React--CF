@@ -22,7 +22,7 @@ background-color: rgb(42, 42, 42); NEGRO
  */
 
 :root {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -105,9 +105,10 @@ textarea:focus {
 button,
 input[type='submit'] {
   color: rgba(255, 255, 255, 0.8);
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 6px 12px;
+  font-size: 14px;
   font-weight: 600;
+  letter-spacing: 0.25px;
   cursor: pointer;
   border-radius: 6px;
   border: 1px solid transparent;
@@ -128,6 +129,7 @@ select:focus {
 }
 select {
   outline: none;
+  cursor: pointer;
 }
 
 button:active {

@@ -43,7 +43,6 @@
   padding: 8px;
   border-radius: 6px;
   border: 1px solid transparent;
-  color: rgba(0, 255, 0, 0.7);
   background-color: rgb(42, 42, 42);
 }
 
@@ -52,15 +51,6 @@
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
-}
-.optionLow {
-  color: rgba(0, 255, 0, 0.7);
-}
-.optionMedium {
-  color: rgba(255, 255, 0, 0.8);
-}
-.optionHigh {
-  color: rgba(255, 0, 0, 0.9);
 }
 
 .formBtn {

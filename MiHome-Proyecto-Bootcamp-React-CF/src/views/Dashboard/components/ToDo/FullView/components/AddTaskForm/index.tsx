@@ -5,6 +5,7 @@ import styles from './AddTaskForm.module.css';
 import Form from '../../../../../../../components/Form';
 import { FormNewTask } from '../../../utils/types';
 import { FormDataType } from '../../../../../../../state/utils/types';
+import Select from '../../../../../../../components/Select';
 
 interface AddTaskFormProps {
   onAdd: (newTask: FormNewTask, completed: boolean) => void;
@@ -47,13 +48,6 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
     // selectRef.current?.style.removeProperty('color');
   };
 
-  // const handleOptionSelected = (target: HTMLSelectElement) => {
-  //   const value: PriorityTask = target.value as PriorityTask;
-  //   if (value === 'Low') target.style.color = 'rgba(0, 255, 0, 0.7)';
-  //   if (value === 'Medium') target.style.color = 'rgba(255, 255, 0, 0.8)';
-  //   if (value === 'High') target.style.color = ' rgba(255, 0, 0, 0.9)';
-  // };
-
   return (
     <>
       <Form
@@ -71,29 +65,17 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
           className={styles.title}
           tabIndex={1}
         />
-        <select
+        <Select
           name="priority"
-          className={styles.priority}
-          // onChange={(e) => handleOptionSelected(e.target)}
-          defaultValue={''}
-          // ref={selectRef}
-          id="priority-select"
+          options={[
+            { value: 'low', label: 'Baja' },
+            { value: 'medium', label: 'Media' },
+            { value: 'high', label: 'Alta' },
+          ]}
+          selectStyles={styles.priority}
+          defaultValue="low"
           tabIndex={3}
-        >
-          <option value="" disabled hidden>
-            Prioridad
-          </option>
-          <option value="low" className={styles.optionLow}>
-            Baja
-          </option>
-          <option value="medium" className={styles.optionMedium}>
-            Media
-          </option>
-          <option value="high" className={styles.optionHigh}>
-            Alta
-          </option>
-        </select>
-
+        />
         <textarea
           name="description"
           placeholder="Descripcion de la Tarea"

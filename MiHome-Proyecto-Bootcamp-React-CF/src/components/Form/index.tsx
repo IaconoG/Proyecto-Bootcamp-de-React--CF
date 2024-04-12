@@ -26,6 +26,7 @@ const Form: React.FC<FormProps> = ({
   const [isFormUpdated, setIsFormUpdated] = useState<boolean>(false);
 
   const handleFormSubmit: SubmitHandler<FormDataType> = (data) => {
+    console.log(data);
     try {
       onSubmit(data);
       setIsFormUpdated(true);
@@ -37,22 +38,34 @@ const Form: React.FC<FormProps> = ({
     }
     if (resetForm) reset();
   };
+
   return (
     <>
-      <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form + ' ' + formLayout}>
+      <form
+        onSubmit={handleSubmit(handleFormSubmit)}
+        className={styles.form + ' ' + formLayout}
+      >
         {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.props.name && child.props.type !== 'button') {
+          if (
+            React.isValidElement(child) &&
+            child.props.name &&
+            child.props.type !== 'button'
+          ) {
             return React.createElement(child.type, {
               ...{
                 ...child.props,
-                ...register(child.props.name, { ...validationRules[child.props.name] }),
+                ...register(child.props.name, {
+                  ...validationRules[child.props.name],
+                }),
                 key: child.props.name,
               },
             });
           }
           return child;
         })}
-        {isFormUpdated && <FormMessage message="Formulario Actualizado" submit={true} />}
+        {isFormUpdated && (
+          <FormMessage message="Formulario Actualizado" submit={true} />
+        )}
 
         {errors && Object.keys(errors).length !== 0 && (
           <>
@@ -71,5 +84,3 @@ const Form: React.FC<FormProps> = ({
 };
 
 export default Form;
-
-// TODO: FALTA LAS VALIDACIONES

@@ -6,6 +6,8 @@ import { FormDataType, UserData } from '../../state/utils/types';
 import Form from '../../components/Form';
 
 import userInfo from '../../state/stores/user-info';
+import Select from '../../components/Select';
+import { Option } from '../../components/Select/utils/interfaces';
 
 // FIXME: Eliminar este método, solo es de preuba
 const handleClickClearWidgetFromLocalStorage = () => {
@@ -13,6 +15,13 @@ const handleClickClearWidgetFromLocalStorage = () => {
   localStorage.removeItem('toDoWidget');
   window.location.reload();
 };
+
+const selectOptions: Option[] = [
+  { value: '', label: 'Selecciona una opcion' },
+  { value: 'estudiante', label: 'Estudiante' },
+  { value: 'trabajador', label: 'Trabajador' },
+  { value: 'otro', label: 'Otro' },
+];
 
 const Settings: React.FC = () => {
   const { userData, updateUserData } = userInfo();
@@ -57,13 +66,11 @@ const Settings: React.FC = () => {
             className={styles.input}
             maxLength={60}
           />
-
-          <select name="occupation" className={styles.select}>
-            <option value="">Selecciona una opcion</option>
-            <option value="estudiante">Estudiante</option>
-            <option value="trabajador">Trabajador</option>
-            <option value="otro">Otro</option>
-          </select>
+          <Select
+            options={selectOptions}
+            name="occupation"
+            selectStyles={styles.select}
+          />
 
           <button type="submit" className={styles.btn}>
             Guardar
@@ -71,10 +78,16 @@ const Settings: React.FC = () => {
         </Form>
       </div>
       <div className={styles.container}>
-        <h3>Sincronizar informacion con google</h3>
+        <h2>Proximamente sincronizar informacion con google drive</h2>
+        <div>
+          <p className={styles.desciption}>
+            Al iniciar sesion con google, MiHome solo podra ver, editar, crear y
+            borrar los archivos específicos que utiliza la app. Los mismo son
+            utilizados para almacenar y sincronizar tu informacion de MiHome.
+          </p>
+          <p>MiHome no tiene acceso a tus archivos personales</p>
+        </div>
         <button>
-          {/* XXX: Imposible :'(, pense q era mas simple*/}
-          {/* TODO: Seguir buscando info y leer sobre firebase */}
           <FaGoogleDrive className={styles.googleIcon} />
           <span>Iniciar sesión en Google Drive</span>
         </button>

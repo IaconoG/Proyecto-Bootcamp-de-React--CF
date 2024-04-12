@@ -16,13 +16,11 @@ export type WidgetTitle =
   | 'Info Micros'
   | 'ToDo';
 export type WidgetPath =
-  | 'settings'
   | 'balance'
   | 'calendar'
   | 'focus'
   | 'info-micros'
-  | 'to-do'
-  | 'dont';
+  | 'to-do';
 
 export type FormDataType = UserData | FormNewTask;
 

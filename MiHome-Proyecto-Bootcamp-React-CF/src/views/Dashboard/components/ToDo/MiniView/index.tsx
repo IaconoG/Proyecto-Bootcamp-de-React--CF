@@ -3,7 +3,7 @@ import styles from './MiniView.module.css';
 import TaskList from '../components/TaskList';
 import FilterAndOrderControls from '../components/FilterAndOrderControls';
 
-import todoInfo from '../../../state/stores/todo-info';
+import todoInfo from '../../../stores/todo-info';
 
 const MiniView: React.FC = () => {
   const {
@@ -23,6 +23,7 @@ const MiniView: React.FC = () => {
             title="Tareas pendientes"
             config={getTaskIncompletedConfig()}
             typeTask="incompleted"
+            selectStyles={styles.selectStyles}
           />
           <TaskList tasks={getIncompletedTasks()} />
         </>

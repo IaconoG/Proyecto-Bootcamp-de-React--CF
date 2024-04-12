@@ -16,6 +16,7 @@ type Actions = {
   updateUserWidgets: (userWidgets: UserWidgets) => void;
   getAddedWidgets: () => Widget[];
   getNotAddedWidgets: () => Widget[];
+  getAllWidgets: () => Widget[];
   areAllWidgetsAdded: () => boolean;
   addWidget: (widgetName: WidgetKeys) => void;
   deleteWidget: (widgetName: WidgetKeys) => void;
@@ -78,6 +79,18 @@ const userInfo = create<State & Actions>()(
               if (!widgets[key].active) {
                 arrayWidgets.push(widget);
               }
+            }
+            return arrayWidgets;
+          },
+          getAllWidgets: () => {
+            const widgets = get().userWidgets;
+            if (!widgets) return [];
+
+            const arrayWidgets: Widget[] = [];
+
+            for (const key of Object.keys(widgets) as WidgetKeys[]) {
+              const widget: Widget = widgets[key];
+              arrayWidgets.push(widget);
             }
             return arrayWidgets;
           },

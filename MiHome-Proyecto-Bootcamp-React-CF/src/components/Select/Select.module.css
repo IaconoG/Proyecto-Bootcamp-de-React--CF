@@ -1,24 +1,6 @@
-/* Blog utilizado https://moderncss.dev/custom-select-styles-with-pure-css/ */
-
-/* background-color: rgb(15, 15, 15); GRIS
-background-color: rgb(25, 25, 25); GRIS/NEGRO
-background-color: rgb(42, 42, 42); NEGRO 
-  border-color: rgba(222, 184, 135, 0.9);
-
-*/
-:root {
-  --select-color: rgba(255, 255, 255, 0.7);
-  --select-border: white;
-  --select-focus: rgba(222, 184, 135, 0.9);
-}
-
 .select {
-  color: var(--select-color);
   width: 100%;
-  max-width: fit-content;
   line-height: 1;
-  background-color: field;
   box-sizing: border-box;
-  border: none;
-  padding: 8px;
+  border: 1px solid transparent;
 }

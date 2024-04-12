@@ -2,49 +2,6 @@ nav {
   background-color: rgb(20, 20, 20);
 }
 .sidebar {
-  height: 4rem;
-  /* border: 1px dotted red; */
-  display: flex;
-  align-items: center;
-  padding: 0 1.25rem;
-}
-
-a {
-  font-size: 24px;
-  line-height: 1;
-  transition: transform 0.05s ease-in-out;
-}
-
-a:hover {
-  color: burlywood;
-}
-
-a:active {
-  transform: scale(0.9);
-}
-
-.linksContainer {
-  display: flex;
-  /* border: 1px dotted green; */
-  align-items: center;
-  flex: 1 1 0%;
-}
-
-.homeContainer {
-  margin-right: auto;
-}
-.linksContainer {
-  display: flex;
-  gap: 1rem;
-  font-size: 18px;
-}
-
-.link {
-  padding: 0 1rem;
-}
-
-/* Dashboard */
-.dashboardSidebar {
   width: 14rem;
   height: 100%;
   display: flex;
@@ -53,15 +10,38 @@ a:active {
   position: fixed;
   z-index: 50;
   padding: 0;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.dashboardLinks {
+.linksContainer {
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 1.25rem;
+  padding: 1.25rem 0;
+  font-size: 18px;
+}
+.linkContainer {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+.linkContainer a {
+  font-size: 24px;
+  line-height: 1;
+}
+.linkContainer a:hover {
+  color: white;
 }
 
 .widgetSettings {
   order: 2;
+}
+
+.active {
+  background-color: var(--clr-primary-light);
+  color: white;
 }

@@ -1,6 +1,6 @@
 .container {
   align-self: start;
-  border: 1px solid rgba(222, 184, 135, 0.9);
+  border: 1px solid var(--clr-secondary);
 
   padding: 1rem;
   border-radius: 12px;

@@ -14,7 +14,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       <select
         ref={ref}
         name={name}
-        className={`${selectStyles || styles.select} `}
+        className={`${styles.select} ${selectStyles} `}
         onChange={handleChange}
         defaultValue={defaultValue}
         {...rest}

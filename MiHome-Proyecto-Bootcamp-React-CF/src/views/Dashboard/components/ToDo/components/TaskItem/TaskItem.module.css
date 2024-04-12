@@ -109,7 +109,7 @@
 }
 
 .editButton:hover {
-  color: rgba(222, 184, 135, 0.9);
+  color: var(--clr-secondary);
   border-color: rgba(255, 255, 255, 0.8);
 }
 

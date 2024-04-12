@@ -6,7 +6,7 @@ import TaskListFullView from './components/TaskListFullView';
 import styles from './ToDo.module.css';
 
 import { generateId } from '../utils/helpers';
-import todoInfo from '../../../state/stores/todo-info';
+import todoInfo from '../../../stores/todo-info';
 import { FormNewTask, Task } from '../utils/types';
 
 import useRedirectIfWidgetNotActive from '../../../hooks/useRedirectIfWidgetNotActive';

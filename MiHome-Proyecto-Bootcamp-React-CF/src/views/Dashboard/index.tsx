@@ -11,7 +11,7 @@ const Dashboard: React.FunctionComponent = () => {
 
   return (
     <>
-      <Sidebar page="Dashboard" />
+      <Sidebar />
       <main>
         <div className={styles.dashboardContent}>
           {isDashboardMain ? (

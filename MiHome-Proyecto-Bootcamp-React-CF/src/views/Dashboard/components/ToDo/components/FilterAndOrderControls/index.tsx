@@ -1,7 +1,7 @@
 import { Option } from '../../../../../../components/Select/utils/interfaces';
 import { PriorityTask, TaskFilter, TaskListConfig } from '../../utils/types';
 import Select from '../../../../../../components/Select';
-import todoInfo from '../../../../state/stores/todo-info';
+import todoInfo from '../../../../stores/todo-info';
 import { IoIosArrowUp } from 'react-icons/io';
 
 import styles from './FilterAndOrderControls.module.css';
@@ -12,6 +12,7 @@ interface FilterAndOrderControlsProps {
   title?: string;
   config: TaskListConfig;
   typeTask: 'incompleted' | 'completed';
+  selectStyles?: string;
 }
 
 const filterOptions: Option[] = [
@@ -28,7 +29,7 @@ const priorityOptions: Option[] = [
 const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
   title,
   config,
-
+  selectStyles,
   typeTask,
 }) => {
   const { filter, subFilter, order } = config;
@@ -88,17 +89,17 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
             name="Filter"
             defaultValue={filter}
             options={filterOptions}
-            selectStyles={styles.selectStyles}
             onChange={(event) => {
               handleChangeFilter(event);
             }}
+            selectStyles={selectStyles}
           />
           {isPrioritySelected && (
             <Select
               name="PriorityOptions"
               defaultValue={subFilter}
               options={priorityOptions}
-              selectStyles={styles.selectStyles}
+              selectStyles={selectStyles}
               onChange={(event) => {
                 handleChangeSubFilter(event);
               }}

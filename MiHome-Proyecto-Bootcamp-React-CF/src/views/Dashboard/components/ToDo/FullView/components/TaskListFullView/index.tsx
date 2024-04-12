@@ -3,7 +3,7 @@ import FilterAndOrderControls from '../../../components/FilterAndOrderControls';
 
 import styles from './TaksListFullView.module.css';
 
-import todoInfo from '../../../../../state/stores/todo-info';
+import todoInfo from '../../../../../stores/todo-info';
 import { Task, TaskListConfig } from '../../../utils/types';
 
 const TaksListFullView: React.FC = () => {
@@ -73,6 +73,7 @@ const TaksListFullView: React.FC = () => {
                   title="Tareas pendientes"
                   config={incompletedConfig}
                   typeTask="incompleted"
+                  selectStyles={styles.selectStyles}
                 />
                 {incompletedTask.length === 0 ? (
                   <div className={styles.messageContainer}>
@@ -92,6 +93,7 @@ const TaksListFullView: React.FC = () => {
                   title="Tareas completadas"
                   config={completedConfig}
                   typeTask="completed"
+                  selectStyles={styles.selectStyles}
                 />
                 {completedTask.length === 0 ? (
                   <div className={styles.messageContainer}>

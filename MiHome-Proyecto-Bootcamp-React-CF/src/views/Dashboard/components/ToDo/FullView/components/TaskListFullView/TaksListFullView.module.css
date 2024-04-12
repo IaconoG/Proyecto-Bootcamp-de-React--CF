@@ -14,9 +14,9 @@
   color: white;
   font-style: italic;
   border: none;
-  border: 1px solid rgba(222, 184, 135, 0.4);
+  border: 1px solid var(--clr-secondary-dark);
   border-radius: 0.5rem;
-  padding: 0.3rem;
+  padding: 0.3rem 0.5rem;
   margin-right: 5px;
 }
 
@@ -39,4 +39,10 @@
   font-size: 1.5rem;
   font-weight: bold;
   font-style: italic;
+}
+
+.selectStyles {
+  background: rgb(42, 42, 42);
+  max-width: fit-content;
+  color: rgba(255, 255, 255, 0.7);
 }

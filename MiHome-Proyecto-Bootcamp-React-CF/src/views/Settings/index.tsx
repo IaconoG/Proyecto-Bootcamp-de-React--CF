@@ -69,7 +69,7 @@ const Settings: React.FC = () => {
           <Select
             options={selectOptions}
             name="occupation"
-            selectStyles={styles.select}
+            selectStyles={styles.selectStyles}
           />
 
           <button type="submit" className={styles.btn}>
@@ -79,13 +79,17 @@ const Settings: React.FC = () => {
       </div>
       <div className={styles.container}>
         <h2>Proximamente sincronizar informacion con google drive</h2>
-        <div>
-          <p className={styles.desciption}>
-            Al iniciar sesion con google, MiHome solo podra ver, editar, crear y
-            borrar los archivos específicos que utiliza la app. Los mismo son
-            utilizados para almacenar y sincronizar tu informacion de MiHome.
+        <div className={styles.desciptionContainer}>
+          <p>
+            Al iniciar sesión con Google, MiHome solo tendrá permisos para
+            acceder, editar, crear y eliminar los archivos específicos que son
+            utilizados exclusivamente por la aplicación.
           </p>
-          <p>MiHome no tiene acceso a tus archivos personales</p>
+          <p>
+            Estos archivos son empleados para almacenar y sincronizar tu
+            información.
+          </p>
+          <p>MiHome no tendrá acceso a tus archivospersonales.</p>
         </div>
         <button>
           <FaGoogleDrive className={styles.googleIcon} />

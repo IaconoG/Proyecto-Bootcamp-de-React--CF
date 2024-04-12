@@ -4,7 +4,7 @@ background-color: rgb(15, 15, 15); GRIS
 background-color: rgb(25, 25, 25); GRIS/NEGRO
 background-color: rgb(42, 42, 42); NEGRO
   Colores q fui usando
-  border | links: naranja rgba(222, 184, 135, 0.9);
+  border | links: naranja var(--clr-detail);
   backgorund rojo: rgba(255, 0, 0, 0.3); 
   backgorund gris: rgba(255, 255, 255, 0.1) * Depende del color de fondo
   backgorund negro,azul,gris: rgba(0, 0, 0, 0.4) * Depende del color de fondo
@@ -19,6 +19,8 @@ background-color: rgb(42, 42, 42); NEGRO
 }
   letras blanco no tan blanco: rgba(255, 255, 255, 0.87) 
   
+  
+
  */
 
 :root {
@@ -32,6 +34,22 @@ background-color: rgb(42, 42, 42); NEGRO
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* COLORS */
+  --clr-black: rgb(42,42,42);
+  --clr-black-ligth: rgb(25,25,25);
+  --clr-grey: rgb(15,15,15)
+  /* shades of reds */
+  /* --clr-primary: #1A1A1A;
+  --clr-secondary: #3D0000;
+  --clr-secondary-light: #950101;
+  --clr-detail: #FF0000; */
+  /* shades of grays */
+  --clr-primary: #2a2438;
+  --clr-primary-light: #352f44;
+  --clr-secondary: #dbd8e3;
+  --clr-secondary-dark: #5c5470;
+  --clr-detail: #fd7014;
 }
 
 *,
@@ -63,7 +81,7 @@ pre {
 h2 {
   padding: 0 0.75rem 0.3rem 0;
   width: fit-content;
-  border-bottom: 3px solid rgba(222, 184, 135, 0.9);
+  border-bottom: 3px solid var(--clr-secondary-dark);
 }
 
 body {
@@ -123,10 +141,10 @@ input[type='submit'] {
 
 input:focus,
 textarea:focus,
-button:hover,
-select:focus {
-  border-color: rgba(222, 184, 135, 0.9);
+button:hover {
+  border-color: var(--clr-secondary);
 }
+
 select {
   outline: none;
   cursor: pointer;

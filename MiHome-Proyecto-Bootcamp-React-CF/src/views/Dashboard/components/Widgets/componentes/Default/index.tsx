@@ -82,7 +82,7 @@ const Default: React.FunctionComponent<DefaultProps> = ({ onAddWidget }) => {
     <WidgetComponent
       title="Agrega un Widget"
       body={body}
-      path={'dont'}
+      path={''}
       isDefault={true}
     />
   );

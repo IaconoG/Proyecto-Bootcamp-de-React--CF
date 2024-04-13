@@ -1,7 +1,7 @@
 /* 
 CALRO Q SI
 background-color: rgb(15, 15, 15); GRIS
-background-color: rgb(25, 25, 25); GRIS/NEGRO
+background-color: var(--clr-black-ligth); GRIS/NEGRO
 background-color: rgb(42, 42, 42); NEGRO
   Colores q fui usando
   border | links: naranja var(--clr-detail);
@@ -36,19 +36,28 @@ background-color: rgb(42, 42, 42); NEGRO
   -moz-osx-font-smoothing: grayscale;
 
   /* COLORS */
-  --clr-black: rgb(42,42,42);
-  --clr-black-ligth: rgb(25,25,25);
-  --clr-grey: rgb(15,15,15)
+  --clr-black: rgb(15, 15, 15);
+  --clr-black-ligth: rgb(25, 25, 25);
+  --clr-grey: rgb(42, 42, 42);
   /* shades of reds */
   /* --clr-primary: #1A1A1A;
   --clr-secondary: #3D0000;
   --clr-secondary-light: #950101;
   --clr-detail: #FF0000; */
   /* shades of grays */
-  --clr-primary: #2a2438;
-  --clr-primary-light: #352f44;
-  --clr-secondary: #dbd8e3;
-  --clr-secondary-dark: #5c5470;
+  /* ASDASD */
+
+  --clr-blue-dark: #1c2129;
+  --clr-blue: #222831;
+
+  --clr-violet-dark: #2a2438;
+  --clr-violet: #352f44;
+  --clr-violet-light: rgb(93, 84, 118);
+
+  --clr-border-white: #dbd8e3;
+  --clr-border: rgba(255, 255, 255, 0.5);
+  /* --clr-secondary-dark: #5c5470; */
+
   --clr-detail: #fd7014;
 }
 
@@ -81,7 +90,7 @@ pre {
 h2 {
   padding: 0 0.75rem 0.3rem 0;
   width: fit-content;
-  border-bottom: 3px solid var(--clr-secondary-dark);
+  border-bottom: 3px solid var(--clr-violet-light);
 }
 
 body {
@@ -130,7 +139,7 @@ input[type='submit'] {
   cursor: pointer;
   border-radius: 6px;
   border: 1px solid transparent;
-  background-color: rgb(42, 42, 42);
+  background-color: transparent;
   transition: border-color 0.2s ease;
   max-width: fit-content;
   gap: 1rem;
@@ -142,7 +151,11 @@ input[type='submit'] {
 input:focus,
 textarea:focus,
 button:hover {
-  border-color: var(--clr-secondary);
+  border-color: var(--clr-violet-light);
+}
+
+button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 select {

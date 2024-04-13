@@ -43,7 +43,7 @@ const Form: React.FC<FormProps> = ({
     <>
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
-        className={styles.form + ' ' + formLayout}
+        className={formLayout + ' ' + styles.form}
       >
         {React.Children.map(children, (child) => {
           if (

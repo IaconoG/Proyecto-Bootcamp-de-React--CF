@@ -9,7 +9,7 @@ import { IoExpand } from 'react-icons/io5';
 interface WidgetDefaultProps {
   title: WidgetTitle;
   body: React.ReactElement;
-  path: WidgetPath;
+  path: WidgetPath | '';
   isDefault?: boolean;
 }
 
@@ -24,7 +24,7 @@ const WidgetComponent: React.FunctionComponent<WidgetDefaultProps> = ({
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.openWidget}>
-          {path !== 'dont' && (
+          {path !== '' && (
             <Link to={`/dashboard/${path}`}>
               <IoExpand></IoExpand>
             </Link>

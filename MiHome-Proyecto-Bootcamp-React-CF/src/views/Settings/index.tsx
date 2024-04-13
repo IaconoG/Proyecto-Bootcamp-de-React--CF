@@ -71,7 +71,6 @@ const Settings: React.FC = () => {
             name="occupation"
             selectStyles={styles.selectStyles}
           />
-
           <button type="submit" className={styles.btn}>
             Guardar
           </button>

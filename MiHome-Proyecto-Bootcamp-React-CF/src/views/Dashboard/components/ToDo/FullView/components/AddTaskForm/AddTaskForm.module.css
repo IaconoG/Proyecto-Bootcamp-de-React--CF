@@ -47,6 +47,11 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+.priority:focus,
+.priority option:focus {
+  border: 1px solid var(--clr-violet-light) !important;
+}
+
 .priority,
 .priority option {
   text-transform: uppercase;

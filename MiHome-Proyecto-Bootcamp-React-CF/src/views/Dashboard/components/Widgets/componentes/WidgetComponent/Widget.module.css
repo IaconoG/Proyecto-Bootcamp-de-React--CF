@@ -1,13 +1,15 @@
 .container {
   align-self: start;
-  border: 1px solid var(--clr-secondary);
+  border: 1px solid transparent;
+  border-color: var(--clr-border-white);
 
   padding: 1rem;
   border-radius: 12px;
   position: relative;
+  background-color: var(--clr-blue-dark);
 }
 .default {
-  border: 1px solid rgb(65, 65, 65);
+  border: 1px solid var(--clr-violet);
 }
 
 .title {

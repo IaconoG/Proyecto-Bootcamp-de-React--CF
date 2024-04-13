@@ -8,14 +8,16 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(42, 42, 42);
-  padding: 1rem;
+  background-color: var(--clr-black-ligth);
+  padding: 1.3rem 1rem;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .container > button {
-  background-color: rgb(25, 25, 25);
+  /* background-color: var(--clr-violet-light); */
+  background-color: transparent;
+  border: 1px solid var(--clr-border);
 }
 
 /* User */
@@ -26,7 +28,7 @@
 }
 .input,
 .selectStyles {
-  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--clr-border);
   width: 100%;
   height: 2.5rem;
   border-radius: 6px;
@@ -36,18 +38,15 @@
   font-size: 1.2rem;
 }
 .selectStyles {
-  background-color: rgba(42, 42, 42, 0.5);
-  border: 1px solid transparent;
   max-width: 100%;
-  color: rgba(255, 255, 255, 0.8);
+}
+.selectStyles:focus,
+.selectStyles option:focus {
+  border: 1px solid var(--clr-violet-light) !important;
 }
 
 .selectStyles option {
   font-size: 1rem;
-}
-
-.btn {
-  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* Google */

@@ -14,10 +14,10 @@
   color: white;
   font-style: italic;
   border: none;
-  border: 1px solid var(--clr-secondary-dark);
+  border: 1px solid var(--clr-violet-light);
   border-radius: 0.5rem;
   padding: 0.3rem 0.5rem;
-  margin-right: 5px;
+  max-width: 150px;
 }
 
 .tasksList {
@@ -42,7 +42,7 @@
 }
 
 .selectStyles {
-  background: rgb(42, 42, 42);
+  background-color: var(--clr-black-ligth);
   max-width: fit-content;
   color: rgba(255, 255, 255, 0.7);
 }

@@ -2,10 +2,19 @@ import weatherInfo from '../../../../state/stores/weather/weather-info';
 import styles from './Weather.module.css';
 
 const Weather: React.FC = () => {
-  const { getCurrentConditionIcon, getCurrentTempC, getCurrentConditionText } =
-    weatherInfo();
-  const temp = getCurrentTempC();
-  const condition = getCurrentConditionText();
+  const {
+    isDataEmpty,
+    getCurrentConditionIcon,
+    getCurrentTempC,
+    getCurrentConditionText,
+  } = weatherInfo();
+
+  let temp: number | undefined = undefined;
+  let condition: string | undefined = undefined;
+  if (!isDataEmpty()) {
+    temp = getCurrentTempC();
+    condition = getCurrentConditionText();
+  }
   // const iconSrc = `/images/WeatherAPIIcons/${getCurrentConditionIcon()}`;
   const iconSrc = `/images/WeatherAPIIcons/day/116.png`;
 

@@ -27,6 +27,7 @@ export async function fetchForecastWeatherData(
   };
 
   try {
+    // FIXME: Cuando devuelve un error la api, deberiamos controlar el error
     const response = await fetch(url, options);
     const data = await response.json();
     return data as WeatherData;

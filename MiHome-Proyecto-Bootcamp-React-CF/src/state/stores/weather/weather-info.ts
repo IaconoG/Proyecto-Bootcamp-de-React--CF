@@ -19,21 +19,22 @@ import { findCodeIconWithWeatherConditionCode } from '../../../api/WeatherAPI/ut
 import { formatDateLocalTime } from './helper';
 
 type Actions = {
+  isDataEmpty: () => boolean;
   setWeatherData: (location: string) => void; // Llamamos a la api
   // Getters
-  getLocation: () => LocationElement;
-  getCurrent: () => CurrentElement;
-  getForecastDats: () => ForecastDayData[];
+  getLocation: () => LocationElement | undefined;
+  getCurrent: () => CurrentElement | undefined;
+  getForecastDats: () => ForecastDayData[] | undefined;
   // Sidebard actions
-  getLocationLocalTime: () => string;
-  getLocationName: () => string;
-  getCurrentTempC: () => number;
-  getCurrentConditionText: () => string;
-  getCurrentConditionIcon: () => string; // Devolver el src de la imagen segun dia o noche y el codigo del icono
+  getLocationLocalTime: () => string | undefined;
+  getLocationName: () => string | undefined;
+  getCurrentTempC: () => number | undefined;
+  getCurrentConditionText: () => string | undefined;
+  getCurrentConditionIcon: () => string | undefined; // Devolver el src de la imagen segun dia o noche y el codigo del icono
   // Para el mini view no se q poner kjjj
   // Para el full view podria hacer actios para ciertos elementos como el astro, el forecast de cierto intervalo de tiempo, etc
   // Utils
-  getCurrentIsDay: () => boolean;
+  getCurrentIsDay: () => boolean | undefined;
   resetWeatherData: () => void;
 };
 type State = Weather;
@@ -45,7 +46,19 @@ const weatherInfo = create<State & Actions>()(
         ...INITIAL_WATHER_STATE,
 
         //
+        isDataEmpty: () => {
+          return get().data === undefined;
+        },
         setWeatherData: async (location: string) => {
+          console.log('call api? ', location);
+          if (location === '') {
+            // reset data
+            set((state) => {
+              state.data = INITIAL_WATHER_STATE.data;
+            });
+            return;
+          }
+          console.log('call api ', location);
           const weatherData = await fetchForecastWeatherData({
             localidad: location,
           });
@@ -60,7 +73,7 @@ const weatherInfo = create<State & Actions>()(
         // Sidebard actions
         getLocationLocalTime: () => {
           const fixMinutes: number = 2; // La hora que devuelve la api esta atrazada 2 minutos
-          const localTime: string = get().data?.location.localtime || '';
+          const localTime: string = get()?.data?.location.localtime || '';
 
           const date: Date = new Date(localTime);
           date.setMinutes(date.getMinutes() + fixMinutes);
@@ -69,12 +82,15 @@ const weatherInfo = create<State & Actions>()(
           return localTimeFixed;
         },
         getLocationName: () => get().data?.location.name,
-        getCurrentTempC: () => get().data?.current?.temp_c,
+        getCurrentTempC: () => get().data?.current.temp_c,
         getCurrentConditionText: () => get().data?.current.condition.text,
         getCurrentConditionIcon: () => {
-          const isDay = get().data?.current.is_day === 1;
+          const currentData = get().data?.current;
+          if (!currentData) return undefined;
+
+          const isDay = currentData.is_day === 1;
           const codeIcon = findCodeIconWithWeatherConditionCode(
-            get().data?.current.condition.code
+            currentData.condition.code
           );
           return isDay ? `day/${codeIcon}.png` : `night/${codeIcon}.png`;
         },

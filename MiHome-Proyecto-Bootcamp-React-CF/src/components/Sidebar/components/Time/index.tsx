@@ -7,23 +7,32 @@ const Time: React.FC = () => {
   const [time, setTime] = useState<string>('');
   const [date, setDate] = useState<string>('');
 
+  const updateDateTime = () => {
+    const localTime = getLocationLocalTime();
+    const formattedTime = formatTime(localTime);
+    const formattedDate = formatDate(localTime);
+    setTime(formattedTime);
+    setDate(formattedDate);
+  };
+  const formatTime = (time: string): string => {
+    const hours = new Date(time).getHours();
+    const minutes = new Date(time).getMinutes();
+    return `${hours < 10 ? `0${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }`;
+  };
+  const formatDate = (date: string): string => {
+    return new Date(date)
+      .toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
+      .toUpperCase();
+  };
+
   useEffect(() => {
+    updateDateTime(); // Initial render
     const interval = setInterval(() => {
-      const localTime = getLocationLocalTime();
-      console.log('asd ' + localTime);
-      const hours = new Date(localTime).getHours();
-      const minutes = new Date(localTime).getMinutes();
-      setTime(
-        `${hours < 10 ? `0${hours}` : hours}:${
-          minutes < 10 ? `0${minutes}` : minutes
-        }`
-      );
-      setDate(
-        new Date(localTime)
-          .toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
-          .toUpperCase()
-      );
-    }, 10000); // 1 minute
+      console.log('render 2');
+      updateDateTime();
+    }, 60000); // 1 minute
     return () => clearInterval(interval);
   }, []);
 

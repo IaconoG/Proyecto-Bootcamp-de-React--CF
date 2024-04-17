@@ -12,7 +12,7 @@ import {
   WidgetTitle,
 } from '../../../../../../state/utils/types';
 
-import userInfo from '../../../../../../state/stores/user-info';
+import userInfo from '../../../../../../state/stores/userInfo/user-info';
 
 interface DefaultProps {
   onAddWidget: (name: WidgetKeys) => void;

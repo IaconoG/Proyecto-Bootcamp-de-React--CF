@@ -2,13 +2,17 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-import { Task, TaskListConfig, ToDo } from '../components/ToDo/utils/types';
-import { WidgetTitle } from '../../../state/utils/types';
+import {
+  Task,
+  TaskListConfig,
+  ToDo,
+} from '../../../views/Dashboard/components/ToDo/utils/types';
+import { WidgetTitle } from '../../utils/types';
 import {
   INITIAL_TASK_CONFIG,
   INITIAL_TODO_STATE,
   LOCAL_STORAGE_TODO,
-} from '../components/ToDo/utils/constants';
+} from '../../../views/Dashboard/components/ToDo/utils/constants';
 import { filterTasks } from './utils/helpers';
 
 type Actions = {
@@ -34,6 +38,7 @@ type Actions = {
   haveCompletedAllTasks: () => boolean;
   deleteTaskById: (id: string, completed: boolean) => void;
   markTaskAsIncompleteOrCompletedById: (id: string) => void;
+  resetToDoData: () => void;
 };
 
 type State = ToDo;
@@ -175,6 +180,9 @@ const todoInfo = create<State & Actions>()(
               state.data.completedTasks.tasks.unshift(updatedTask);
             else state.data.incompletedTasks.tasks.unshift(updatedTask);
           });
+        },
+        resetToDoData: () => {
+          set(() => INITIAL_TODO_STATE);
         },
 
         //

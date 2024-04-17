@@ -12,6 +12,7 @@ import Dashboard from '../views/Dashboard';
 // import Focus from '../views/Dashboard/components/Focus/FullView';
 import InfoMicro from '../views/Dashboard/components/InfoMicros/FullView';
 import ToDo from '../views/Dashboard/components/ToDo/FullView';
+// import Weather from '../views/Dashboard/components/Weather/FullView';
 
 import Error404 from '../views/Error404';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: 'to-do',
         element: <ToDo />,
+      },
+      {
+        path: 'weather',
+        element: <h1>Weather</h1>,
       },
     ],
   },

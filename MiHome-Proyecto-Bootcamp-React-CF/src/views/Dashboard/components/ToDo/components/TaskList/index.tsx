@@ -1,4 +1,4 @@
-import todoInfo from '../../../../stores/todo-info';
+import todoInfo from '../../../../../../state/stores/toDo/todo-info';
 import { Task } from '../../utils/types';
 
 import TaskItem from '../../components/TaskItem';

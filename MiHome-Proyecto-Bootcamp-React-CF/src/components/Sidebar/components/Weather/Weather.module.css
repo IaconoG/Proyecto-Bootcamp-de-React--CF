@@ -1,0 +1,43 @@
+.weatherContainer {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  border: 1px dotted transparent;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+}
+.weatherDataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.weatherTemp {
+  color: rgb(255, 2552, 255, 0.9);
+  font-size: 20px;
+  font-weight: 600;
+}
+.weatherCondition {
+  color: rgb(255, 2552, 255, 0.8);
+  font-size: 12px;
+}
+
+.weatherIconContainer {
+  position: absolute;
+  top: -5px;
+  left: calc(50% - 28px);
+  position: relative;
+  width: fit-content;
+  height: 55px;
+}
+.weatherIcon {
+  /* Estos max-size los estipulaba la api */
+  --max-width: 64px;
+  --max-height: 64px;
+  width: 55px;
+  height: 55px;
+  max-width: var(--max-width);
+  max-height: var(--max-height);
+}

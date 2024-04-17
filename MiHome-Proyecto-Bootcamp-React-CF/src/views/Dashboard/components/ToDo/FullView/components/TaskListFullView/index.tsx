@@ -3,7 +3,7 @@ import FilterAndOrderControls from '../../../components/FilterAndOrderControls';
 
 import styles from './TaksListFullView.module.css';
 
-import todoInfo from '../../../../../stores/todo-info';
+import todoInfo from '../../../../../../../state/stores/toDo/todo-info';
 import { Task, TaskListConfig } from '../../../utils/types';
 
 const TaksListFullView: React.FC = () => {

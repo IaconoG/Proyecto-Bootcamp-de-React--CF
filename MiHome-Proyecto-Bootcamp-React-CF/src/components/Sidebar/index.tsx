@@ -3,20 +3,42 @@ import { useLocation } from 'react-router-dom';
 
 import styles from './Sidebar.module.css';
 
-import userInfo from '../../state/stores/user-info';
+import userInfo from '../../state/stores/userInfo/user-info';
 import { Widget, WidgetPath } from '../../state/utils/types';
+import SunAndMoon from './components/SunAndMoon';
+import Weather from './components/Weather';
+import Time from './components/Time';
+import {
+  startAutoRefresh,
+  fetchForecastWeatherData,
+} from '../../api/WeatherAPI/services/weatherService';
+import { useEffect } from 'react';
+import { ForecastWeatherParams } from '../../api/WeatherAPI/endpoints';
 
 type PathName = WidgetPath | 'settings' | '';
 
 const RenderLinks: React.FunctionComponent = () => {
-  // FIXME: Implementar lógica para mostrar los links correctos dependiendo de la página actual y la autenticación del usuario.
   // FIXME: Solo se debe mostrar los widgets que el usuario haya activado. obviando el settings
-  const { getAddedWidgets, getAllWidgets } = userInfo();
+  const { getAddedWidgets, getAllWidgets, getUserLocalidad } = userInfo();
   const location = useLocation();
   const pathName = location.pathname as PathName; // /dashboard/etc
   const pageSelected = pathName.substring('/dashboard/'.length) as PathName;
 
-  // FIXME: DETELETE getUserWidgets
+  // Refresh the weather data every 3hours and when the component is mounted
+  useEffect(() => {
+    console.log('mounted Sidebar');
+    const fetchData = () => {
+      const params: ForecastWeatherParams = {
+        localidad: getUserLocalidad(),
+      };
+      fetchForecastWeatherData(params);
+    };
+    fetchData();
+    const refreshInterval = startAutoRefresh(fetchData);
+    return () => clearInterval(refreshInterval);
+  }, []);
+
+  // FIXME: DETELETE getAllWidgets
   return (
     <>
       <div
@@ -26,7 +48,7 @@ const RenderLinks: React.FunctionComponent = () => {
           MiHome
         </Link>
       </div>
-      {/* FIXME: DELETE getUserWidgets */}
+      {/* FIXME: DELETE getAllWidgets */}
       {getAllWidgets().map((widget: Widget) => (
         <div
           key={widget.title}
@@ -62,11 +84,20 @@ const RenderLinks: React.FunctionComponent = () => {
 };
 
 const Sidebar: React.FunctionComponent = () => {
+  const { getUserLocalidad } = userInfo();
   return (
     <div className={styles.sidebar}>
-      <div className={styles.linksContainer}>
-        <RenderLinks />
+      <div className={styles.header}>
+        {getUserLocalidad() && (
+          <>
+            <Time />
+            <Weather />
+          </>
+        )}
+        <SunAndMoon />
       </div>
+      <div className={`${styles.gradient}`}></div>
+      <div className={styles.linksContainer}>{<RenderLinks />}</div>
     </div>
   );
 };

@@ -26,7 +26,6 @@ const Form: React.FC<FormProps> = ({
   const [isFormUpdated, setIsFormUpdated] = useState<boolean>(false);
 
   const handleFormSubmit: SubmitHandler<FormDataType> = (data) => {
-    console.log(data);
     try {
       onSubmit(data);
       setIsFormUpdated(true);

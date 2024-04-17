@@ -1,29 +1,32 @@
 # My Home
 
-### Ecosistema
-
-### Tecnologías
+## Tecnologías
 
 - [React](https://es.reactjs.org/)
   - `Suspense`: Permite a los componentes mostrar un fallback mientras se cargan los datos.
 - [TypeScript](https://www.typescriptlang.org/)
 
-#### Sistema de Compilación
+### Sistema de Compilación
 
 - [Vite](https://vitejs.dev/)
 
-#### Manejo de Estado
+### Manejo de Estado
 
 - [Zustand](https://zustand-demo.pmnd.rs/)
 - [LocalStorage](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)
   - `setItem`: Almacena un par clave-valor.
   - `getItem`: Obtiene el valor asociado con la clave especificada.
 
-#### Llamadas a la API
+### Llamadas a la API
 
 - [Fetch API](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
 
-#### Enrutamiento
+#### Google API Login
+
+- [Acceso con Google]: https://developers.google.com/identity/sign-in/web/sign-in?hl=es-419
+- `npm i jwt-decode`: Decodifica un token JWT y devuelve el objeto decodificado.
+
+### Enrutamiento
 
 - [React Router](https://reactrouter.com/en/main)
   - `createBrowserHistory`: Utiliza la API DOM History para actualizar la URL y administrar la pila del historial.
@@ -32,7 +35,7 @@
   - `useRouteError`: Devuelve un objeto con la ruta actual y la información de error.
   - `isRouteErrorResponse`: Verifica si el error de la ruta actual es una respuesta de error.
 
-#### Formularios
+### Formularios
 
 - [React Hook Form](https://react-hook-form.com/)
   - `useForm`: Devuelve todos los métodos necesarios para construir un formulario.
@@ -41,7 +44,7 @@
 
 - [date-fns](https://date-fns.org/)
 
-#### Iconos
+### Iconos
 
 - [React Icons](https://react-icons.github.io/react-icons/)
 
@@ -49,18 +52,18 @@
 
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
-### Lineamientos
+## Lineamientos
 
 - [x] Hooks Reusables
-- [ ] Zustand
-  - [ ] Minimo 2 stores
+- [x] Zustand
+  - [x] Minimo 2 stores
   - [ ] Almacenar inforamcion obtenida de una API
-  - [ ] Herramientas o/y middleware de Zustand
+  - [x] Herramientas o/y middleware de Zustand
 - [ ] Llamadas a la API
 - [x] Routing
   - [x] Al menos 3 rutas
 - [x] Formularios
-  - [ ] Implementar validaciones
+  - [x] Implementar validaciones
   - [x] Implementar mensajos de errores
 - [ ] Deploy a servidor
   - [ ] Deploy en Vercel

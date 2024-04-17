@@ -1,4 +1,7 @@
-import { Task, TaskListConfig } from '../../components/ToDo/utils/types';
+import {
+  Task,
+  TaskListConfig,
+} from '../../../../views/Dashboard/components/ToDo/utils/types';
 
 export const filterTasks = (tasks: Task[], config: TaskListConfig) => {
   if (tasks.length === 0) return tasks;

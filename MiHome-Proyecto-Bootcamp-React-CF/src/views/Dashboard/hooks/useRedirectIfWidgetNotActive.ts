@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { WidgetKeys } from '../../../state/utils/types';
-import userInfo from '../../../state/stores/user-info';
+import userInfo from '../../../state/stores/userInfo/user-info';
 
 const useRedirectIfWidgetNotActive = (widgetName: WidgetKeys) => {
   const navigate = useNavigate();

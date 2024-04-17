@@ -3,7 +3,7 @@ import styles from './MiniView.module.css';
 import TaskList from '../components/TaskList';
 import FilterAndOrderControls from '../components/FilterAndOrderControls';
 
-import todoInfo from '../../../stores/todo-info';
+import todoInfo from '../../../../../state/stores/toDo/todo-info';
 
 const MiniView: React.FC = () => {
   const {

@@ -6,7 +6,8 @@ export type WidgetKeys =
   | 'calendar'
   | 'focus'
   | 'infoMicros'
-  | 'toDo';
+  | 'toDo'
+  | 'weather';
 
 export type WidgetTitle =
   | 'Agrega un Widget'
@@ -14,19 +15,22 @@ export type WidgetTitle =
   | 'Calendar'
   | 'Focus'
   | 'Info Micros'
-  | 'ToDo';
+  | 'ToDo'
+  | 'Weather';
 export type WidgetPath =
   | 'balance'
   | 'calendar'
   | 'focus'
   | 'info-micros'
-  | 'to-do';
+  | 'to-do'
+  | 'weather';
 
 export type FormDataType = UserData | FormNewTask;
 
 export interface UserData {
   userName: string;
   occupation: OccupationType;
+  localidad: string;
 }
 
 export interface Widget {
@@ -41,6 +45,7 @@ export interface UserWidgets {
   focus: Widget;
   infoMicros: Widget;
   toDo: Widget;
+  weather: Widget;
 }
 
 export interface UserInformation {

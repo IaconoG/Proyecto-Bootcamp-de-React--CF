@@ -1,7 +1,7 @@
 import { Option } from '../../../../../../components/Select/utils/interfaces';
 import { PriorityTask, TaskFilter, TaskListConfig } from '../../utils/types';
 import Select from '../../../../../../components/Select';
-import todoInfo from '../../../../stores/todo-info';
+import todoInfo from '../../../../../../state/stores/toDo/todo-info';
 import { IoIosArrowUp } from 'react-icons/io';
 
 import styles from './FilterAndOrderControls.module.css';

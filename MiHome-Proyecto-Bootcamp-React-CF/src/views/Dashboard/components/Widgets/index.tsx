@@ -10,7 +10,7 @@ import {
   WidgetTitle,
 } from '../../../../state/utils/types';
 
-import userInfo from '../../../../state/stores/user-info';
+import userInfo from '../../../../state/stores/userInfo/user-info';
 
 const Widgets: React.FunctionComponent = () => {
   const { addWidget, getAddedWidgets, areAllWidgetsAdded } = userInfo();
@@ -36,6 +36,7 @@ const Widgets: React.FunctionComponent = () => {
       case 'Calendar':
       case 'Focus':
       case 'Info Micros':
+      case 'Weather':
         return bodyExample(widgetTitle);
       case 'ToDo':
         return <TodoMiniView />;

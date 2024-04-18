@@ -6,6 +6,9 @@ export interface WeatherData {
   };
 }
 
+export interface Localidad
+  extends Pick<LocationElement, 'name' | 'region' | 'country'> {}
+
 export interface LocationElement {
   name: string;
   region: string;

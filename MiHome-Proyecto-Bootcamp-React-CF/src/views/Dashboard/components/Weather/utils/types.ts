@@ -8,6 +8,6 @@ interface ErrorAPI {
 }
 export interface Weather {
   title: WidgetTitle;
-  data: WeatherData | undefined;
+  data: WeatherData;
   error: ErrorAPI | null;
 }

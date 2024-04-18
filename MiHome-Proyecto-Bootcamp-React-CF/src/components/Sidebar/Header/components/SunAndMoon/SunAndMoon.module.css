@@ -1,20 +1,19 @@
 :root {
-  --moon-fix-size: 19.5px;
-  --sun-fix-size: 19.5px;
+  --box-size: 45px;
+  --moon-size: 40px;
+  --sun-size: 50px;
 }
 
 .sunMoonContainer {
   --height: 60px;
   --width: 60px;
-  border: 1px solid transparent;
-  /* border: 1px solid red; */
+  border: 1px solid var(--clr-detail);
   border-radius: 50%;
   width: var(--width);
   height: var(--height);
   position: absolute;
   bottom: calc((var(--height) / 2) * -1);
   left: calc(50% - var(--width) / 2);
-
   transition: rotate 0.5s ease-in-out;
 }
 
@@ -23,29 +22,29 @@
   background-color: var(--clr-blue-dark);
   position: absolute;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: var(--box-size);
+  height: var(--box-size);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .moonContainer {
-  /* border: 1px dotted purple; */
-  bottom: calc(100% - var(--moon-fix-size));
-  left: calc(50% - var(--moon-fix-size));
+  /*border: 1px dotted purple; */
+  bottom: calc(100% - (var(--box-size) / 2));
+  left: calc(50% - (var(--box-size) / 2));
 }
 .sunContainer {
   /* border: 1px dotted orangered; */
-  top: calc(100% - var(--sun-fix-size));
-  left: calc(50% - var(--sun-fix-size));
+  top: calc(100% - (var(--box-size) / 2));
+  left: calc(50% - (var(--box-size) / 2));
 }
 
 .moon {
-  width: 40px;
-  height: 40px;
+  width: var(--moon-size);
+  height: var(--moon-size);
 }
 .sun {
-  width: 50px;
-  height: 50px;
+  width: var(--sun-size);
+  height: var(--sun-size);
 }

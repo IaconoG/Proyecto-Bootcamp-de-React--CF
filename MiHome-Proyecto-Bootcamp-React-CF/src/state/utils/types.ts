@@ -1,3 +1,4 @@
+import { LocationElement } from '../../api/WeatherAPI/models/wather';
 import { FormNewTask } from '../../views/Dashboard/components/ToDo/utils/types';
 
 export type OccupationType = 'Estudiante' | 'Trabajador' | 'Otro' | '';
@@ -30,7 +31,7 @@ export type FormDataType = UserData | FormNewTask;
 export interface UserData {
   userName: string;
   occupation: OccupationType;
-  localidad: string;
+  localidad: '';
 }
 
 export interface Widget {

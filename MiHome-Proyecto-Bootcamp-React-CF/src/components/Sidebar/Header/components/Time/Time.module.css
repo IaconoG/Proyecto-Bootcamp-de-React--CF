@@ -1,0 +1,13 @@
+.timeContainer {
+}
+
+.time {
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(255, 2552, 255, 0.9);
+}
+
+.date {
+  font-size: 12px;
+  color: rgb(255, 2552, 255, 0.8);
+}

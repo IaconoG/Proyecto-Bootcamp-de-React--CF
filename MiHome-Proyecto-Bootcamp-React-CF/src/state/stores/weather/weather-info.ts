@@ -9,6 +9,7 @@ import { Weather } from '../../../views/Dashboard/components/Weather/utils/types
 import {
   CurrentElement,
   ForecastDayData,
+  Localidad,
   LocationElement,
 } from '../../../api/WeatherAPI/models/wather';
 import {
@@ -22,19 +23,20 @@ type Actions = {
   isDataEmpty: () => boolean;
   setWeatherData: (location: string) => void; // Llamamos a la api
   // Getters
-  getLocation: () => LocationElement | undefined;
-  getCurrent: () => CurrentElement | undefined;
-  getForecastDats: () => ForecastDayData[] | undefined;
+  getLocation: () => Localidad;
+  getFullLocation: () => LocationElement;
+  getCurrent: () => CurrentElement;
+  getForecastDats: () => ForecastDayData[];
   // Sidebard actions
-  getLocationLocalTime: () => string | undefined;
-  getLocationName: () => string | undefined;
-  getCurrentTempC: () => number | undefined;
-  getCurrentConditionText: () => string | undefined;
-  getCurrentConditionIcon: () => string | undefined; // Devolver el src de la imagen segun dia o noche y el codigo del icono
+  getLocationTimeZoneId: () => string;
+  getLocationName: () => string;
+  getCurrentTempC: () => number;
+  getCurrentConditionText: () => string;
+  getCurrentConditionIcon: () => string; // Devolver el src de la imagen segun dia o noche y el codigo del icono
   // Para el mini view no se q poner kjjj
   // Para el full view podria hacer actios para ciertos elementos como el astro, el forecast de cierto intervalo de tiempo, etc
   // Utils
-  getCurrentIsDay: () => boolean | undefined;
+  getCurrentIsDay: () => boolean;
   resetWeatherData: () => void;
 };
 type State = Weather;
@@ -67,26 +69,20 @@ const weatherInfo = create<State & Actions>()(
           });
         },
         // Getters
-        getLocation: () => get().data?.location,
-        getCurrent: () => get().data?.current,
-        getForecastDats: () => get().data?.forecast.forecastDay,
-        // Sidebard actions
-        getLocationLocalTime: () => {
-          const fixMinutes: number = 2; // La hora que devuelve la api esta atrazada 2 minutos
-          const localTime: string = get()?.data?.location.localtime || '';
-
-          const date: Date = new Date(localTime);
-          date.setMinutes(date.getMinutes() + fixMinutes);
-
-          const localTimeFixed: string = formatDateLocalTime(date); // 'YYYY-MM-DD hh:mm'
-          return localTimeFixed;
+        getLocation: () => {
+          const { name, region, country } = get().data.location;
+          return { name, region, country };
         },
+        getFullLocation: () => get().data.location,
+        getCurrent: () => get().data.current,
+        getForecastDats: () => get().data.forecast.forecastDay,
+        // Sidebard actions
+        getLocationTimeZoneId: () => get().data.location.tz_id,
         getLocationName: () => get().data?.location.name,
         getCurrentTempC: () => get().data?.current.temp_c,
-        getCurrentConditionText: () => get().data?.current.condition.text,
+        getCurrentConditionText: () => get().data.current.condition.text,
         getCurrentConditionIcon: () => {
-          const currentData = get().data?.current;
-          if (!currentData) return undefined;
+          const currentData = get().data.current;
 
           const isDay = currentData.is_day === 1;
           const codeIcon = findCodeIconWithWeatherConditionCode(
@@ -97,7 +93,7 @@ const weatherInfo = create<State & Actions>()(
         // FullView actions
         // MiniView actions
         // Utils
-        getCurrentIsDay: () => get().data?.current.is_day === 1,
+        getCurrentIsDay: () => get().data.current.is_day === 1,
         resetWeatherData: () => {
           set((state) => {
             state.data = INITIAL_WATHER_STATE.data;

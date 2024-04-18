@@ -43,8 +43,8 @@ const Time: React.FC = () => {
 
   return (
     <div className={styles.timeContainer}>
-      <div className={styles.time}>{data.time}</div>
-      <div className={styles.date}>{data.date}</div>
+      <p className={styles.time}>{data.time}</p>
+      <p className={styles.date}>{data.date}</p>
     </div>
   );
 };

@@ -130,7 +130,7 @@ const Settings: React.FC = () => {
           <input
             type="text"
             name="localidad"
-            placeholder="Tu localidad, con esto podras ver el clima de tu ciudad"
+            placeholder="Tu localidad, con esto podras ver la hora y el clima de tu ciudad"
             className={styles.input}
           />
           <button type="submit" className={styles.btn}>

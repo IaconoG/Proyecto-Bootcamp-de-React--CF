@@ -24,8 +24,11 @@ const Weather: React.FC = () => {
         <img src={iconSrc} alt="Weather Icon" className={styles.weatherIcon} />
       </div>
       <div className={styles.weatherDataContainer}>
-        <div className={styles.weatherTemp}>{temp}°C</div>
-        <div className={styles.weatherCondition}>{condition}</div>
+        <p className={styles.weatherTemp}>
+          {temp}
+          <span>°C</span>
+        </p>
+        <p className={styles.weatherCondition}>{condition}</p>
       </div>
     </>
   );

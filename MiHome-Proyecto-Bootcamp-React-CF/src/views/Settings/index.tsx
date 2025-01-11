@@ -1,39 +1,25 @@
-import styles from './Settings.module.css';
-import { FaGoogleDrive } from 'react-icons/fa';
+import UserInfoSection from "./userInfo-section";
 
-import {
-  FormDataType,
-  UserData,
-  WidgetKeys,
-  WidgetTitle,
-} from '../../state/utils/types';
+import styles from "./Settings.module.css";
+import { FaGoogleDrive } from "react-icons/fa";
 
-import Form from '../../components/Form';
+import { WidgetKeys, WidgetTitle } from "../../state/utils/types";
 
-import userInfo from '../../state/stores/userInfo/user-info';
-import Select from '../../components/Select';
-import { Option } from '../../components/Select/utils/interfaces';
-import weatherInfo from '../../state/stores/weather/weather-info';
-import toDoInfo from '../../state/stores/toDo/todo-info';
+import userInfo from "../../state/stores/userInfo/user-info";
+
+import weatherInfo from "../../state/stores/weather/weather-info";
+import toDoInfo from "../../state/stores/toDo/todo-info";
 
 // FIXME: Eliminar este método, solo es de preuba
 const handleClickClearWidgetFromLocalStorage = () => {
-  localStorage.removeItem('userInformation');
-  localStorage.removeItem('toDoWidget');
-  localStorage.removeItem('weatherWidget');
+  localStorage.removeItem("userInformation");
+  localStorage.removeItem("toDoWidget");
+  localStorage.removeItem("weatherWidget");
   window.location.reload();
 };
 
-const selectOptions: Option[] = [
-  { value: '', label: 'Selecciona una opcion' },
-  { value: 'estudiante', label: 'Estudiante' },
-  { value: 'trabajador', label: 'Trabajador' },
-  { value: 'otro', label: 'Otro' },
-];
-
 const Settings: React.FC = () => {
-  const { userData, updateUserData, getAddedWidgets, deleteWidget } =
-    userInfo();
+  const { getAddedWidgets, deleteWidget } = userInfo();
   const addedWidgets = getAddedWidgets();
   const { setWeatherData, resetWeatherData } = weatherInfo();
   const { resetToDoData } = toDoInfo();
@@ -41,38 +27,10 @@ const Settings: React.FC = () => {
   // const { resetCalendarData } = calendarInfo();
   // const { resetFocusData } = focusInfo();
 
-  const VALIDATION_RULES = {
-    userName: {
-      maxLength: {
-        value: 50,
-        message: 'El nombre de usuario no puede tener más de 50 caracteres.',
-      },
-    },
-  };
-
-  const handleSubmitForm: (data: FormDataType) => void = (data) => {
-    data = data as UserData;
-    if (
-      data.userName === userData.userName &&
-      data.occupation === userData.occupation &&
-      data.localidad === userData.localidad
-    ) {
-      throw new Error(
-        'No hubo necesidad de actualizar la informacion del usuario, era la misma que la anterior.'
-      );
-    }
-    // Si la localidad cambia actualizamos el clima
-    if (data.localidad !== userData.localidad) {
-      setWeatherData(data.localidad);
-    }
-
-    updateUserData(data);
-  };
-
   const handleDeleteWidget: (title: WidgetTitle) => void = (title) => {
     const key = (title.charAt(0).toLowerCase() + title.slice(1)).replace(
-      ' ',
-      ''
+      " ",
+      ""
     ) as WidgetKeys;
     // Alert component
     // alert(msgAccion, msgConfirmacion, accion => deleteWidget(key);)
@@ -80,21 +38,21 @@ const Settings: React.FC = () => {
   };
   const handleResetWidget: (title: WidgetTitle) => void = (title) => {
     const key = (title.charAt(0).toLowerCase() + title.slice(1)).replace(
-      ' ',
-      ''
+      " ",
+      ""
     ) as WidgetKeys;
     // switch customiza el accion del AlertComponent
     switch (key) {
-      case 'balance':
+      case "balance":
         break;
-      case 'calendar':
+      case "calendar":
         break;
-      case 'focus':
+      case "focus":
         break;
-      case 'toDo':
+      case "toDo":
         resetToDoData();
         break;
-      case 'weather':
+      case "weather":
         resetWeatherData();
         break;
       default:
@@ -107,38 +65,8 @@ const Settings: React.FC = () => {
   return (
     <div className={styles.settingsContainer}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Informacion de Usuario</h2>
-        <Form
-          defaultValues={userData}
-          onSubmit={handleSubmitForm}
-          formLayout={styles.formLayout}
-          validationRules={VALIDATION_RULES}
-          resetForm={false}
-        >
-          <input
-            type="text"
-            name="userName"
-            placeholder="Tu nombre de usuario"
-            className={styles.input}
-            maxLength={60}
-          />
-          <Select
-            options={selectOptions}
-            name="occupation"
-            selectStyles={styles.selectStyles}
-          />
-          <input
-            type="text"
-            name="localidad"
-            placeholder="Tu localidad, con esto podras ver el clima de tu ciudad"
-            className={styles.input}
-          />
-          <button type="submit" className={styles.btn}>
-            Guardar
-          </button>
-        </Form>
+        <UserInfoSection />
       </div>
-
       <div className={styles.container}>
         <h2>Proximamente sincronizar informacion con google drive</h2>
         <div className={styles.desciptionContainer}>

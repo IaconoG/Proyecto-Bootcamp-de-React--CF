@@ -1,22 +1,23 @@
-import { create } from 'zustand';
-import { immer } from 'zustand/middleware/immer';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { create } from "zustand";
+import { immer } from "zustand/middleware/immer";
+import { persist, createJSONStorage } from "zustand/middleware";
 import {
   INITIAL_WATHER_STATE,
   LOCAL_STORAGE_WEATHER,
-} from '../../../views/Dashboard/components/Weather/utils/constants';
-import { Weather } from '../../../views/Dashboard/components/Weather/utils/types';
+} from "../../../views/Dashboard/components/Weather/utils/constants";
+import { Weather } from "../../../views/Dashboard/components/Weather/utils/types";
 import {
   CurrentElement,
   ForecastDayData,
   LocationElement,
-} from '../../../api/WeatherAPI/models/wather';
+} from "../../../api/WeatherAPI/models/wather";
 import {
   fetchForecastWeatherTest,
   fetchForecastWeatherData,
-} from '../../../api/WeatherAPI/services/weatherService';
-import { findCodeIconWithWeatherConditionCode } from '../../../api/WeatherAPI/utils/helpers';
-import { formatDateLocalTime } from './helper';
+} from "../../../api/WeatherAPI/services/weatherService";
+import { findCodeIconWithWeatherConditionCode } from "../../../api/WeatherAPI/utils/helpers";
+import { formatDateLocalTime } from "./helper";
+import { UserLocation } from "../../utils/types";
 
 type Actions = {
   isDataEmpty: () => boolean;
@@ -50,21 +51,21 @@ const weatherInfo = create<State & Actions>()(
           return get().data === undefined;
         },
         setWeatherData: async (location: string) => {
-          console.log('call api? ', location);
-          if (location === '') {
-            // reset data
-            set((state) => {
-              state.data = INITIAL_WATHER_STATE.data;
-            });
-            return;
-          }
-          console.log('call api ', location);
-          const weatherData = await fetchForecastWeatherData({
-            localidad: location,
-          });
-          set((state) => {
-            state.data = weatherData;
-          });
+          // console.log("call api? ", location);
+          // if (location.emp) {
+          //   // reset data
+          //   set((state) => {
+          //     state.data = INITIAL_WATHER_STATE.data;
+          //   });
+          //   return;
+          // }
+          // console.log("call api ", location);
+          // const weatherData = await fetchForecastWeatherData({
+          //   localidad: location,
+          // });
+          // set((state) => {
+          //   state.data = weatherData;
+          // });
         },
         // Getters
         getLocation: () => get().data?.location,
@@ -73,7 +74,7 @@ const weatherInfo = create<State & Actions>()(
         // Sidebard actions
         getLocationLocalTime: () => {
           const fixMinutes: number = 2; // La hora que devuelve la api esta atrazada 2 minutos
-          const localTime: string = get()?.data?.location.localtime || '';
+          const localTime: string = get()?.data?.location.localtime || "";
 
           const date: Date = new Date(localTime);
           date.setMinutes(date.getMinutes() + fixMinutes);

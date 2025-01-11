@@ -1,33 +1,47 @@
-import React, { forwardRef } from 'react';
-import { SelectProps } from './utils/interfaces';
-import styles from './Select.module.css';
+import React from "react";
+import styles from "./Select.module.css";
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ name, options, selectStyles, defaultValue, onChange, ...rest }, ref) => {
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      if (onChange) {
-        onChange(event);
-      }
-    };
+export interface Option {
+  value: string;
+  label: string;
+}
 
-    return (
-      <select
-        ref={ref}
-        name={name}
-        className={`${styles.select} ${selectStyles} `}
-        onChange={handleChange}
-        defaultValue={defaultValue}
-        {...rest}
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    );
-  }
-);
+export interface SelectProps {
+  id?: string; // FIXME: Eliminar el 'optional'. Luego enviar el id a el componente cada vez que se utilice
+  name: string;
+  options: Option[];
+  className?: string;
+  selectTextStyles?: string;
+  defaultValue?: string;
+  tabIndex?: number;
+}
+
+const Select: React.FC<SelectProps> = ({
+  id,
+  name,
+  options,
+  defaultValue,
+  className,
+
+  // FIXME: Atrapar childs para que los options no esten aca
+}) => {
+  console.log("Options: ", options);
+  return (
+    <select
+      id={id}
+      defaultValue={defaultValue}
+      name={name}
+      className={styles.select + " " + className}
+    >
+      {}
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  );
+};
 
 export default Select;
 

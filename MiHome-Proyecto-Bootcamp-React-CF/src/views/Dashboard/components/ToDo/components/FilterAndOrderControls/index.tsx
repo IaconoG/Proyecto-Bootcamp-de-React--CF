@@ -1,29 +1,29 @@
-import { Option } from '../../../../../../components/Select/utils/interfaces';
-import { PriorityTask, TaskFilter, TaskListConfig } from '../../utils/types';
-import Select from '../../../../../../components/Select';
-import todoInfo from '../../../../../../state/stores/toDo/todo-info';
-import { IoIosArrowUp } from 'react-icons/io';
+import { Option } from "../../../../../../components/Select/utils/interfaces";
+import { PriorityTask, TaskFilter, TaskListConfig } from "../../utils/types";
+import Select from "../../../../../../components/Select";
+import todoInfo from "../../../../../../state/stores/toDo/todo-info";
+import { IoIosArrowUp } from "react-icons/io";
 
-import styles from './FilterAndOrderControls.module.css';
+import styles from "./FilterAndOrderControls.module.css";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 interface FilterAndOrderControlsProps {
   title?: string;
   config: TaskListConfig;
-  typeTask: 'incompleted' | 'completed';
+  typeTask: "incompleted" | "completed";
   selectStyles?: string;
 }
 
 const filterOptions: Option[] = [
-  { value: 'date', label: 'Fecha' },
-  { value: 'priority', label: 'Prioridad' },
+  { value: "date", label: "Fecha" },
+  { value: "priority", label: "Prioridad" },
 ];
 const priorityOptions: Option[] = [
-  { value: 'all', label: 'Todas' },
-  { value: 'high', label: 'Alto' },
-  { value: 'medium', label: 'Medio' },
-  { value: 'low', label: 'Baja' },
+  { value: "all", label: "Todas" },
+  { value: "high", label: "Alto" },
+  { value: "medium", label: "Medio" },
+  { value: "low", label: "Baja" },
 ];
 
 const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
@@ -36,13 +36,13 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
   const { setTaskCompletedConfig, setTaskIncompletedConfig } = todoInfo();
 
   const [isPrioritySelected, setIsPrioritySelected] = useState(
-    filter === 'priority'
+    filter === "priority"
   );
 
   const handleChangeFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newFilter = event.target.value as TaskFilter;
-    const isPrioritySelected = newFilter === 'priority';
-    if (typeTask === 'completed') {
+    const isPrioritySelected = newFilter === "priority";
+    if (typeTask === "completed") {
       setIsPrioritySelected(isPrioritySelected);
       setTaskCompletedConfig({
         ...config,
@@ -61,7 +61,7 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newSubFilter = event.target.value as PriorityTask;
-    if (typeTask === 'completed') {
+    if (typeTask === "completed") {
       setTaskCompletedConfig({
         ...config,
         subFilter: newSubFilter,
@@ -74,8 +74,8 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
     }
   };
   const handelClickOrder = () => {
-    const newOrder = order === 'asc' ? 'desc' : 'asc';
-    if (typeTask === 'incompleted')
+    const newOrder = order === "asc" ? "desc" : "asc";
+    if (typeTask === "incompleted")
       setTaskIncompletedConfig({ ...config, order: newOrder });
     else setTaskCompletedConfig({ ...config, order: newOrder });
   };
@@ -92,14 +92,14 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
             onChange={(event) => {
               handleChangeFilter(event);
             }}
-            selectStyles={selectStyles}
+            className={selectStyles}
           />
           {isPrioritySelected && (
             <Select
               name="PriorityOptions"
               defaultValue={subFilter}
               options={priorityOptions}
-              selectStyles={selectStyles}
+              className={selectStyles}
               onChange={(event) => {
                 handleChangeSubFilter(event);
               }}
@@ -108,7 +108,7 @@ const FilterAndOrderControls: React.FC<FilterAndOrderControlsProps> = ({
         </div>
         <div
           className={`${styles.orderContainer} ${
-            order === 'desc' ? styles.desc : ''
+            order === "desc" ? styles.desc : ""
           }  `}
           onClick={handelClickOrder}
         >

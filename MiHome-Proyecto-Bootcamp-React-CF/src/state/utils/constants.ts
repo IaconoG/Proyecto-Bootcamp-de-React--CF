@@ -1,46 +1,49 @@
-import { UserInformation, UserData, UserWidgets, Widget } from './types';
+import { UserInformation, UserData, UserWidgets, Widget } from "./types";
 
-export const LOCAL_STORAGE_USER_INFORMATION = 'userInformation';
+export const LOCAL_STORAGE_USER_INFORMATION = "userInformation";
 
 export const INITIAL_USER_DATA: UserData = {
-  userName: '',
-  occupation: '',
-  localidad: '',
+  userName: "",
+  occupation: "",
+  userLocation: {
+    province: "",
+    city: "",
+  },
 };
 
 const INITIAL_BALANCE: Widget = {
-  title: 'Balance',
+  title: "Balance",
   active: false,
-  path: 'balance',
+  path: "balance",
 };
 const INITIAL_CALENDAR: Widget = {
-  title: 'Calendar',
+  title: "Calendar",
   active: false,
-  path: 'calendar',
+  path: "calendar",
 };
 
 const INITIAL_FOCUS: Widget = {
-  title: 'Focus',
+  title: "Focus",
   active: false,
-  path: 'focus',
+  path: "focus",
 };
 
 const INITIAL_INFOMICROS: Widget = {
-  title: 'Info Micros',
+  title: "Info Micros",
   active: false,
-  path: 'info-micros',
+  path: "info-micros",
 };
 
 const INITIAL_TODO: Widget = {
-  title: 'ToDo',
+  title: "ToDo",
   active: false,
-  path: 'to-do',
+  path: "to-do",
 };
 
 const INITIAL_WEATHER: Widget = {
-  title: 'Weather',
+  title: "Weather",
   active: false,
-  path: 'weather',
+  path: "weather",
 };
 
 const INITIAL_WIDGETS_OPTIONS: UserWidgets = {

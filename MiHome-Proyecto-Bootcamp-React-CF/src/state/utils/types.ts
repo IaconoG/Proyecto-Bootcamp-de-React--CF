@@ -1,36 +1,41 @@
-import { FormNewTask } from '../../views/Dashboard/components/ToDo/utils/types';
+import { FormNewTask } from "../../views/Dashboard/components/ToDo/utils/types";
 
-export type OccupationType = 'Estudiante' | 'Trabajador' | 'Otro' | '';
+export type OccupationType = "Estudiante" | "Trabajador" | "Otro" | "";
 export type WidgetKeys =
-  | 'balance'
-  | 'calendar'
-  | 'focus'
-  | 'infoMicros'
-  | 'toDo'
-  | 'weather';
+  | "balance"
+  | "calendar"
+  | "focus"
+  | "infoMicros"
+  | "toDo"
+  | "weather";
 
 export type WidgetTitle =
-  | 'Agrega un Widget'
-  | 'Balance'
-  | 'Calendar'
-  | 'Focus'
-  | 'Info Micros'
-  | 'ToDo'
-  | 'Weather';
+  | "Agrega un Widget"
+  | "Balance"
+  | "Calendar"
+  | "Focus"
+  | "Info Micros"
+  | "ToDo"
+  | "Weather";
 export type WidgetPath =
-  | 'balance'
-  | 'calendar'
-  | 'focus'
-  | 'info-micros'
-  | 'to-do'
-  | 'weather';
+  | "balance"
+  | "calendar"
+  | "focus"
+  | "info-micros"
+  | "to-do"
+  | "weather";
 
 export type FormDataType = UserData | FormNewTask;
+
+export interface UserLocation {
+  province: string;
+  city: string;
+}
 
 export interface UserData {
   userName: string;
   occupation: OccupationType;
-  localidad: string;
+  userLocation: UserLocation;
 }
 
 export interface Widget {
@@ -51,4 +56,10 @@ export interface UserWidgets {
 export interface UserInformation {
   userData: UserData;
   userWidgets: UserWidgets;
+}
+
+// Options for Datalist
+export interface Options {
+  id: string;
+  value: string;
 }

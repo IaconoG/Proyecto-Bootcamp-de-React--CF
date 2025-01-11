@@ -1,11 +1,11 @@
-import styles from './AddTaskForm.module.css';
+import styles from "./AddTaskForm.module.css";
 
 // import useAutoSizeHeightTextArea from './hooks/useAutoSizeHeightTextArea';
 
-import Form from '../../../../../../../components/Form';
-import { FormNewTask } from '../../../utils/types';
-import { FormDataType } from '../../../../../../../state/utils/types';
-import Select from '../../../../../../../components/Select';
+import Form from "../../../../../../../components/Form";
+import { FormNewTask } from "../../../utils/types";
+import { FormDataType } from "../../../../../../../state/utils/types";
+import Select from "../../../../../../../components/Select";
 
 interface AddTaskFormProps {
   onAdd: (newTask: FormNewTask, completed: boolean) => void;
@@ -13,9 +13,9 @@ interface AddTaskFormProps {
 
 const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
   const defaultValues: FormNewTask = {
-    title: '',
-    description: '',
-    priority: 'low',
+    title: "",
+    description: "",
+    priority: "low",
     completed: false,
   };
 
@@ -23,15 +23,15 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
     title: {
       maxLength: {
         value: 40,
-        message: 'El titulo de la tarea no puede tener mas de 40 caracteres.',
+        message: "El titulo de la tarea no puede tener mas de 40 caracteres.",
       },
-      required: 'El titulo de la tarea es requerido.',
+      required: "El titulo de la tarea es requerido.",
     },
     description: {
       maxLength: {
         value: 175,
         message:
-          'La descripcion de la tarea no puede tener mas de 175 caracteres.',
+          "La descripcion de la tarea no puede tener mas de 175 caracteres.",
       },
     },
   };
@@ -68,11 +68,11 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAdd }) => {
         <Select
           name="priority"
           options={[
-            { value: 'low', label: 'Baja' },
-            { value: 'medium', label: 'Media' },
-            { value: 'high', label: 'Alta' },
+            { value: "low", label: "Baja" },
+            { value: "medium", label: "Media" },
+            { value: "high", label: "Alta" },
           ]}
-          selectStyles={styles.priority}
+          className={styles.priority}
           defaultValue="low"
           tabIndex={3}
         />

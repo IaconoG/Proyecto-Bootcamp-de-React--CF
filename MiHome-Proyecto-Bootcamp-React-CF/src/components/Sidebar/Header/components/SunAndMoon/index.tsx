@@ -19,7 +19,6 @@ const SunAndMoon: React.FC = () => {
   }, []);
 
   const getSunMoonPosition = () => {
-    // XXX: Este seria la default position cuando no tenemos Location
     // TODO: Al tener location y utilizar la api, podemos conocer cuando se pone el sol y la luna
     const hours = curretnTime.getHours();
     const minutes = curretnTime.getMinutes();
@@ -36,6 +35,7 @@ const SunAndMoon: React.FC = () => {
         transform: `rotate(${getSunMoonPosition()}deg)`,
       }}
     >
+      <div className={styles.border}></div>
       <div className={styles.moonContainer}>
         <img src={moonImg} alt="Luna" className={styles.moon} loading="lazy" />
       </div>

@@ -16,6 +16,7 @@
 }
 
 .linksContainer {
+  height: 100%;
   background-color: var(--clr-blue-dark);
   display: flex;
   flex-direction: column;
@@ -31,16 +32,27 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 0 1.5rem;
 }
+
 .linkContainer a {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  width: 100%;
   font-size: 24px;
   line-height: 1;
+  padding-inline: 1.5rem;
 }
 .linkContainer a:hover {
   color: white;
 }
+.linkContainer a svg {
+  margin-right: 0.5rem;
+}
 
+.linkContainer:last-child {
+  margin-top: auto;
+}
 .widgetSettings {
   order: 2;
 }

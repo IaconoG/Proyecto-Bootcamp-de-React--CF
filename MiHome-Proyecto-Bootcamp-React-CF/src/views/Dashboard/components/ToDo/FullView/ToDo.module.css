@@ -2,6 +2,9 @@
   margin-bottom: 2rem;
 }
 .todoContainer {
+  min-width: 450px;
+  width: 100%;
+  max-width: 900px;
   background-color: var(--clr-black-ligth);
   padding: 1rem;
   display: flex;

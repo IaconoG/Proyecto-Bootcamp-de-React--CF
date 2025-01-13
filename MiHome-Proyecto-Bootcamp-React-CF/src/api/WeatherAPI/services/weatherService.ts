@@ -1,10 +1,10 @@
-import { WeatherData } from '../models/wather';
+import { WeatherData } from "../models/wather";
 import {
   ForecastWeatherParams,
   getRealTimeWeatherEndpoint,
-} from '../endpoints';
-import dataTest from '../../../data/test.json';
-import { getCurrentDate } from '../utils';
+} from "../endpoints";
+import dataTest from "../data/weather_conditions.json";
+import { getCurrentDate } from "../utils";
 
 /*
  * Obtenemos toda la información del tiempo en una localidad
@@ -12,17 +12,17 @@ import { getCurrentDate } from '../utils';
 export async function fetchForecastWeatherData(
   params: ForecastWeatherParams
 ): Promise<WeatherData> {
-  const { localidad, dt = getCurrentDate(), lang = 'es', days = 3 } = params;
+  const { localidad, dt = getCurrentDate(), lang = "es", days = 3 } = params;
   const url = `${getRealTimeWeatherEndpoint}?q=${localidad.replace(
-    ' ',
-    '%20'
+    " ",
+    "%20"
   )}&days=${days}&lang=${lang}&dt=${dt}`;
 
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'x-rapidapi-key': import.meta.env.VITE_APP_WEATHER_RAPIDAPI_KEY!,
-      'x-rapidapi-host': import.meta.env.VITE_APP_WEATHER_RAPIDAPI_HOST!,
+      "x-rapidapi-key": import.meta.env.VITE_APP_WEATHER_RAPIDAPI_KEY!,
+      "x-rapidapi-host": import.meta.env.VITE_APP_WEATHER_RAPIDAPI_HOST!,
     },
   };
 
@@ -32,7 +32,7 @@ export async function fetchForecastWeatherData(
     const data = await response.json();
     return data as WeatherData;
   } catch (error) {
-    console.error('Error al obtener los datos de weather api', error);
+    console.error("Error al obtener los datos de weather api", error);
     throw error;
   }
 }
@@ -40,7 +40,7 @@ export async function fetchForecastWeatherData(
 export function fetchForecastWeatherTest(
   params: ForecastWeatherParams
 ): WeatherData {
-  const { localidad, dt = getCurrentDate(), lang = 'es', days = 3 } = params;
+  const { localidad, dt = getCurrentDate(), lang = "es", days = 3 } = params;
   const url = `${getRealTimeWeatherEndpoint}?q=${localidad}&dt=${dt}&lan=${lang}&days=${days}`;
   console.log(url);
   const data = dataTest as WeatherData;

@@ -2,13 +2,7 @@ import { LocationElement } from '../../api/WeatherAPI/models/wather';
 import { FormNewTask } from '../../views/Dashboard/components/ToDo/utils/types';
 
 export type OccupationType = 'Estudiante' | 'Trabajador' | 'Otro' | '';
-export type WidgetKeys =
-  | 'balance'
-  | 'calendar'
-  | 'focus'
-  | 'infoMicros'
-  | 'toDo'
-  | 'weather';
+export type WidgetKeys = 'balance' | 'calendar' | 'focus' | 'infoMicros' | 'toDo' | 'weather';
 
 export type WidgetTitle =
   | 'Agrega un Widget'
@@ -18,20 +12,19 @@ export type WidgetTitle =
   | 'Info Micros'
   | 'ToDo'
   | 'Weather';
-export type WidgetPath =
-  | 'balance'
-  | 'calendar'
-  | 'focus'
-  | 'info-micros'
-  | 'to-do'
-  | 'weather';
+export type WidgetPath = 'balance' | 'calendar' | 'focus' | 'info-micros' | 'to-do' | 'weather';
 
 export type FormDataType = UserData | FormNewTask;
+
+export interface UserLocation {
+  province: string;
+  city: string;
+}
 
 export interface UserData {
   userName: string;
   occupation: OccupationType;
-  localidad: '';
+  userLocation: UserLocation;
 }
 
 export interface Widget {
@@ -52,4 +45,10 @@ export interface UserWidgets {
 export interface UserInformation {
   userData: UserData;
   userWidgets: UserWidgets;
+}
+
+// Options for Datalist
+export interface Options {
+  id: string;
+  value: string;
 }

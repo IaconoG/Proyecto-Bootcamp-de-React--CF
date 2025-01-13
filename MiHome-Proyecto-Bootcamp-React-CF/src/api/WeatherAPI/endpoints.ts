@@ -3,7 +3,7 @@
  * https://www.weatherapi.com/docs/
  */
 export const getRealTimeWeatherEndpoint =
-  'https://weatherapi-com.p.rapidapi.com/current.json';
+  "https://weatherapi-com.p.rapidapi.com/current.json";
 
 export interface RealTimeWeatherParams {
   localidad: string;
@@ -15,10 +15,10 @@ export interface RealTimeWeatherParams {
  */
 
 export const getForecastWeatherEndpoint =
-  'https://weatherapi-com.p.rapidapi.com/forecast.json';
+  "https://weatherapi-com.p.rapidapi.com/forecast.json";
 
 export interface ForecastWeatherParams {
-  localidad: string;
+  location: string;
   dt?: string; // YYYY-MM-DD // Default today
   lang?: string; // Default 'en'
   days?: number; // Default 3 (free)

@@ -1,18 +1,24 @@
-import { UserData, UserWidgets, Widget, WidgetKeys } from '../../utils/types';
+import {
+  UserData,
+  UserLocation,
+  UserWidgets,
+  Widget,
+  WidgetKeys,
+} from "../../utils/types";
 import {
   INITIAL_USER_INFORMATION,
   LOCAL_STORAGE_USER_INFORMATION,
-} from '../../utils/constants';
+} from "../../utils/constants";
 
-import { create } from 'zustand';
-import { immer } from 'zustand/middleware/immer';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import { devtools } from 'zustand/middleware';
+import { create } from "zustand";
+import { immer } from "zustand/middleware/immer";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { devtools } from "zustand/middleware";
 
 type Actions = {
   getUserData: () => UserData;
   updateUserData: (userData: UserData) => void;
-  getUserLocalidad: () => string;
+  getUserLocation: () => UserLocation;
   getUserWidgets: () => UserWidgets;
   updateUserWidgets: (userWidgets: UserWidgets) => void;
   getAddedWidgets: () => Widget[];
@@ -46,7 +52,7 @@ const userInfo = create<State & Actions>()(
               state.userData = userData;
             });
           },
-          getUserLocalidad: () => get().userData.localidad,
+          getUserLocation: () => get().userData.userLocation,
 
           // User Widgets
           getUserWidgets: () => get().userWidgets,

@@ -1,5 +1,40 @@
 # My Home
 
+#### FrontEnd base on React
+
+- React
+- JavaScript
+- TypeScript
+- Vite
+- Zustand
+- LocalStorage
+- Fetch API
+- Google API Login
+- React Router
+- React Hook Form
+- date-fns
+- React Icons
+- React Testing Library
+- ChacrkaUI
+
+#### BackEnd base on Java
+
+- Java
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- Spring Web
+- Spring Validation
+- Spring Mail
+- Spring Cache
+- Spring Actuator
+
+#### Database
+
+- MySQL
+- H2
+- Flyway
+
 ## Tecnologías
 
 - [React](https://es.reactjs.org/)
@@ -108,3 +143,9 @@
 #### API
 
 - `memo`
+
+## Ideas
+
+- [ ] Implementar un sistema de autenticación con Google.
+- [ ] Implementar un sistema de administracion de productos.
+  - Como Trello.

@@ -1,16 +1,18 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { WidgetKeys } from '../../../state/utils/types';
-import userInfo from '../../../state/stores/userInfo/user-info';
+// FIXME: Ese hook podria utilizarlo en algun momento. Por ahora no.
 
-const useRedirectIfWidgetNotActive = (widgetName: WidgetKeys) => {
-  const navigate = useNavigate();
-  const { getUserWidgets } = userInfo();
+// import { useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { WidgetKeys } from '../../../state/utils/types';
+// import userInfo from '../../../state/stores/userInfo/user-info';
 
-  useEffect(() => {
-    const userWidgetToDo = getUserWidgets()[widgetName];
-    if (!userWidgetToDo.active) navigate('/dashboard');
-  }, [widgetName, navigate]);
-};
+// const useRedirectIfWidgetNotActive = (widgetName: WidgetKeys) => {
+//   const navigate = useNavigate();
+//   const { getUserWidgets } = userInfo();
 
-export default useRedirectIfWidgetNotActive;
+//   useEffect(() => {
+//     const userWidgetToDo = getUserWidgets()[widgetName];
+//     if (!userWidgetToDo.active) navigate('/dashboard');
+//   }, [widgetName, navigate]);
+// };
+
+// export default useRedirectIfWidgetNotActive;

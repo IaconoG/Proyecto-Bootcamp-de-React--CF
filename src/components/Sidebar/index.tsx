@@ -16,13 +16,11 @@ import { Icon } from "../icons/Icon";
 // ** State **
 
 // ** Utils **
-import { WidgetPath } from "../../state/utils/types";
+import { ROUTES } from "../../types/routes-types";
 
 const Sidebar: React.FunctionComponent = () => {
-  type PathName = WidgetPath | "settings" | "";
   const location = useLocation();
-  const pathName = location.pathname as PathName; // /dashboard/etc
-  const pageSelected = pathName.substring("/dashboard/".length) as PathName;
+  const pageSelected = location.pathname as ROUTES;
 
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -37,7 +35,7 @@ const Sidebar: React.FunctionComponent = () => {
       </button>
       <SidebarHeader />
       <SidebarContent pageSelected={pageSelected} isCollapsed={isCollapsed} />
-      <SidebarFooter isSelected={pageSelected === "settings"} isCollapsed={isCollapsed} />
+      <SidebarFooter isSelected={pageSelected === ROUTES.SETTINGS} isCollapsed={isCollapsed} />
     </nav>
   );
 };

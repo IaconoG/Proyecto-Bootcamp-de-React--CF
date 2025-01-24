@@ -1,4 +1,4 @@
-// ** Components **
+import { ROUTES } from "../../../types/routes-types";
 import LinkContainer from "../LinkContainer";
 
 type SidebarFooterProps = {
@@ -12,7 +12,7 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isSelected, isCollapsed }
       <LinkContainer
         icon="Settings"
         text="Settings"
-        link="/dashboard/settings"
+        link={ROUTES.SETTINGS}
         isActive={isSelected}
         isCollapsed={isCollapsed}
       />

@@ -1,6 +1,7 @@
 // ** State **
-import userInfo from "../../../state/stores/userInfo/user-info";
-import { Widget } from "../../../state/utils/types";
+import { WIDGETS_DATA } from "../../../state/stores/widgets/constants";
+import { Widget } from "../../../state/stores/widgets/types";
+import { ROUTES } from "../../../types/routes-types";
 import LinkContainer from "../LinkContainer";
 
 type SidebarContentProps = {
@@ -9,28 +10,24 @@ type SidebarContentProps = {
 };
 
 const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected, isCollapsed }) => {
-  const { getAllWidgets } = userInfo();
-  const allLinks = getAllWidgets();
-
-  const RenderLinks = allLinks.map((widget: Widget) => (
+  const RenderLinks = WIDGETS_DATA.map((widget: Widget) => (
     <LinkContainer
-      key={widget.title}
+      key={widget.name + "-" + widget.id}
       icon={"NoneIcon"} // FIXME: Change this default icon to the correct one when i have all the icons
-      text={widget.title}
-      link={`/dashboard/${widget.path}`}
+      text={widget.name}
+      link={widget.path}
       isActive={pageSelected === widget.path}
       isCollapsed={isCollapsed}
     />
   ));
-
   return (
     <div>
       <LinkContainer
         key={"Home"}
         icon="Home"
         text="MiHome"
-        link="/dashboard"
-        isActive={pageSelected == ""}
+        link={ROUTES.DASHBOARD}
+        isActive={pageSelected == ROUTES.DASHBOARD}
         isCollapsed={isCollapsed}
       />
       {RenderLinks}

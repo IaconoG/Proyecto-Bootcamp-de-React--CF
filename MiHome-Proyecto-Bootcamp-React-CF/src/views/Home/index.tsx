@@ -4,7 +4,7 @@ import Navbar from "../../components/Sidebar";
 const Home = (): JSX.Element => {
   return (
     <>
-      <Navbar page="" />
+      <Navbar />
       <h1>Home</h1>
       <button>
         <Link to="/dashboard">Comenzar</Link>

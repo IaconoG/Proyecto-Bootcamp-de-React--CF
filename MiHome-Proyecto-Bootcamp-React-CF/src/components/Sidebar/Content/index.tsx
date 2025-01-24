@@ -1,83 +1,32 @@
-// ** Styles **
-import styles from "./SidebarContent.module.css";
-
 // ** State **
 import userInfo from "../../../state/stores/userInfo/user-info";
 import { Widget } from "../../../state/utils/types";
-import { Link } from "react-router-dom";
-import { Icon } from "../../icons/Icon";
+import LinkContainer from "../LinkContainer";
 
-// const RenderLinks: React.FunctionComponent<{ userLocalidad: string }> = ({ userLocalidad }) => {
-//   const { getAllWidgets } = userInfo();
-//   const location = useLocation();
-//   const pathName = location.pathname as PathName; // /dashboard/etc
-//   const pageSelected = pathName.substring('/dashboard/'.length) as PathName;
-
-//   return (
-//     <>
-//       <div className={`${styles.linkContainer} ${!pageSelected && styles.active}`}>
-//         <Link to="/dashboard" className={styles.homeContainer}>
-//           <Icon icon="Home" width={24} height={24} />
-//           MiHome
-//         </Link>
-//       </div>
-//       {/* FIXME: DELETE getAllWidgets */}
-//       {getAllWidgets().map((widget: Widget) => (
-//         <div
-//           key={widget.title}
-//           className={`${styles.linkContainer} ${pageSelected === widget.path && styles.active}`}
-//         >
-//           <Link to={`/dashboard/${widget.path}`}>
-//             <Icon icon="NoneIcon" width={24} height={24} />
-//             {widget.title}
-//           </Link>
-//         </div>
-//       ))}
-//       {/* use this */}
-//       {/* {getAddedWidgets().map((widget: Widget) => (
-//         <div
-//           key={widget.title}
-//           className={`${styles.linkContainer} ${
-//             pageSelected === widget.path && styles.active
-//           }`}
-//         >
-//           <Link to={`/dashboard/${widget.path}`}>{widget.title}</Link>
-//         </div>
-//       ))} */}
-//     </>
-//   );
-// };
-
-interface SidebarContentProps {
+type SidebarContentProps = {
   pageSelected: string;
-}
+};
 
 const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected }) => {
   const { getAllWidgets } = userInfo();
   const allLinks = getAllWidgets();
 
   console.log(allLinks);
+  console.log(pageSelected);
 
   const RenderLinks = allLinks.map((widget: Widget) => (
-    <Link
-      to={`/dashboard/${widget.path}`}
+    <LinkContainer
       key={widget.title}
-      className={`${pageSelected === widget.path && styles.active}`}
-    >
-      <Icon icon="NoneIcon" width={24} height={24} />
-      {widget.title}
-    </Link>
+      icon={"NoneIcon"} // FIXME: Change this default icon to the correct one when i have all the icons
+      text={widget.title}
+      link={`/dashboard/${widget.path}`}
+      isActive={pageSelected === widget.path}
+    />
   ));
-
-  console.log(pageSelected);
 
   return (
     <div>
-      {/* <div className={`${styles.linkContainer} ${!pageSelected && styles.active}`}> */}
-      <Link to="/dashboard" className={styles.homeContainer} key={"Home"}>
-        <Icon icon="Home" width={24} height={24} />
-        MiHome
-      </Link>
+      <LinkContainer key={"Home"} icon="Home" text="MiHome" link="/dashboard" isActive={pageSelected == ""} />
       {RenderLinks}
     </div>
   );

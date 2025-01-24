@@ -1,21 +1,14 @@
-import { Link } from "react-router-dom";
-
-// ** Styles **
-import styles from "./SidebarFooter.module.css";
 // ** Components **
-import { Icon } from "../../icons/Icon";
+import LinkContainer from "../LinkContainer";
 
-interface SidebarFooterProps {
+type SidebarFooterProps = {
   isSelected: boolean;
-}
+};
 
 const SidebarFooter: React.FC<SidebarFooterProps> = ({ isSelected }) => {
   return (
     <div>
-      <Link to="/dashboard/settings" className={`${isSelected && styles.active}`}>
-        <Icon icon="Settings" width={24} height={24} />
-        <span>Settings</span>
-      </Link>
+      <LinkContainer icon="Settings" text="Settings" link="/dashboard/settings" isActive={isSelected} />
     </div>
   );
 };

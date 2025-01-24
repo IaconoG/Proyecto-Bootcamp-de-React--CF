@@ -1,0 +1,29 @@
+.link {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-size: 22px;
+  line-height: 1;
+  padding-inline: 1em;
+  margin-inline: 0.5em;
+
+  border-radius: 12px;
+  border: 1px dotted green;
+}
+.link:hover {
+  color: white;
+}
+.link svg {
+  fill: transparent;
+  stroke: currentColor;
+  margin-right: 0.5rem;
+}
+.link svg > * {
+  stroke: currentColor;
+}
+
+.link.active {
+  background-color: var(--clr-violet);
+  color: white;
+}

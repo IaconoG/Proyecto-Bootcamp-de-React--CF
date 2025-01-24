@@ -9,13 +9,14 @@ type LinkContainerProps = {
   text: string;
   link: string;
   isActive: boolean;
+  isCollapsed: boolean;
 };
 
-const LinkContainer = ({ icon, text, link, isActive }: LinkContainerProps) => {
+const LinkContainer = ({ icon, text, link, isActive, isCollapsed }: LinkContainerProps) => {
   return (
     <Link to={link} className={`${styles.link} ${isActive ? styles.active : ""}`}>
       <Icon icon={icon} width={24} height={24} />
-      <span>{text}</span>
+      <p className={`${styles.text} ${isCollapsed ? styles.collapsed : ""}`}>{text}</p>
     </Link>
   );
 };

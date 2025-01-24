@@ -1,23 +1,32 @@
 .link {
-  height: 50px;
+  height: 45px;
   display: flex;
   align-items: center;
-  text-align: start;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1;
-  padding-inline: 1em;
+  padding-inline: 0.75em;
   margin-inline: 0.5em;
-
-  border-radius: 12px;
-  border: 1px dotted green;
+  border-radius: 8px;
+  /* border: 1px dotted green; */
 }
 .link:hover {
   color: white;
 }
+.text {
+  margin-top: 1px;
+  margin-left: 0.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  white-space: nowrap;
+  position: absolute;
+  left: 48.5px;
+}
+.text.collapsed {
+  opacity: 0;
+}
 .link svg {
   fill: transparent;
   stroke: currentColor;
-  margin-right: 0.5rem;
 }
 .link svg > * {
   stroke: currentColor;

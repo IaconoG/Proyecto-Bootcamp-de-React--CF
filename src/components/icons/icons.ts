@@ -1,8 +1,6 @@
 import Home from "../../assets/icons/Home.svg?react";
 import Settings from "../../assets/icons/Settings.svg?react";
 import NoneIcon from "../../assets/icons/NoneIcon.svg?react";
-import Maximize from "../../assets/icons/Maximize.svg?react";
-import Minimize from "../../assets/icons/Minimize.svg?react";
 import Checklist from "../../assets/icons/Checklist.svg?react";
 import Focus from "../../assets/icons/Focus.svg?react";
 import MoonFog from "../../assets/icons/MoonFog.svg?react";
@@ -15,8 +13,6 @@ export const Icons = {
   Home,
   Settings,
   NoneIcon,
-  Maximize,
-  Minimize,
   Checklist,
   Focus,
   MoonFog,

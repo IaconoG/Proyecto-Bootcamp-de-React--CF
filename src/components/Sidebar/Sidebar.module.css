@@ -7,48 +7,34 @@
   background-color: var(--clr-blue-dark);
   width: 100%;
   max-width: 200px;
+  height: 100vh;
   transition: width 0.35s ease-in-out;
   display: grid;
-  grid-template-rows: max(125px) 1fr auto;
-  height: 100vh;
-  position: fixed;
-  z-index: 50;
-  padding: 0;
+  grid-template-rows: max(125px) auto 1fr auto auto;
+  align-items: center;
   color: var(--clr-main-sidebar);
-  /* border: 1px dotted red; */
-  overflow: hidden;
+  position: relative;
 }
 .sidebar.collapsed {
-  width: 70px;
+  width: 80px;
 }
 
 .sidebar > div {
   width: 100%;
   max-width: 230px;
   height: 100%;
-  /* border: 1px dotted blue; */
-}
-.sidebar > div:not(:first-child) {
-  padding-block: 1em;
 }
 
-.collapseButton {
-  padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--clr-blue-dark);
-  color: var(--clr-main-sidebar);
-  cursor: pointer;
+.sidebar .divider {
+  height: 2px;
+  background-color: var(--clr-violet);
   border: none;
+  border-radius: 9999px;
+  margin: 0 auto;
+  width: calc(100% - 3.5em);
 }
-.collapseButton > span {
-  margin: 0;
+.sidebar .divider {
+  margin-bottom: 1rem;
 }
 
 .gradient {

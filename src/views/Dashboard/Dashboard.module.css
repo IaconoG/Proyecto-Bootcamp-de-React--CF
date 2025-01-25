@@ -1,10 +1,4 @@
-main {
-  flex: 1 0 auto;
-  text-align: start;
-}
-
 .dashboardContent {
-  margin-left: 14rem;
   border: 1px dotted green;
 }
 

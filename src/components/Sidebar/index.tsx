@@ -17,6 +17,7 @@ import { Icon } from "../icons/Icon";
 
 // ** Utils **
 import { ROUTES } from "../../types/routes-types";
+import SidebarToggleButton from "./SidebarToggleButton/SidebarToggleButton";
 
 const Sidebar: React.FunctionComponent = () => {
   const location = useLocation();
@@ -26,15 +27,11 @@ const Sidebar: React.FunctionComponent = () => {
 
   return (
     <nav className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
-      <button className={styles.collapseButton} onClick={() => setIsCollapsed(!isCollapsed)}>
-        {isCollapsed ? (
-          <Icon icon={"Maximize"} width={18} height={18} />
-        ) : (
-          <Icon icon={"Minimize"} width={18} height={18} />
-        )}
-      </button>
+      <SidebarToggleButton isCollapsed={isCollapsed} onclick={() => setIsCollapsed(!isCollapsed)} />
       <SidebarHeader />
+      <hr className={styles.divider} />
       <SidebarContent pageSelected={pageSelected} isCollapsed={isCollapsed} />
+      <hr className={styles.divider} />
       <SidebarFooter isSelected={pageSelected === ROUTES.SETTINGS} isCollapsed={isCollapsed} />
     </nav>
   );

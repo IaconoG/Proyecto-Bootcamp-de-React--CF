@@ -1,0 +1,46 @@
+.toggleButton {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: fit-content;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--clr-grey);
+  border-color: var(--clr-violet-light);
+  transition: border-color 0.8s ease-out;
+}
+.toggleButton:hover {
+  /* border-color: whitesmoke; */
+  border-color: var(--clr-violet-light);
+}
+.toggleButton hr {
+  width: 20px;
+  height: 2px;
+  background-color: var(--clr-violet-light);
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toggleButton * {
+  padding: 0;
+  margin: 0;
+}
+.toggleButton span {
+  /* height: 14px; */
+  /* border: 1px solid red; */
+
+  position: relative;
+  top: 1px;
+}
+.toggleButton svg path {
+  transition: stroke 0.5s ease-out;
+  stroke: whitesmoke;
+}
+.toggleButton:hover svg path {
+  stroke: var(--clr-violet-light);
+  /* stroke: whitesmoke; */
+}

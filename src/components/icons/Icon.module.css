@@ -4,7 +4,8 @@
   margin-top: 2px;
 }
 .customIcon path,
-.customIcon rect {
+.customIcon rect,
+.customIcon circle {
   stroke: currentColor;
 }
 

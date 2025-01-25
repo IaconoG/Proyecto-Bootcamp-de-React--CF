@@ -10,7 +10,7 @@ type UserInfoActions = {
   setInitialUserInfo: () => void;
   getUserInfo: () => UserInfoState;
   updateUserInfo: (userInfo: UserInfoState) => void;
-  getUserLocation: () => { province: string; city: string };
+  getUserLocation: () => { province: string; city: string; timeZone: string };
 };
 
 export const useUserInfoStore = create(

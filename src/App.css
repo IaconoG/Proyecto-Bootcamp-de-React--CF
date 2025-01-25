@@ -8,13 +8,3 @@
   background-color: var(--clr-blue);
   color: rgba(255, 255, 255, 0.8);
 }
-
-.custom-icon {
-  width: fit-content;
-  height: fit-content;
-  margin-top: 2px;
-}
-.custom-icon path,
-.custom-icon rect {
-  stroke: currentColor;
-}

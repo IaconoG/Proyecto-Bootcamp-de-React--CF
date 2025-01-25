@@ -1,0 +1,16 @@
+.customIcon {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 2px;
+}
+.customIcon path,
+.customIcon rect {
+  stroke: currentColor;
+}
+
+.moonFog path:nth-of-type(4),
+.moonFog path:nth-of-type(5),
+.moonFog path:nth-of-type(6) {
+  fill: currentColor;
+  stroke: transparent;
+}

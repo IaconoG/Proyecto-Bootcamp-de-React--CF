@@ -24,13 +24,6 @@
 .text.collapsed {
   opacity: 0;
 }
-.link svg {
-  fill: transparent;
-  stroke: currentColor;
-}
-.link svg > * {
-  stroke: currentColor;
-}
 
 .link.active {
   background-color: var(--clr-violet);

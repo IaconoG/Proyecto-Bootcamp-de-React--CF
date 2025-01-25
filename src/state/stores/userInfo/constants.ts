@@ -6,5 +6,6 @@ export const USER_INFO_INITIAL_STATE: UserInfo = {
   location: {
     province: "",
     city: "",
+    timeZone: "America/Argentina/Buenos_Aires",
   },
 };

@@ -9,4 +9,5 @@ export type UserInfo = {
 export type UserLocation = {
   province: string;
   city: string;
+  timeZone: string;
 };

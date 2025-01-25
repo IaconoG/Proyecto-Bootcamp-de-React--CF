@@ -1,24 +1,29 @@
-// ** State **
+// ** state **
+import { useUserInfoStore } from "../../../state/stores/userInfo/userInfo-store";
+// ** hooks **
+import { useTime } from "../../../hooks/useTime";
+// ** constants **
 import { WIDGETS_DATA, WIDGETS_NAMES } from "../../../state/stores/widgets/constants";
+// ** components **
+import LinkContainer from "../LinkContainer";
+// ** types **
 import { Widget } from "../../../state/stores/widgets/types";
 import { ROUTES } from "../../../types/routes-types";
-import LinkContainer from "../LinkContainer";
-
 type SidebarContentProps = {
   pageSelected: string;
   isCollapsed: boolean;
 };
 
 const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected, isCollapsed }) => {
-  const getWeatherIcon = () => {
-    const minutes = new Date().getMinutes();
-    return minutes % 2 == 0 ? "SunFog" : "MoonFog";
-  };
+  const { getUserLocation } = useUserInfoStore();
+  const dayPeriod = useTime(getUserLocation().timeZone);
 
   const RenderLinks = WIDGETS_DATA.map((widget: Widget) => (
     <LinkContainer
       key={widget.name + "-" + widget.id}
-      icon={widget.name === WIDGETS_NAMES.WHEATER ? getWeatherIcon() : widget.icon}
+      icon={
+        widget.name === WIDGETS_NAMES.WEATHER ? (dayPeriod === "day" ? "SunFog" : "MoonFog") : widget.icon
+      }
       text={widget.name}
       link={widget.path}
       isActive={pageSelected === widget.path}

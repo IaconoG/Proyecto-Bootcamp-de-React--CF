@@ -9,7 +9,11 @@ type SidebarToggleButtonProps = {
 const SidebarToggleButton: React.FC<SidebarToggleButtonProps> = ({ isCollapsed, onclick }) => {
   return (
     <button className={`${isCollapsed ? styles.collapsed : ""} ${styles.toggleButton}`} onClick={onclick}>
-      {isCollapsed ? <hr /> : <Icon icon={"Settings"} width={15} height={15} />}
+      {isCollapsed ? (
+        <Icon icon={"ArrowRight"} width={18} height={18} />
+      ) : (
+        <Icon icon={"ArrowLeft"} width={18} height={18} />
+      )}
     </button>
   );
 };

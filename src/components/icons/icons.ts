@@ -8,6 +8,8 @@ import SunFog from "../../assets/icons/SunFog.svg?react";
 import Calendar from "../../assets/icons/Calendar.svg?react";
 import Balance from "../../assets/icons/Balance.svg?react";
 import InfoMicros from "../../assets/icons/InfoMicros.svg?react";
+import ArrowRight from "../../assets/icons/ArrowRight.svg?react";
+import ArrowLeft from "../../assets/icons/ArrowLeft.svg?react";
 
 export const Icons = {
   Home,
@@ -20,4 +22,6 @@ export const Icons = {
   Calendar,
   Balance,
   InfoMicros,
+  ArrowRight,
+  ArrowLeft,
 } as const;

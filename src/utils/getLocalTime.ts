@@ -1,3 +1,3 @@
 export const getLocalTime = (timezone: string) => {
-  return new Date().toLocaleString("en-US", { timeZone: timezone });
+  return new Date().toLocaleString("es-AR", { timeZone: timezone });
 };

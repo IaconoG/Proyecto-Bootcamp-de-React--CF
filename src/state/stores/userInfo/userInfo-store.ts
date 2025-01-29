@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { USER_INFO_INITIAL_STATE } from "./constants";
-import { UserInfo } from "./types";
+import { UserInfo, UserLocation } from "./types";
 
 type UserInfoState = UserInfo;
 
@@ -10,7 +10,7 @@ type UserInfoActions = {
   setInitialUserInfo: () => void;
   getUserInfo: () => UserInfoState;
   updateUserInfo: (userInfo: UserInfoState) => void;
-  getUserLocation: () => { province: string; city: string; timeZone: string };
+  getUserLocation: () => UserLocation;
 };
 
 export const useUserInfoStore = create(

@@ -8,16 +8,10 @@ import styles from "./Sidebar.module.css";
 import SidebarHeader from "./Header";
 import SidebarContent from "./Content";
 import SidebarFooter from "./Footer";
-import { Icon } from "../icons/Icon";
-// import SunAndMoon from './components/SunAndMoon';
-// import Weather from './components/Weather';
-// import Time from './components/Time';
-
-// ** State **
-
-// ** Utils **
-import { ROUTES } from "../../types/routes-types";
 import SidebarToggleButton from "./SidebarToggleButton/SidebarToggleButton";
+
+// ** Types **
+import { ROUTES } from "../../types/routes-types";
 
 const Sidebar: React.FunctionComponent = () => {
   const location = useLocation();
@@ -28,7 +22,7 @@ const Sidebar: React.FunctionComponent = () => {
   return (
     <nav className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
       <SidebarToggleButton isCollapsed={isCollapsed} onclick={() => setIsCollapsed(!isCollapsed)} />
-      <SidebarHeader />
+      <SidebarHeader isCollapsed={isCollapsed} />
       <hr className={styles.divider} />
       <SidebarContent pageSelected={pageSelected} isCollapsed={isCollapsed} />
       <hr className={styles.divider} />

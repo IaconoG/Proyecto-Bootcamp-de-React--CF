@@ -1,3 +1,7 @@
 export const getLocalTime = (timezone: string) => {
-  return new Date().toLocaleString("es-AR", { timeZone: timezone });
+  const now = new Date().toLocaleTimeString("es-AR", { timeZone: timezone });
+  const [hours, minutes, seconds] = now.split(":");
+  const currentTime = { hours, minutes, seconds };
+
+  return currentTime;
 };

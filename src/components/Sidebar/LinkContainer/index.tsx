@@ -14,9 +14,13 @@ type LinkContainerProps = {
 
 const LinkContainer = ({ icon, text, link, isActive, isCollapsed }: LinkContainerProps) => {
   return (
-    <Link to={link} className={`${styles.link} ${isActive ? styles.active : ""}`}>
+    <Link
+      to={link}
+      className={`${styles.link} ${isActive ? styles.active : ""} ${isCollapsed ? styles.collapsed : ""}`}
+    >
       <Icon icon={icon} width={24} height={24} />
-      <p className={`${styles.text} ${isCollapsed ? styles.collapsed : ""}`}>{text}</p>
+      <p className={styles.text}>{text}</p>
+      {/* <p className={`${styles.text} ${isCollapsed ? 'fadeIn moveLeft' : 'fadeOut'}`}>{text}</p> */}
     </Link>
   );
 };

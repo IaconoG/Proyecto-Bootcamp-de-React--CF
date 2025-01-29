@@ -1,7 +1,5 @@
-// ** state **
-import { useUserInfoStore } from "../../../state/stores/userInfo/userInfo-store";
 // ** hooks **
-import { useTime } from "../../../hooks/useTime";
+import { useDayPeriod } from "../../../hooks/useDayPeriod";
 // ** constants **
 import { WIDGETS_DATA, WIDGETS_NAMES } from "../../../state/stores/widgets/constants";
 // ** components **
@@ -15,8 +13,7 @@ type SidebarContentProps = {
 };
 
 const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected, isCollapsed }) => {
-  const { getUserLocation } = useUserInfoStore();
-  const dayPeriod = useTime(getUserLocation().timeZone);
+  const { dayPeriod } = useDayPeriod();
 
   const RenderLinks = WIDGETS_DATA.map((widget: Widget) => (
     <LinkContainer
@@ -30,6 +27,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected, isCollaps
       isCollapsed={isCollapsed}
     />
   ));
+
   return (
     <div>
       <LinkContainer

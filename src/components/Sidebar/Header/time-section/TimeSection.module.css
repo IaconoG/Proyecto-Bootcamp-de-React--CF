@@ -1,0 +1,60 @@
+.timeContainer {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 25px;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "date date"
+    "hour hour"
+    "minutes_seconds minutes_seconds";
+  font-weight: 400;
+}
+
+.hour,
+.minutes,
+.seconds {
+  font-family: var(--font-clock);
+  line-height: 1;
+  width: 100%;
+}
+.hour,
+.timeGroup {
+  width: 70px;
+  justify-self: center;
+}
+
+.date {
+  grid-area: date;
+  font-size: 0.55rem;
+  line-height: 1;
+}
+.hour {
+  grid-area: hour;
+  align-self: flex-end;
+  font-size: 2.3rem;
+}
+.timeGroup {
+  margin-left: 12.5px;
+  grid-area: minutes_seconds;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 2px;
+}
+.minutes,
+.seconds {
+  width: fit-content;
+  justify-self: flex-start;
+  text-align: start;
+}
+.minutes {
+  width: 35px;
+  grid-area: minutes;
+  font-size: 1.25rem;
+}
+.seconds {
+  grid-area: seconds;
+  font-size: 0.8rem;
+  margin-bottom: 1px;
+}

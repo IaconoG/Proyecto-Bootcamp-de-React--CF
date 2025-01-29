@@ -1,48 +1,30 @@
 // ** Styles **
+import { useUserInfoStore } from "../../../state/stores/userInfo/userInfo-store";
 import styles from "./Header.module.css";
 
 // ** Components **
-import SunAndMoon from "./components/SunAndMoon";
-import Weather from "./components/Weather";
-import Time from "./components/Time";
+import LocationSection from "./location-section";
+import TimeSection from "./time-section";
+import WeatherSection from "./weather-section";
 
-// ** State **
-import weatherInfo from "../../../state/stores/weather/weather-info";
+type SidebarHeaderProps = {
+  isCollapsed: boolean;
+};
 
-// ** API **
-// import { startAutoRefresh, fetchForecastWeatherData } from '../../api/WeatherAPI/services/weatherService';
-// import { ForecastWeatherParams } from '../../api/WeatherAPI/endpoints';
-
-//   // Refresh the weather data every 3hours and when the component is mounted
-//   // useEffect(() => {
-//   //   const fetchData = () => {
-//   //     const params: ForecastWeatherParams = {
-//   //       localidad: userLocalidad,
-//   //     };
-//   //     fetchForecastWeatherData(params);
-//   //   };
-//   //   fetchData();
-//   //   const refreshInterval = startAutoRefresh(fetchData);
-//   //   return () => clearInterval(refreshInterval);
-//   // }, []);
-
-const SidebarHeader = () => {
-  const { getLocation } = weatherInfo();
-  const { name, region, country } = getLocation();
+const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed }) => {
+  const { getUserLocation } = useUserInfoStore();
+  const { province, city } = getUserLocation();
 
   return (
-    <div className={styles.header}>
-      <p> Header</p>
-      <div className={`${styles.gradient}`}></div>
-
-      {/* // <div className={styles.header}>
-    //   <p className={styles.localidad}>{`${name}, ${region}, ${country}`}</p>
-    //   <div className={styles.watherAndTime}>
-    //     <Time />
-    //     <Weather />
-    //   </div>
-
-    //   <SunAndMoon /> */}
+    <div className={`${styles.header} ${isCollapsed ? styles.collapsed : ""}`}>
+      <LocationSection
+        province={province}
+        city={city}
+        className={styles.locationSection}
+        isCollapsed={isCollapsed}
+      />
+      <TimeSection className={styles.timeSection} />
+      <WeatherSection className={styles.weatherSection} />
     </div>
   );
 };

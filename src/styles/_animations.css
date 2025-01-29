@@ -1,0 +1,13 @@
+/* Keyframes y clases de animaciones */
+
+input,
+textarea,
+button {
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+button:hover {
+  border-color: var(--clr-violet-light);
+}

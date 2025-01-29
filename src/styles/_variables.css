@@ -1,0 +1,32 @@
+/* Variables globales (colores, espaciados, etc.) */
+:root {
+  /* Tipografia */
+  --font-fallback: Arial, sans-serif;
+  --font-primary: "Outfit";
+  --font-secondary: "Poppins", serif;
+  --font-clock: "Orbitron", serif;
+
+  /* Colores */
+  --clr-primary: rgba(255, 255, 255, 0.8);
+
+  --clr-sidebar: rgba(255, 255, 255, 0.6);
+  --clr-sidebar-header: var(--clr-primary);
+
+  --clr-white: #fff;
+
+  --clr-black: rgb(/* Colores */ 15, 15, 15);
+  --clr-black-ligth: rgb(25, 25, 25);
+  --clr-grey: rgb(42, 42, 42);
+
+  --clr-blue-dark: #1c2129;
+  --clr-blue: #222831;
+
+  --clr-violet-dark: #2a2438;
+  --clr-violet: #352f44;
+  --clr-violet-light: rgb(93, 84, 118);
+
+  --clr-border-white: #dbd8e3;
+  --clr-border: rgba(255, 255, 255, 0.5);
+
+  --clr-detail: #fd7014;
+}

@@ -1,6 +1,4 @@
-import Routes from './routes';
-
-import './App.css';
+import Routes from "./routes";
 
 const App = (): JSX.Element => {
   return <Routes />;

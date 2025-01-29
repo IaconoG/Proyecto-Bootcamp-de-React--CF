@@ -1,0 +1,73 @@
+@import "./_variables.css";
+@import "./_animations.css";
+@import "./_reset.css";
+@import "./_typography.css";
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  background-color: var(--clr-blue);
+}
+
+nav {
+  padding-block: 0.5rem;
+}
+main {
+  padding: 1.25rem;
+}
+
+input {
+  border: none;
+  background: none;
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-family: Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  padding: 3px 5px;
+}
+
+button,
+input[type="submit"] {
+  color: var(--clr-primary);
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.25px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  max-width: fit-content;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}

@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useUserInfoStore } from "../state/stores/userInfo/userInfo-store";
 import { getLocalTime } from "../utils/getLocalTime";
 
-export const useCurrentTime = () => {
+export const useCurrentTime: () => {
+  currentTime: { hours: string; minutes: string; seconds: string };
+} = () => {
   const { getUserLocation } = useUserInfoStore();
   const timezone = getUserLocation().timeZone;
-  const [currentTime, setCurrentTime] = useState(getLocalTime(timezone));
+  const [currentTime, setCurrentTime] = useState(() => getLocalTime(timezone));
 
   useEffect(() => {
     // Actualizar currentTime cada 1 segundo

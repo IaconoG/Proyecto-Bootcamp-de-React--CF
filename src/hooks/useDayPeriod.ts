@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useUserInfoStore } from "../state/stores/userInfo/userInfo-store";
 import { isDayOrNight } from "../utils/isDayOrNight";
 
-export const useDayPeriod = () => {
+export const useDayPeriod: () => { dayPeriod: "day" | "night" } = () => {
   const { getUserLocation } = useUserInfoStore();
   const timezone = getUserLocation().timeZone;
   const [dayPeriod, setDayPeriod] = useState<"day" | "night">(isDayOrNight(timezone));

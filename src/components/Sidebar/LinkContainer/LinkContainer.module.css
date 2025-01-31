@@ -6,22 +6,26 @@
 
 .link {
   position: relative;
-  width: minmax(100%, fit-content);
   display: flex;
   align-items: center;
   gap: var(--gap);
-  padding: 0.5rem var(--paddin-inline);
   box-sizing: border-box;
+  padding: 0.5rem 0;
   border-radius: 8px;
   font-size: 18px;
   line-height: 1;
 }
+.link svg {
+  margin-inline: calc(var(--width-icon) / 2);
+}
 
-.text {
+.link .text {
+  display: inline-block;
   position: absolute;
   left: calc(var(--width-icon) + var(--gap) + var(--paddin-inline));
+  width: fit-content;
   transform: translateX(0);
-  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, width 0.4s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.4s ease;
 
   white-space: nowrap;
   overflow: hidden;
@@ -29,7 +33,7 @@
 .link.collapsed .text {
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-10px);
+  transform: translateX(-20px);
 }
 
 .link.active {

@@ -20,7 +20,6 @@ const LinkContainer = ({ icon, text, link, isActive, isCollapsed }: LinkContaine
     >
       <Icon icon={icon} width={24} height={24} />
       <p className={styles.text}>{text}</p>
-      {/* <p className={`${styles.text} ${isCollapsed ? 'fadeIn moveLeft' : 'fadeOut'}`}>{text}</p> */}
     </Link>
   );
 };

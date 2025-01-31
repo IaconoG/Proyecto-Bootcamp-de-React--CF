@@ -6,11 +6,13 @@
   grid-template-areas:
     "location location"
     "time weather";
+  row-gap: 5px;
   padding-inline: 0.5em;
   transition: grid-template-columns 0.5s, grid-template-rows 0.5s, grid-template-areas 0.5s;
   color: var(--clr-sidebar-header);
 }
-.collapsed {
+.header.collapsed {
+  width: var(--width-sidebar-collapsed);
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
@@ -20,12 +22,9 @@
 }
 
 .locationSection {
-  border: 1px dotted pink;
   grid-area: location;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  width: fit-content;
+  display: inline-block;
 }
 
 .timeSection {

@@ -2,7 +2,8 @@
   --min-height-header: 110px;
   --width-sidebar: 200px;
   --width-sidebar-collapsed: 80px;
-  --padding-sidebar: 0.85rem;
+  --padding-sidebar: 1rem;
+  --transition-width: width 0.4s ease;
 }
 .sidebar {
   background-color: var(--clr-blue-dark);
@@ -12,14 +13,26 @@
   grid-template-rows: max(100px) auto 1fr auto auto;
   position: relative;
 
-  transition: width 0.4s ease;
+  transition: var(--transition-width);
 }
 .sidebar.collapsed {
   width: var(--width-sidebar-collapsed);
 }
-.sidebar > div {
-  width: 100%;
+
+.sidebar > div,
+.sidebar > hr {
+  max-width: var(--width-sidebar);
   box-sizing: border-box;
+}
+.sidebar > div {
+  height: 100%;
+  min-width: var(--width-sidebar-collapsed);
+  width: var(--width-sidebar);
+  max-width: var(--width-sidebar);
+  transition: width 0.4s ease;
+}
+.sidebar.collapsed > div {
+  width: var(--width-sidebar-collapsed);
 }
 
 .sidebar > div:not(:nth-child(2)) {

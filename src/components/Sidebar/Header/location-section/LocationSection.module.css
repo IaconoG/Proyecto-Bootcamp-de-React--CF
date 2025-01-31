@@ -1,34 +1,17 @@
 .location {
   text-align: left;
-  font-size: 0.6rem;
+  font-size: 0.4rem;
   font-weight: 500;
   font-style: italic;
   white-space: nowrap;
   width: fit-content;
-  position: relative;
 }
 
 .location > span {
-  display: inline-block;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.fadeIn {
-  opacity: 1;
-}
-
-.fadeOut {
-  pointer-events: none;
-  opacity: 0;
-  animation: moveLeft 0s linear 0.31s forwards;
   position: absolute;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
-
-@keyframes moveLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* transform: translateX(-100%); */
-  }
+.location.collapsed > span {
+  opacity: 0;
+  visibility: hidden;
 }

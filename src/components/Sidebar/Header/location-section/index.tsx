@@ -8,13 +8,10 @@ type LocationSectionProps = Pick<UserLocation, "province" | "city"> & {
 
 const LocationSection: React.FC<LocationSectionProps> = ({ province, city, className, isCollapsed }) => {
   return (
-    <div className={`${className || ""} ${styles.locationContainer}`}>
-      <p className={styles.location}>
-        {/* {city}, */}
-        <span className={styles.fadeIn}>La Plata</span>
-        <span className={`${isCollapsed ? styles.fadeOut : styles.fadeIn}`}>
-          , Buenos Aires{/* , {province} */}
-        </span>
+    <div className={`${className || ""}`}>
+      <p className={`${styles.location} ${isCollapsed ? styles.collapsed : ""}`}>
+        {city || "Ciudad"}
+        <span>, {province || "Provincia"}</span>
       </p>
     </div>
   );

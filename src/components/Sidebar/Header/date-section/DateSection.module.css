@@ -1,0 +1,18 @@
+.date {
+  width: fit-content;
+
+  & > .dateText {
+    font-size: 0.4378rem;
+    font-weight: 300;
+    font-style: italic;
+    white-space: nowrap;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+}
+.date.collapsed {
+  & > span {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+}

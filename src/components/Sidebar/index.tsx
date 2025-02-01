@@ -21,7 +21,7 @@ const Sidebar: React.FunctionComponent = () => {
 
   return (
     <nav className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
-      <SidebarToggleButton isCollapsed={isCollapsed} onclick={() => setIsCollapsed(!isCollapsed)} />
+      <SidebarToggleButton isCollapsed={isCollapsed} onClick={() => setIsCollapsed(!isCollapsed)} />
       <SidebarHeader isCollapsed={isCollapsed} />
       <hr className={styles.divider} />
       <SidebarContent pageSelected={pageSelected} isCollapsed={isCollapsed} />

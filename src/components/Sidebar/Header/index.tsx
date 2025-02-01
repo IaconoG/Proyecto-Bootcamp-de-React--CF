@@ -1,9 +1,8 @@
 // ** Styles **
-import { useUserInfoStore } from "../../../state/stores/userInfo/userInfo-store";
+import DateSection from "./date-section";
 import styles from "./Header.module.css";
 
 // ** Components **
-import LocationSection from "./location-section";
 import TimeSection from "./time-section";
 import WeatherSection from "./weather-section";
 
@@ -12,19 +11,11 @@ type SidebarHeaderProps = {
 };
 
 const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed }) => {
-  const { getUserLocation } = useUserInfoStore();
-  const { province, city } = getUserLocation();
-
   return (
     <div className={`${styles.header} ${isCollapsed ? styles.collapsed : ""}`}>
-      <LocationSection
-        province={province}
-        city={city}
-        className={styles.locationSection}
-        isCollapsed={isCollapsed}
-      />
-      <TimeSection className={styles.timeSection} />
-      <WeatherSection className={styles.weatherSection} />
+      <DateSection className={styles.dateSection} collapsed={isCollapsed} />
+      <TimeSection className={styles.timeSection} isCollapsed={isCollapsed} />
+      <WeatherSection className={styles.weatherSection} isCollapsed={isCollapsed} />
     </div>
   );
 };

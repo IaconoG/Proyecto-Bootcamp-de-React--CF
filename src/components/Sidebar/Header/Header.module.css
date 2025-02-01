@@ -1,43 +1,36 @@
 .header {
-  border: 1px dotted red;
   display: grid;
-  grid-template-columns: 55% 45%;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "location location"
-    "time weather";
-  row-gap: 5px;
-  padding-inline: 0.5em;
-  transition: grid-template-columns 0.5s, grid-template-rows 0.5s, grid-template-areas 0.5s;
-  color: var(--clr-sidebar-header);
-}
-.header.collapsed {
-  width: var(--width-sidebar-collapsed);
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: auto 1fr 1fr;
   grid-template-areas:
-    "location"
+    "date"
     "time"
     "weather";
+  align-items: center;
+  color: var(--clr-sidebar-header);
+  transition: width 0.3s ease-in-out;
+}
+.header > * {
+  transition: width 0.3s ease-in-out;
+}
+.header.collapsed {
+  width: calc(var(--width-sidebar-collapsed) - 4px);
+  transition: width 0.3s ease-in-out;
 }
 
-.locationSection {
-  grid-area: location;
+.dateSection {
+  grid-area: date;
   width: fit-content;
   display: inline-block;
+  justify-self: flex-start;
 }
-
 .timeSection {
-  border: 1px dotted green;
   grid-area: time;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .weatherSection {
-  border: 1px dotted yellow;
+  outline: 1px dotted yellow;
+  height: 100%;
   grid-area: weather;
   display: flex;
   flex-direction: column;

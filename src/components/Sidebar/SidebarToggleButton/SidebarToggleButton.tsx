@@ -3,12 +3,12 @@ import styles from "./SidebarToggleButton.module.css";
 
 type SidebarToggleButtonProps = {
   isCollapsed: boolean;
-  onclick: () => void;
+  onClick: () => void;
 };
 
-const SidebarToggleButton: React.FC<SidebarToggleButtonProps> = ({ isCollapsed, onclick }) => {
+const SidebarToggleButton: React.FC<SidebarToggleButtonProps> = ({ isCollapsed, onClick }) => {
   return (
-    <button className={`${isCollapsed ? styles.collapsed : ""} ${styles.toggleButton}`} onClick={onclick}>
+    <button className={`${isCollapsed ? styles.collapsed : ""} ${styles.toggleButton}`} onClick={onClick}>
       {isCollapsed ? (
         <Icon icon={"ArrowRight"} width={18} height={18} />
       ) : (

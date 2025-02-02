@@ -3,7 +3,7 @@ import { useDayPeriod } from "../../../hooks/useDayPeriod";
 // ** constants **
 import { WIDGETS_DATA, WIDGETS_NAMES } from "../../../state/stores/widgets/constants";
 // ** components **
-import LinkContainer from "../LinkContainer";
+import LinkContainer from "../common/LinkContainer";
 // ** types **
 import { Widget } from "../../../state/stores/widgets/types";
 import { ROUTES } from "../../../types/routes-types";

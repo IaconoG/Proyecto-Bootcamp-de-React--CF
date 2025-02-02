@@ -1,5 +1,5 @@
 import { ROUTES } from "../../../types/routes-types";
-import LinkContainer from "../LinkContainer";
+import LinkContainer from "../common/LinkContainer";
 
 type SidebarFooterProps = {
   isSelected: boolean;

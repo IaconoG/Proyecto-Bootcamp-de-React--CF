@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { IconType } from "../../../types/icon-types";
-import { Icon } from "../../icons/Icon";
+import { IconType } from "../../../../types/icon-types";
+import { Icon } from "../../../icons/Icon";
 
 import styles from "./LinkContainer.module.css";
 

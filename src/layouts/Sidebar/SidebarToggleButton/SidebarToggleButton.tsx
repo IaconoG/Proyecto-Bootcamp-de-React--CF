@@ -1,4 +1,4 @@
-import { Icon } from "../../icons/Icon";
+import { Icon } from "../../../components/icons/Icon";
 import styles from "./SidebarToggleButton.module.css";
 
 type SidebarToggleButtonProps = {

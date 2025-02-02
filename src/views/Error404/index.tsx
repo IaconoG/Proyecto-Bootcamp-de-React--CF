@@ -1,6 +1,6 @@
-import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
+import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 
-import Navbar from '../../components/Sidebar';
+import Navbar from "../../layouts/Sidebar";
 
 const Error404: React.FunctionComponent = () => {
   const error = useRouteError();

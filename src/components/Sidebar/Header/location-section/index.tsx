@@ -10,8 +10,8 @@ const LocationSection: React.FC<LocationSectionProps> = ({ province, city, class
   return (
     <div className={`${className || ""}`}>
       <p className={`${styles.location} ${isCollapsed ? styles.collapsed : ""}`}>
+        <span>{province || "Provincia"}, </span>
         {city || "Ciudad"}
-        <span>, {province || "Provincia"}</span>
       </p>
     </div>
   );

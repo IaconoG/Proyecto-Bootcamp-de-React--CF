@@ -1,18 +1,14 @@
 .date {
-  width: fit-content;
-
   & > .dateText {
-    font-size: 0.4378rem;
+    margin-left: 0px;
+    width: fit-content;
+    font-size: 0.5rem;
     font-weight: 300;
     font-style: italic;
-    white-space: nowrap;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: margin 0.3s ease-in-out;
   }
-}
-.date.collapsed {
-  & > span {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+  &.collapsed > .dateText {
+    margin-left: 1.5px;
+    transition: margin 0.3s ease-in-out;
   }
 }

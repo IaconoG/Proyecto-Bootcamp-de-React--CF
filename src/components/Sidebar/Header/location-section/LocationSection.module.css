@@ -1,17 +1,21 @@
 .location {
-  text-align: left;
   font-size: 0.5rem;
   font-weight: 300;
   font-style: italic;
   white-space: nowrap;
   width: fit-content;
-}
+  margin-right: 0;
 
-.location > span {
-  position: absolute;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  & > span {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
 }
-.location.collapsed > span {
-  opacity: 0;
-  visibility: hidden;
+.location.collapsed {
+  margin-right: 12.5px;
+
+  & > span {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
 }

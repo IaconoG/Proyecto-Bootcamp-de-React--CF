@@ -20,7 +20,7 @@
 
 .dateSection {
   grid-area: date;
-  width: fit-content;
+  width: calc(100% - 12px);
   display: inline-block;
   justify-self: flex-start;
 }

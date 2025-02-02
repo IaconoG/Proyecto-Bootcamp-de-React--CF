@@ -19,11 +19,11 @@
   }
   & .hours::after {
     content: ":";
-    margin-left: 1px;
+    margin-left: 2px;
   }
   & .minutes::after {
     content: ".";
-    margin-left: 1px;
+    margin-left: 1.5px;
   }
 
   & .seconds {

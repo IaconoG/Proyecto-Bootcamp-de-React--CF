@@ -13,7 +13,7 @@ type SidebarHeaderProps = {
 const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed }) => {
   return (
     <div className={`${styles.header} ${isCollapsed ? styles.collapsed : ""}`}>
-      <DateSection className={styles.dateSection} collapsed={isCollapsed} />
+      <DateSection className={styles.dateSection} isCollapsed={isCollapsed} />
       <TimeSection className={styles.timeSection} isCollapsed={isCollapsed} />
       <WeatherSection className={styles.weatherSection} isCollapsed={isCollapsed} />
     </div>

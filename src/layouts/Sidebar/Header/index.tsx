@@ -1,10 +1,10 @@
 // ** Styles **
-import DateSection from "./date-section";
+import DateSection from "./DateSection";
 import styles from "./Header.module.css";
 
 // ** Components **
-import TimeSection from "./time-section";
-import WeatherSection from "./weather-section";
+import TimeSection from "./TimeSection";
+import WeatherSection from "./WeatherSection";
 
 type SidebarHeaderProps = {
   isCollapsed: boolean;

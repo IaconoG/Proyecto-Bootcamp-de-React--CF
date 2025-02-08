@@ -1,16 +1,5 @@
-import { Link } from "react-router-dom";
-
 const Home = (): JSX.Element => {
-  return (
-    <>
-      <main>
-        <h1>Home</h1>
-        <button>
-          <Link to="/dashboard">Comenzar</Link>
-        </button>
-      </main>
-    </>
-  );
+  return <h1>Home</h1>;
 };
 
 export default Home;

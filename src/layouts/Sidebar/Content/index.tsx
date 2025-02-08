@@ -34,8 +34,8 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected, isCollaps
         key={"Home"}
         icon="Home"
         text="MiHome"
-        link={ROUTES.DASHBOARD}
-        isActive={pageSelected == ROUTES.DASHBOARD}
+        link={ROUTES.HOME}
+        isActive={pageSelected == ROUTES.HOME}
         isCollapsed={isCollapsed}
       />
       {RenderLinks}

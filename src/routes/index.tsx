@@ -1,70 +1,68 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Suspense } from "react";
 
 //* Import views
-import Home from '../views/Home';
+import LandingPage from "../views/LandingPage";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Home from "../views/Home";
+import Settings from "../views/Settings";
 
-import Settings from '../views/Settings';
+// import Balance from '../views/Home/Balance/FullView';
+// import Calendar from '../views/Home/Calendar/FullView';
+// import Focus from '../views/Home/Focus/FullView';
+import InfoMicro from "../views/Home/InfoMicros/FullView";
+import ToDo from "../views/Home/ToDo/FullView";
+// import Weather from '../views/Home/Weather/FullView';
 
-import Dashboard from '../views/Dashboard';
-// import Balance from '../views/Dashboard/components/Balance/FullView';
-// import Calendar from '../views/Dashboard/components/Calendar/FullView';
-// import Focus from '../views/Dashboard/components/Focus/FullView';
-import InfoMicro from '../views/Dashboard/components/InfoMicros/FullView';
-import ToDo from '../views/Dashboard/components/ToDo/FullView';
-// import Weather from '../views/Dashboard/components/Weather/FullView';
-
-import Error404 from '../views/Error404';
-import ErrorBoundary from '../components/ErrorBoundary';
+import Error404 from "../views/Error404";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Home />,
+    path: "/",
+    element: <LandingPage />,
     errorElement: <Error404 />,
   },
   {
-    path: '/dashboard',
+    path: "/home",
     element: (
       <Suspense fallback={<h1>Loading with Suspense...</h1>}>
-        <ErrorBoundary
-          fallback={
-            <div>
-              Ha ocurrido un error al obtener el dashboard con ErrorBoundary
-            </div>
-          }
-        >
-          <Dashboard />
+        <ErrorBoundary fallback={<div>Ha ocurrido un error al obtener el dashboard con ErrorBoundary</div>}>
+          <DashboardLayout />
         </ErrorBoundary>
       </Suspense>
     ),
     children: [
       {
-        path: 'settings',
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "settings",
         element: <Settings />,
       },
       {
-        path: 'balance',
+        path: "balance",
         element: <h1>Balance</h1>,
       },
       {
-        path: 'calendar',
+        path: "calendar",
         element: <h1>Calendar</h1>,
       },
       {
-        path: 'focus',
+        path: "focus",
         element: <h1>Focus</h1>,
       },
       {
-        path: 'info-micros',
+        path: "info-micros",
         element: <InfoMicro />,
       },
       {
-        path: 'to-do',
+        path: "to-do",
         element: <ToDo />,
       },
       {
-        path: 'weather',
+        path: "weather",
         element: <h1>Weather</h1>,
       },
     ],

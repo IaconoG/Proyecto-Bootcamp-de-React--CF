@@ -14,19 +14,44 @@
 
   --clr-white: #fff;
 
-  --clr-black: rgb(/* Colores */ 15, 15, 15);
+  --clr-black: #000;
   --clr-black-ligth: rgb(25, 25, 25);
-  --clr-grey: rgb(42, 42, 42);
+  --clr-grey: #b3b3b3;
 
   --clr-blue-dark: #1c2129;
   --clr-blue: #222831;
+  --clr-blue-light: #2e333e;
 
   --clr-violet-dark: #2a2438;
   --clr-violet: #352f44;
   --clr-violet-light: rgb(93, 84, 118);
 
   --clr-border-white: #dbd8e3;
-  --clr-border: rgba(255, 255, 255, 0.5);
+  --clr-border: rgba(169, 169, 169, 0.5);
 
   --clr-detail: #fd7014;
+
+  /* Colores de estado */
+  --clr-accent: hsl(260 80% 70%);
+  --clr-status: var(--clr-accent);
+
+  /* 🔴 Red: Error, Deletion, Emotional */
+  --clr-error: hsl(0, 75%, 50%); /* Rojo intenso para errores */
+  --clr-danger: hsl(0, 85%, 45%); /* Rojo más oscuro para acciones críticas */
+  --clr-like: hsl(350, 80%, 55%); /* Rojo usado en likes */
+
+  /* 🟢 Green: Success, Approval, Confirmation */
+  --clr-success: hsl(140, 70%, 40%); /* Verde fuerte para éxito */
+  --clr-confirm: hsl(145, 60%, 45%); /* Verde ligeramente más claro para confirmaciones */
+  --clr-progress: hsl(150, 50%, 50%); /* Verde equilibrado para progreso */
+
+  /* 🟠 Yellow/Orange: Warnings, Caution, Urgency */
+  --clr-warning: hsl(35, 100%, 50%); /* Amarillo fuerte para advertencias */
+  --clr-alert: hsl(25, 85%, 55%); /* Naranja vibrante para alertas urgentes */
+  --clr-attention: hsl(40, 90%, 45%); /* Amarillo anaranjado para llamadas de atención */
+
+  /* 🔵 Blue: Information, Links, Progress */
+  --clr-info: hsl(220, 80%, 55%); /* Azul fuerte para información */
+  --clr-link: hsl(210, 90%, 50%); /* Azul clásico para enlaces */
+  --clr-loading: hsl(230, 70%, 60%); /* Azul más suave para indicadores de progreso */
 }

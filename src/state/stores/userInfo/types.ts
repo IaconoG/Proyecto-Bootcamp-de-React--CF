@@ -1,13 +1,18 @@
-export type OccupationType = "Estudiante" | "Trabajador" | "Otro" | "";
+export enum OccupationType {
+  Estudiante = "Estudiante",
+  Trabajador = "Trabajador",
+  Otro = "Otro",
+  Nothing = "",
+}
 
 export type UserInfo = {
   userName: string;
-  occupation: OccupationType;
+  occupation?: OccupationType;
   location: UserLocation;
 };
 
 export type UserLocation = {
-  province: string;
-  city: string;
-  timeZone: string;
+  province?: string;
+  city?: string;
+  timeZone?: string;
 };

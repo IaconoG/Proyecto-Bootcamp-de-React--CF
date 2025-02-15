@@ -1,25 +1,18 @@
 .form {
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  /* gap: 0.5rem 0; */
-  border-radius: 8px;
-  background-color: var(--clr-black-ligth);
-}
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
 
-form > *:not(:last-child) {
-  margin-bottom: 1rem;
-}
-label span {
-  min-width: 90px;
-  display: inline-block;
-}
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 
-button[type='submit'] {
-  align-self: flex-end;
-  margin-bottom: 0;
-}
-
-.form select:focus {
-  border-color: var(--clr-secondary);
+  & input,
+  select,
+  button {
+    width: 100%;
+    min-height: 33px;
+    height: 33px;
+    max-height: 33px;
+    box-sizing: border-box;
+  }
 }

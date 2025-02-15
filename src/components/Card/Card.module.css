@@ -1,0 +1,6 @@
+.cardContainer {
+  max-width: 1000px;
+  padding: 12px 16px;
+  background-color: var(--clr-blue-light);
+  border-radius: 10px;
+}

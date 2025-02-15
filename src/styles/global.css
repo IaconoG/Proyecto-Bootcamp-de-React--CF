@@ -19,14 +19,13 @@ body {
   background-color: var(--clr-blue);
 }
 
-main,
 nav {
-  padding: 1rem;
-  width: 100%;
+  padding-block: 0.5rem;
 }
-
-nav {
-  max-width: 250px;
+main {
+  padding: 1.25rem;
+  width: 100%;
+  border: 1px solid red;
 }
 
 input {

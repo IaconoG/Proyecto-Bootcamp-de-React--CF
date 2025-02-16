@@ -12,7 +12,7 @@ export type UserInfo = {
 };
 
 export type UserLocation = {
-  province?: string;
-  city?: string;
+  province: string;
+  city: string;
   timeZone?: string;
 };

@@ -27,9 +27,9 @@ export const useUserInfoStore = create(
       updateUserInfo: (userInfo) => {
         try {
           set(userInfo);
-          return { success: true, message: "Datos guardados correctamente" };
+          return { success: true, message: "Datos guardados correctamente." };
         } catch (error) {
-          return { success: false, message: "Error al guardar los datos" };
+          return { success: false, message: "Error al guardar los datos." };
         }
       },
       getUserLocation: () => get().location,

@@ -1,8 +1,3 @@
-import { Options } from "../../../state/utils/types";
-
-export interface Province extends Options {}
-export interface City extends Options {}
-
 export interface ApiProvince {
   id: string;
   nombre: string;
@@ -10,6 +5,16 @@ export interface ApiProvince {
 export type ApiDataProvincias = {
   cantidad: number;
   inicio: number;
-  parametros: {};
   provincias: ApiProvince[];
+};
+
+export interface ApiCity {
+  id: string;
+  nombre: string;
+  categoria: string;
+}
+export type ApiDataCiudades = {
+  cantidad: number;
+  inicio: number;
+  localidades: ApiCity[];
 };

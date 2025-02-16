@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export enum ToastVariant {
   SUCCESS = "success",
   ERROR = "error",
+  DANGER = "danger",
   WARNING = "warning",
   INFO = "info",
 }

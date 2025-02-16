@@ -4,8 +4,9 @@ import styles from "./Toast.module.css";
 enum ToastIcons {
   success = "😊",
   error = "😞",
-  warning = "💀",
+  danger = "💀",
   info = "🤔",
+  warning = "❗",
 }
 
 const Toast = ({ message, variant = ToastVariant.INFO, isFadingOut }: ToastProps) => {

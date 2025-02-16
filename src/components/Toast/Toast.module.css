@@ -33,8 +33,11 @@
   &.error {
     background-color: var(--clr-error);
   }
-  &.warning {
+  &.danger {
     background-color: var(--clr-danger);
+  }
+  &.warning {
+    background-color: var(--clr-warning);
   }
   &.info {
     background-color: var(--clr-info);

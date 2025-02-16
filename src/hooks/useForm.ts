@@ -57,41 +57,40 @@ const useForm = <T>({ initialValues, schema, addToast }: UseFormProps<T>) => {
 
   /**
    * Maneja el envío del formulario. Se encarga de prevenir el comportamiento predeterminado
-   * delformulario, de validar los datos utilizando el esquema proporcionado y
-   * de ejecutar la función de envío (`onSubmit`).
-   * Si hay errores de validación, los captura y los guarda en el estado de errores.
+   * del evento de envío del formulario, y valida los valores del formulario con el esquema
+   * proporcionado. Si los valores son válidos, ejecuta la función `onSubmit` con los valores
+   * actuales del formulario como parámetro.
+   * Si los valores no son válidos, captura los errores de validación y los guarda en el estado de errores.
+   * Además, muestra un mensaje de error en un toast para informar al usuario que debe completar
+   * correctamente los campos del formulario.
+   * Si el formulario no ha tenido cambios, ejecuta la función `onSubmit` sin validar los valores del formulario.
    *
    * @param onSubmit Función que se ejecuta cuando el formulario es válido. Recibe los valores actuales del formulario como parámetro.
    */
   const handleSubmit = (onSubmit: (values: T) => void) => (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!hasChanges) onSubmit(values);
-    else {
+    if (!hasChanges) {
+      setErrors({});
+      onSubmit(values);
+    } else {
       try {
         const parsedValues = schema.parse(values);
         onSubmit(parsedValues);
+        setErrors({});
       } catch (error) {
         if (error instanceof z.ZodError) {
+          const newErrors: Record<string, any> = {};
+          error.errors.forEach((err) => {
+            const key = err.path[err.path.length - 1];
+            newErrors[key] = err.message;
+          });
+          setErrors(newErrors);
+          if (newErrors.warning) addToast({ message: newErrors.warning, variant: ToastVariant.WARNING });
           addToast({
             message: "Por favor, complete correctamente los campos del formulario",
             variant: ToastVariant.ERROR,
           });
-          const newErrors: Record<string, any> = {};
-
-          error.errors.forEach((err) => {
-            let current = newErrors;
-
-            err.path.forEach((key, index) => {
-              if (index === err.path.length - 1) {
-                current[key] = err.message;
-              } else {
-                current[key] = current[key] || {};
-                current = current[key];
-              }
-            });
-          });
-          setErrors(newErrors);
         }
       }
     }

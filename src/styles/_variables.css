@@ -36,7 +36,7 @@
   --clr-status: var(--clr-accent);
 
   /* 🔴 Red: Error, Deletion, Emotional */
-  --clr-error: hsl(0, 75%, 50%); /* Rojo intenso para errores */
+  --clr-error: hsl(0, 75%, 55%); /* Rojo intenso para errores */
   --clr-danger: hsl(0, 85%, 45%); /* Rojo más oscuro para acciones críticas */
   --clr-like: hsl(350, 80%, 55%); /* Rojo usado en likes */
 

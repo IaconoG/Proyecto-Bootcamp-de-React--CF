@@ -1,0 +1,10 @@
+.error {
+  color: var(--clr-error);
+  font-size: 0.571rem;
+  text-align: left;
+  display: block;
+  padding-top: 0.2rem;
+  padding-inline: 0.3rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}

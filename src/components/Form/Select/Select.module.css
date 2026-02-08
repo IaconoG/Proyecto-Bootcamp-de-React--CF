@@ -1,0 +1,19 @@
+.select {
+  color: inherit;
+  background-color: var(--clr-blue-dark);
+  padding-inline: 10px;
+  padding-block: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--clr-border);
+}
+.select:focus {
+  outline: 1px solid;
+  outline-color: var(--clr-status);
+}
+
+.select.invalid {
+  --status: var(--clr-error);
+}
+.select.valid {
+  --status: var(--clr-success);
+}

@@ -6,10 +6,12 @@ import { UserInfo, UserLocation } from "./types";
 
 type UserInfoState = UserInfo;
 
+type UpdateUserInfoResponse = { success: boolean; message: string };
+
 type UserInfoActions = {
   setInitialUserInfo: () => void;
   getUserInfo: () => UserInfoState;
-  updateUserInfo: (userInfo: UserInfoState) => void;
+  updateUserInfo: (userInfo: UserInfoState) => UpdateUserInfoResponse;
   getUserLocation: () => UserLocation;
 };
 
@@ -23,7 +25,12 @@ export const useUserInfoStore = create(
       },
       getUserInfo: () => get(),
       updateUserInfo: (userInfo) => {
-        set(userInfo);
+        try {
+          set(userInfo);
+          return { success: true, message: "Datos guardados correctamente." };
+        } catch (error) {
+          return { success: false, message: "Error al guardar los datos." };
+        }
       },
       getUserLocation: () => get().location,
     }),

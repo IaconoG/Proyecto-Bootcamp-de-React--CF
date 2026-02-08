@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useSidebarStore } from "../../../../state/stores/sidebar/sidebar.store";
 import { IconType } from "../../../../types/icon-types";
 import { Icon } from "../../../../components/icons/Icon";
 
@@ -8,15 +9,22 @@ type LinkContainerProps = {
   icon: IconType;
   text: string;
   link: string;
-  isActive: boolean;
-  isCollapsed: boolean;
 };
 
-const LinkContainer = ({ icon, text, link, isActive, isCollapsed }: LinkContainerProps) => {
+const LinkContainer = ({ icon, text, link }: LinkContainerProps) => {
+  const isCollapsed = useSidebarStore((s) => s.isCollapsed);
+  const location = useLocation();
+
+  const isActive = location.pathname === link;
+
   return (
     <Link
       to={link}
-      className={`${styles.link} ${isActive ? styles.active : ""} ${isCollapsed ? styles.collapsed : ""}`}
+      className={`
+        ${styles.link}
+        ${isActive ? styles.active : ""}
+        ${isCollapsed ? styles.collapsed : ""}
+      `}
     >
       <Icon icon={icon} width={24} height={24} />
       <p className={styles.text}>{text}</p>

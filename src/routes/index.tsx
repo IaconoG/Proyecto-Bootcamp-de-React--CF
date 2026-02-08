@@ -10,8 +10,8 @@ import Settings from "../views/Settings";
 // import Balance from '../views/Home/Balance/FullView';
 // import Calendar from '../views/Home/Calendar/FullView';
 // import Focus from '../views/Home/Focus/FullView';
-import InfoMicro from "../views/Home/InfoMicros/FullView";
-import ToDo from "../views/Home/ToDo/FullView";
+// import InfoMicro from "../views/Home/InfoMicros/FullView";
+// import ToDo from "../views/Home/ToDo/FullView";
 // import Weather from '../views/Home/Weather/FullView';
 
 import Error404 from "../views/Error404";
@@ -55,11 +55,11 @@ const router = createBrowserRouter([
       },
       {
         path: "info-micros",
-        element: <InfoMicro />,
+        element: <h1>Info Micros</h1>,
       },
       {
         path: "to-do",
-        element: <ToDo />,
+        element: <h1>To Do</h1>,
       },
       {
         path: "weather",

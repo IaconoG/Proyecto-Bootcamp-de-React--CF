@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./InfoUser.module.css";
 /* API */
-import { fetchProvinces } from "../../../api/GeoRefArAPI/services/geoRefService";
-import { Province } from "../../../api/GeoRefArAPI/models/geoRefModels";
+import { fetchProvinces, fetchCitiesByProvince } from "../../../api/GeoRefArAPI/services/geoRefService";
 /* Components */
 import Form from "../../../components/Form";
 import Card from "../../../components/Card";
@@ -22,57 +21,73 @@ import { userSchema } from "../../../schemas/userSchema";
 /* Types & Constants */
 import { UserInfo } from "../../../state/stores/userInfo/types";
 import { OCCUPATION_OPTIONS_VALUES } from "../../../state/stores/userInfo/constants";
-import { TOption } from "../../../components/Form/Option";
+import { OptionProps } from "../../../components/Form/Option";
 
 const InfoUser: React.FC = () => {
   const { updateUserInfo, getUserInfo } = useUserInfoStore();
   const { toasts, addToast } = useToast();
+  const [provinces, setProvinces] = useState<OptionProps[]>([]);
+  const [cities, setCities] = useState<OptionProps[]>([]);
+  const [schema, setSchema] = useState(() => userSchema(provinces, cities));
   const { values, errors, hasChanges, handleChange, handleSubmit } = useForm<UserInfo>({
     initialValues: getUserInfo(),
-    schema: userSchema,
+    schema,
     addToast,
   });
-  const [noChanges, setNoChanges] = useState<boolean>(false);
+  const [stillNoChanges, setStillNoChanges] = useState<boolean>(false);
+  const [selectedProvince, setSelectedProvince] = useState<string>(values.location.province || "");
+  const [selectedCity, setSelectedCity] = useState<string>(values.location.city || "");
 
-  // FIXME: Remove this when the API is available
-  const [provinces, setProvinces] = useState<TOption[]>([
-    { value: "Buenos Aires", label: "Buenos Aires" },
-    { value: "Córdoba", label: "Córdoba" },
-  ]);
-  const [hasClickedProvince, setHasClickedProvince] = useState<boolean>(false);
+  const handleProvinceClick = () => {
+    if (provinces.length === 0) {
+      fetchProvinces()
+        .then((provinces) => {
+          setProvinces(provinces);
+          setSchema(userSchema(provinces, cities));
+        })
+        .catch((error) => console.error("Error al obtener las provincias", error));
+    }
+  };
 
-  // useEffect(() => {
-  //   if (hasClickedProvince) {
-  //     fetchProvinces()
-  //       .then((provinces) => {
-  //         setProvinces(provinces);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   }
-  // }, [hasClickedProvince]);
-  // const handleProvinceClick = () => {
-  //   if (!hasClickedProvince) setHasClickedProvince(true);
-  // };
+  const handleProvinceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedValue = e.target.value;
+    setSelectedProvince(selectedValue);
+    if (selectedValue === "") {
+      values.location.city = "";
+      setSelectedCity("");
+      setCities([]);
+    }
+    handleChange(e);
+    if (selectedValue) {
+      fetchCitiesByProvince(selectedValue)
+        .then((fetchedCities) => {
+          setCities(fetchedCities);
+          setSchema(userSchema(provinces, fetchedCities));
+        })
+        .catch((error) => console.error("Error al obtener las ciudades", error));
+    }
+  };
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedValue = e.target.value;
+    setSelectedCity(selectedValue);
+    handleChange(e);
+  };
 
   const onSubmit = (values: UserInfo) => {
     if (!hasChanges) {
-      if (noChanges) return;
+      if (stillNoChanges) return;
       addToast({
-        message: "No se han realizado cambios en el formulario",
+        message: "No se han realizado cambios en el formulario.",
         variant: ToastVariant.INFO,
       });
-      setNoChanges(true);
+      setStillNoChanges(true);
       return;
     }
-    setNoChanges(false);
+    setStillNoChanges(false);
     const result = updateUserInfo(values);
-    if (result.success) {
-      addToast({ message: result.message, variant: ToastVariant.SUCCESS });
-    } else {
-      addToast({ message: result.message, variant: ToastVariant.ERROR });
-    }
+    if (result.success) addToast({ message: result.message, variant: ToastVariant.SUCCESS });
+    else addToast({ message: result.message, variant: ToastVariant.ERROR });
   };
   return (
     <Card>
@@ -98,11 +113,12 @@ const InfoUser: React.FC = () => {
             id="occupation"
             name="occupation"
             options={OCCUPATION_OPTIONS_VALUES.map((option) => ({
+              id: option,
               value: option,
               label: option,
             }))}
             value={values.occupation}
-            firstValue={{ value: "", label: "Selecciona tu ocupación" }}
+            firstValue={{ id: "0", value: "", label: "Selecciona tu ocupación" }}
             onChange={handleChange}
           />
           <FormError error={errors.occupation} />
@@ -114,15 +130,15 @@ const InfoUser: React.FC = () => {
             htmlFor="province"
             type="text"
             name="location.province"
-            value={values.location.province ?? ""}
-            onChange={handleChange}
-            // onClick={handleProvinceClick}
+            value={selectedProvince}
+            onChange={handleProvinceChange}
+            onClick={handleProvinceClick}
             placeholder="Ingresa tu provincia"
             list="provinces"
             autoComplete="off"
           />
           <Datalist id="provinces" options={provinces} />
-          {/* <FormError error={errors.location?.province} /> */}
+          <FormError error={errors.province} />
         </div>
         <div className={styles.inputGroup}>
           <Label label="Ciudad" htmlFor="city" hidden />
@@ -131,20 +147,15 @@ const InfoUser: React.FC = () => {
             htmlFor="city"
             type="text"
             name="location.city"
-            value={values.location.city ?? ""}
-            onChange={handleChange}
+            value={selectedCity}
+            onChange={handleCityChange}
             placeholder="Ingresa tu ciudad"
             list="citys"
             autoComplete="off"
+            // disabled={!selectedProvince} // FIXME: El disable tambien debe ser por estilos, ademas cuando ya se selecciono la pronvicia previamente el selectedProvince no deberia inicialr null
           />
-          <Datalist
-            id="citys"
-            options={[
-              { value: "Buenos Aires", label: "Buenos Aires" },
-              { value: "Córdoba", label: "Córdoba" },
-            ]}
-          />
-          {/* <FormError error={errors.location?.city} /> */}
+          <Datalist id="citys" options={cities} />
+          <FormError error={errors.city} />
         </div>
         <button type="submit">Guardar</button>
       </Form>
@@ -155,36 +166,4 @@ const InfoUser: React.FC = () => {
 
 export default InfoUser;
 
-{
-  /* {({ values, errors, handleChange }) => (
-          <>
-            <div>
-              <Label label="Nombre" htmlFor="text" hidden />
-              <Input
-                type="text"
-                name="name"
-                placeholder="Nombre"
-                value={values.name}
-                onChange={handleChange}
-              />
-              {errors.name && <span>{errors.name}</span>}
-            </div>
-            <Select
-              id="province"
-              name="province"
-              options={[]}
-              value={values.province}
-              onChange={handleChange}
-            />
-            <Select
-              id="city"
-              name="city"
-              options={[]}
-              value={values.city}
-              onChange={handleChange}
-            />
-            <button type="submit">Guardar</button>
-          </>
-        )}
-      </Form> */
-}
+// Componente de localidad compuesta

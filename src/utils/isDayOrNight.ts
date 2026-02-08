@@ -4,7 +4,7 @@ type DayPeriod = "day" | "night";
 
 export const isDayOrNight = (timezone: string): DayPeriod => {
   const localTime = getLocalTime(timezone);
-  const hours = new Date(localTime).getHours();
+  const hours = Number(localTime.hours);
 
   return hours >= 6 && hours < 18 ? "day" : "night";
 };

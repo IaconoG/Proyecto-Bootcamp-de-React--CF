@@ -1,21 +1,13 @@
+/* types */
 import { ROUTES } from "../../../types/routes-types";
+
+/* components */
 import LinkContainer from "../common/LinkContainer";
 
-type SidebarFooterProps = {
-  isSelected: boolean;
-  isCollapsed: boolean;
-};
-
-const SidebarFooter: React.FC<SidebarFooterProps> = ({ isSelected, isCollapsed }) => {
+const SidebarFooter: React.FC = () => {
   return (
     <div>
-      <LinkContainer
-        icon="Settings"
-        text="Settings"
-        link={ROUTES.SETTINGS}
-        isActive={isSelected}
-        isCollapsed={isCollapsed}
-      />
+      <LinkContainer icon="Settings" text="Settings" link={ROUTES.SETTINGS} />
     </div>
   );
 };

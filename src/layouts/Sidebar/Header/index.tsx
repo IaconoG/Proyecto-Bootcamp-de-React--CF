@@ -1,21 +1,16 @@
+// ** components **
+// import { Icon } from "../../../components/icons/Icon";
 // ** Styles **
-import DateSection from "./DateSection";
 import styles from "./Header.module.css";
+/* store */
+import { useSidebarStore } from "../../../state/stores/sidebar/sidebar.store";
 
-// ** Components **
-import TimeSection from "./TimeSection";
-import WeatherSection from "./WeatherSection";
-
-type SidebarHeaderProps = {
-  isCollapsed: boolean;
-};
-
-const SidebarHeader: React.FC<SidebarHeaderProps> = ({ isCollapsed }) => {
+const SidebarHeader: React.FC = () => {
+  const isCollapsed = useSidebarStore((s) => s.isCollapsed);
   return (
     <div className={`${styles.header} ${isCollapsed ? styles.collapsed : ""}`}>
-      <DateSection className={styles.dateSection} isCollapsed={isCollapsed} />
-      <TimeSection className={styles.timeSection} isCollapsed={isCollapsed} />
-      <WeatherSection className={styles.weatherSection} isCollapsed={isCollapsed} />
+      {/* <Icon icon={"NoneIcon"} width={32} height={32} /> */}
+      <p className={styles.appName}>Nombre de la app</p>
     </div>
   );
 };

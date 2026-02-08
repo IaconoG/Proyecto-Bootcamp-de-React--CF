@@ -1,44 +1,20 @@
-// ** hooks **
-import { useDayPeriod } from "../../../hooks/useDayPeriod";
-// ** constants **
-import { WIDGETS_DATA, WIDGETS_NAMES } from "../../../state/stores/widgets/constants";
-// ** components **
-import LinkContainer from "../common/LinkContainer";
-// ** types **
-import { Widget } from "../../../state/stores/widgets/types";
-import { ROUTES } from "../../../types/routes-types";
-type SidebarContentProps = {
-  pageSelected: string;
-  isCollapsed: boolean;
-};
+// ** Styles **
+import styles from "./Content.module.css";
+import NavSection from "./NavSection";
+import WeatherWidget from "./WeatherWidget";
+import { useSidebarStore } from "../../../state/stores/sidebar/sidebar.store";
 
-const SidebarContent: React.FC<SidebarContentProps> = ({ pageSelected, isCollapsed }) => {
-  const { dayPeriod } = useDayPeriod();
-
-  const RenderLinks = WIDGETS_DATA.map((widget: Widget) => (
-    <LinkContainer
-      key={widget.name + "-" + widget.id}
-      icon={
-        widget.name === WIDGETS_NAMES.WEATHER ? (dayPeriod === "day" ? "SunFog" : "MoonFog") : widget.icon
-      }
-      text={widget.name}
-      link={widget.path}
-      isActive={pageSelected === widget.path}
-      isCollapsed={isCollapsed}
-    />
-  ));
+const SidebarContent: React.FC = () => {
+  const isCollapsed = useSidebarStore((s) => s.isCollapsed);
 
   return (
-    <div>
-      <LinkContainer
-        key={"Home"}
-        icon="Home"
-        text="MiHome"
-        link={ROUTES.HOME}
-        isActive={pageSelected == ROUTES.HOME}
-        isCollapsed={isCollapsed}
-      />
-      {RenderLinks}
+    <div
+      className={`${styles.contentContainer} ${
+        isCollapsed ? styles.collapsed : ""
+      }`}
+    >
+      <NavSection />
+      <WeatherWidget />
     </div>
   );
 };

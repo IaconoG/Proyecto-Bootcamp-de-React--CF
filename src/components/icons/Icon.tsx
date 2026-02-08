@@ -8,7 +8,7 @@ export type IconProps = SVGProps<SVGSVGElement> & {
 };
 
 export const Icon: React.FC<IconProps> = ({ icon, ...props }) => {
-  const SvgIcon = Icons[icon];
+  const SvgIcon: React.FC<SVGProps<SVGSVGElement>> | undefined = Icons[icon];
 
   const iconIsMoonFog = icon === "MoonFog"; // Esto es para arreglar el estilo de la luna con niebla
 
@@ -23,7 +23,9 @@ export const Icon: React.FC<IconProps> = ({ icon, ...props }) => {
   }
 
   return (
-    <span className={`${styles.customIcon} ${iconIsMoonFog ? styles.moonFog : ""}`}>
+    <span
+      className={`${styles.customIcon} ${iconIsMoonFog ? styles.moonFog : ""}`}
+    >
       <SvgIcon {...props} />
     </span>
   );

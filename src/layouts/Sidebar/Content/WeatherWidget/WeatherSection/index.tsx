@@ -3,10 +3,13 @@ type WheaterSectionProps = {
   isCollapsed: boolean;
 };
 
-const WeatherSection: React.FC<WheaterSectionProps> = ({ className, isCollapsed }) => {
+const WeatherSection: React.FC<WheaterSectionProps> = ({
+  className,
+  isCollapsed,
+}) => {
   return (
     <div className={className}>
-      <p>Weather</p>
+      <p>Weather {isCollapsed ? "collapsed" : "visible"}</p>
     </div>
   );
 };

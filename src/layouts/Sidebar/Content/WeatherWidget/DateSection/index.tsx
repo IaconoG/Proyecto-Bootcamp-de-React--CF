@@ -1,5 +1,5 @@
 import styles from "./DateSection.module.css";
-import { useCurrentDate } from "../../../../hooks/useCurrentDate";
+import { useCurrentDate } from "../../../../../hooks/useCurrentDate";
 
 type DateSectionPrps = {
   className?: string;
@@ -10,9 +10,13 @@ const DateSection: React.FC<DateSectionPrps> = ({ className, isCollapsed }) => {
   const { currentDate } = useCurrentDate();
   const { day, month, year } = currentDate;
   return (
-    <div className={`${className || ""} ${styles.date} ${isCollapsed ? styles.collapsed : ""}`}>
+    <div
+      className={`${className || ""} ${styles.date} ${
+        isCollapsed ? styles.collapsed : ""
+      }`}
+    >
       <p className={styles.dateText}>
-        {day} {month} {year}
+        {`${day} ${isCollapsed ? month.slice(0, 3) : month} ${year}`}
       </p>
     </div>
   );

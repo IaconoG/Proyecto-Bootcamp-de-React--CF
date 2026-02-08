@@ -1,6 +1,3 @@
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-
 // ** Styles **
 import styles from "./Sidebar.module.css";
 
@@ -8,25 +5,22 @@ import styles from "./Sidebar.module.css";
 import SidebarHeader from "./Header";
 import SidebarContent from "./Content";
 import SidebarFooter from "./Footer";
-import SidebarToggleButton from "./SidebarToggleButton/SidebarToggleButton";
+import TopControls from "./Controls";
 
-// ** Types **
-import { ROUTES } from "../../types/routes-types";
+/* store */
+import { useSidebarStore } from "../../state/stores/sidebar/sidebar.store";
 
 const Sidebar: React.FunctionComponent = () => {
-  const location = useLocation();
-  const pageSelected = location.pathname as ROUTES;
-
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const isCollapsed = useSidebarStore((s) => s.isCollapsed);
 
   return (
     <nav className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
-      <SidebarToggleButton isCollapsed={isCollapsed} onClick={() => setIsCollapsed(!isCollapsed)} />
-      <SidebarHeader isCollapsed={isCollapsed} />
+      <TopControls />
+      <SidebarHeader />
       <hr className={styles.divider} />
-      <SidebarContent pageSelected={pageSelected} isCollapsed={isCollapsed} />
+      <SidebarContent />
       <hr className={styles.divider} />
-      <SidebarFooter isSelected={pageSelected === ROUTES.SETTINGS} isCollapsed={isCollapsed} />
+      <SidebarFooter />
     </nav>
   );
 };

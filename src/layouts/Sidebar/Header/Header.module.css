@@ -1,39 +1,41 @@
+:root {
+  --width-icon-header: 18px;
+}
 .header {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 18px 1fr 1fr;
-  grid-template-areas:
-    "date"
-    "time"
-    "weather";
+  display: flex;
   align-items: center;
   color: var(--clr-sidebar-header);
-  transition: width 0.3s ease-in-out;
-}
-.header > * {
-  transition: width 0.3s ease-in-out;
-}
-.header.collapsed {
-  width: calc(var(--width-sidebar-collapsed) - 4px);
-  transition: width 0.3s ease-in-out;
-}
 
-.dateSection {
-  grid-area: date;
-  width: calc(100% - 12px);
-  display: inline-block;
-  justify-self: flex-start;
-}
-.timeSection {
-  grid-area: time;
-}
+  & > * {
+    line-height: 1;
+  }
+  & svg {
+    margin-inline: calc(var(--width-icon-header) / 2);
+  }
+  & p {
+    margin-top: 0;
+  }
 
-.weatherSection {
-  outline: 1px dotted yellow;
-  height: 100%;
-  grid-area: weather;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  & .appName {
+    display: inline-block;
+    position: absolute;
+    left: calc(var(--width-icon) + var(--gap) + var(--paddin-inline));
+    width: fit-content;
+    transform: translateX(0);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.4s ease;
+
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &.collapsed {
+    padding: 0;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+  }
+  &.collapsed .appName {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+  }
 }

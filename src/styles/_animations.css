@@ -1,6 +1,6 @@
 /* Keyframes y clases de animaciones */
 
-input,
+/* input,
 textarea,
 button {
   transition: border-color 0.2s ease;
@@ -10,4 +10,14 @@ input:focus,
 textarea:focus,
 button:hover {
   border-color: var(--clr-violet-light);
+} */
+/* button {
+  transition: border-color 0.3s ease-out, color 0.3s ease-out, scale 0.1s ease-out;
 }
+button:hover {
+  color: var(--clr-detail);
+  border-color: var(--clr-detail);
+}
+button:active {
+  scale: 0.95;
+} */

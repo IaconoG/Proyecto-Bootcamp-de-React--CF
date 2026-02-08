@@ -24,14 +24,14 @@ nav {
 }
 main {
   padding: 1.25rem;
+  width: 100%;
+  border: 1px solid red;
 }
 
 input {
   border: none;
   background: none;
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.4);
-  font-family: Arial, sans-serif;
+  background-color: var(--clr-primary);
 }
 
 input:focus,
@@ -50,18 +50,17 @@ textarea {
   padding: 3px 5px;
 }
 
+/* FIXME: REORDENAR LOS ATRIBUTOS EN LOS ARCHIVOS CORRECTOS */
 button,
 input[type="submit"] {
   color: var(--clr-primary);
   padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.25px;
+  font-size: 1em;
+  letter-spacing: 0.5px;
   cursor: pointer;
   border-radius: 6px;
   border: 1px solid transparent;
   background-color: transparent;
-  max-width: fit-content;
   gap: 1rem;
   display: flex;
   align-items: center;

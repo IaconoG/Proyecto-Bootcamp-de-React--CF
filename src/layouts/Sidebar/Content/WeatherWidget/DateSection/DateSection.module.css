@@ -1,0 +1,18 @@
+.date {
+  width: 100%;
+
+  & > .dateText {
+    text-align: center;
+    margin-left: 0px;
+    font-size: 0.7rem;
+    font-weight: 300;
+    text-transform: capitalize;
+    transition: margin 0.3s ease-in-out;
+  }
+  &.collapsed > .dateText {
+    margin-left: 1.5px;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    transition: margin 0.3s ease-in-out;
+  }
+}

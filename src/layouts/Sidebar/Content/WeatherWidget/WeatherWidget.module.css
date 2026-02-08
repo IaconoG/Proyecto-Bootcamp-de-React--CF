@@ -1,0 +1,47 @@
+.weatherWidgetContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas:
+    "time"
+    "date"
+    "weather";
+  align-items: center;
+  height: 175px;
+  padding: 1rem;
+  border: 1px solid var(--clr-border-soft);
+  border-radius: 1rem;
+
+  color: var(--clr-sidebar-header);
+  background: var(--clr-surface-2);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(6px);
+  transition: width 0.3s ease-in-out;
+}
+.weatherWidgetContainer > * {
+  transition: width 0.3s ease-in-out;
+  line-height: 0;
+}
+.weatherWidgetContainer.collapsed {
+  width: calc(var(--width-sidebar-collapsed) - 4px);
+  transition: width 0.3s ease-in-out;
+}
+
+.dateSection {
+  grid-area: date;
+  display: inline-block;
+  justify-self: flex-start;
+}
+.timeSection {
+  width: calc(100% - 12px);
+  grid-area: time;
+}
+
+.weatherSection {
+  height: 100%;
+  grid-area: weather;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

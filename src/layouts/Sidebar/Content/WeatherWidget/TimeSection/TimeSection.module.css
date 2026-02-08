@@ -1,0 +1,32 @@
+.timeContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .hours,
+  & .minutes {
+    line-height: 1;
+    text-align: center;
+    font-family: var(--font-clock);
+  }
+
+  & .hours,
+  & .minutes {
+    min-width: fit-content;
+    font-size: 1.8rem;
+  }
+  & .minutes::before {
+    content: ":";
+    margin-right: 2px;
+  }
+
+  &.collapsed {
+    & .hours,
+    & .minutes {
+      min-width: 23.5px;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+  }
+}

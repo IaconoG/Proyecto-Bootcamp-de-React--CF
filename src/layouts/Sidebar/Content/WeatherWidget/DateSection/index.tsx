@@ -16,7 +16,7 @@ const DateSection: React.FC<DateSectionPrps> = ({ className, isCollapsed }) => {
       }`}
     >
       <p className={styles.dateText}>
-        {`${day} ${isCollapsed ? month.slice(0, 3) : month} ${year}`}
+        {isCollapsed ? `${day} ${month.slice(0, 3)}` : `${day} ${month} ${year}`} 
       </p>
     </div>
   );

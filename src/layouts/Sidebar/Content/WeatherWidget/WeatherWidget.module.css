@@ -1,14 +1,18 @@
 .weatherWidgetContainer {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content min-content auto;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
     "time"
     "date"
-    "weather";
+    "weather"
+    "location";
+  justify-items: center;
   align-items: center;
+  gap: 2px;
+
   height: 175px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--clr-border-soft);
   border-radius: 1rem;
 
@@ -16,32 +20,44 @@
   background: var(--clr-surface-2);
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(6px);
-  transition: width 0.3s ease-in-out;
-}
-.weatherWidgetContainer > * {
-  transition: width 0.3s ease-in-out;
-  line-height: 0;
-}
-.weatherWidgetContainer.collapsed {
-  width: calc(var(--width-sidebar-collapsed) - 4px);
-  transition: width 0.3s ease-in-out;
-}
+  transition: padding 0.4s ease;
+  overflow: hidden;
 
-.dateSection {
-  grid-area: date;
-  display: inline-block;
-  justify-self: flex-start;
-}
-.timeSection {
-  width: calc(100% - 12px);
-  grid-area: time;
-}
+  & > * {
+    width: 100%;
+    transition: all 0.4s ease;
+  }
+  & p {
+    text-align: justify;
+    white-space: nowrap;
+    overflow: hidden;
 
-.weatherSection {
-  height: 100%;
-  grid-area: weather;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    transition: font-size 0.4s ease-in-out;
+  }
+  & .locationSection {
+    grid-area: location;
+    justify-self: flex-end;
+  }
+  & .timeSection {
+    grid-area: time;
+  }
+  & .dateSection {
+    grid-area: date;
+    display: inline-block;
+    justify-self: flex-start;
+  }
+  & .weatherSection {
+    height: 100%;
+    grid-area: weather;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.collapsed {
+    padding-inline: 0.5rem;
+    gap: 2px;
+    border-radius: 0.5rem;
+  }
 }

@@ -10,7 +10,7 @@ export type WidgetsState = {
   balance: WidgetState;
   calendar: WidgetState;
   focus: WidgetState;
-  Transport: WidgetState;
+  transport: WidgetState;
   toDo: WidgetState;
   weather: WidgetState;
 };

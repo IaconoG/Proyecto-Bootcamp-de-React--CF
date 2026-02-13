@@ -6,7 +6,7 @@ export const WIDGETS_NAMES: Record<string, string> = {
   BALANCE: "Balance",
   CALENDAR: "Calendar",
   FOCUS: "Focus",
-  Transport: "Transport",
+  TRANSPORT: "Transport",
   TO_DO: "ToDo",
   WEATHER: "Weather",
 };
@@ -24,7 +24,7 @@ export const WIDGETS_INITIAL_STATE: WidgetsState = {
     id: 3,
     active: false,
   },
-  Transport: {
+  transport: {
     id: 4,
     active: false,
   },

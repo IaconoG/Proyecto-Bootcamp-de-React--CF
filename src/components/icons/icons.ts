@@ -7,7 +7,7 @@ import MoonFog from "../../assets/icons/MoonFog.svg?react";
 import SunFog from "../../assets/icons/SunFog.svg?react";
 import Calendar from "../../assets/icons/Calendar.svg?react";
 import Balance from "../../assets/icons/Balance.svg?react";
-import InfoMicros from "../../assets/icons/InfoMicros.svg?react";
+import Transport from "../../assets/icons/Transport.svg?react";
 import Menu from "../../assets/icons/Menu.svg?react";
 import SidebarIcon from "../../assets/icons/SidebarIcon.svg?react";
 import MoonHalf from "../../assets/icons/MoonHalf.svg?react";
@@ -23,7 +23,7 @@ export const Icons = {
   SunFog,
   Calendar,
   Balance,
-  InfoMicros,
+  Transport,
   Menu,
   SidebarIcon,
   MoonHalf,

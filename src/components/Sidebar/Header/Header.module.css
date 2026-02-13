@@ -22,7 +22,10 @@
     left: calc(var(--width-icon) + var(--gap) + var(--paddin-inline));
     width: fit-content;
     transform: translateX(0);
-    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.4s ease;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.4s ease;
 
     white-space: nowrap;
     overflow: hidden;

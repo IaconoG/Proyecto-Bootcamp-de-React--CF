@@ -19,7 +19,9 @@
     width: var(--width-sidebar);
     box-sizing: border-box;
     max-width: 100%;
-    transition: width 0.4s ease, padding 0.4s ease;
+    transition:
+      width 0.4s ease,
+      padding 0.4s ease;
   }
 
   & > div {

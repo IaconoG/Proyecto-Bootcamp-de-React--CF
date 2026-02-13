@@ -5,7 +5,7 @@ export const ROUTES = {
   BALANCE: DEFAULT_ROUTE + "/balance",
   CALENDAR: DEFAULT_ROUTE + "/calendar",
   FOCUS: DEFAULT_ROUTE + "/focus",
-  INFO_MICROS: DEFAULT_ROUTE + "/info-micros",
+  TRANSPORT: DEFAULT_ROUTE + "/transport",
   TO_DO: DEFAULT_ROUTE + "/to-do",
   WEATHER: DEFAULT_ROUTE + "/weather",
   SETTINGS: DEFAULT_ROUTE + "/settings",

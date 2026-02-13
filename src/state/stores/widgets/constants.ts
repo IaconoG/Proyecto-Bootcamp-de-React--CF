@@ -6,7 +6,7 @@ export const WIDGETS_NAMES: Record<string, string> = {
   BALANCE: "Balance",
   CALENDAR: "Calendar",
   FOCUS: "Focus",
-  INFO_MICROS: "Info Micros",
+  Transport: "Transport",
   TO_DO: "ToDo",
   WEATHER: "Weather",
 };
@@ -24,7 +24,7 @@ export const WIDGETS_INITIAL_STATE: WidgetsState = {
     id: 3,
     active: false,
   },
-  infoMicros: {
+  Transport: {
     id: 4,
     active: false,
   },
@@ -63,9 +63,9 @@ export const WIDGETS_DATA: Widget[] = [
   {
     id: 4,
     active: false,
-    name: WIDGETS_NAMES.INFO_MICROS,
-    path: ROUTES.INFO_MICROS,
-    icon: "InfoMicros",
+    name: WIDGETS_NAMES.TRANSPORT,
+    path: ROUTES.TRANSPORT,
+    icon: "Transport",
   },
   {
     id: 5,

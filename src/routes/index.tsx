@@ -10,7 +10,7 @@ import Settings from "../views/Settings";
 // import Balance from '../views/Home/Balance/FullView';
 // import Calendar from '../views/Home/Calendar/FullView';
 // import Focus from '../views/Home/Focus/FullView';
-// import InfoMicro from "../views/Home/InfoMicros/FullView";
+// import Transport from "../views/Home/Transport/FullView";
 // import ToDo from "../views/Home/ToDo/FullView";
 // import Weather from '../views/Home/Weather/FullView';
 
@@ -27,7 +27,13 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <Suspense fallback={<h1>Loading with Suspense...</h1>}>
-        <ErrorBoundary fallback={<div>Ha ocurrido un error al obtener el dashboard con ErrorBoundary</div>}>
+        <ErrorBoundary
+          fallback={
+            <div>
+              Ha ocurrido un error al obtener el dashboard con ErrorBoundary
+            </div>
+          }
+        >
           <DashboardLayout />
         </ErrorBoundary>
       </Suspense>
@@ -54,8 +60,8 @@ const router = createBrowserRouter([
         element: <h1>Focus</h1>,
       },
       {
-        path: "info-micros",
-        element: <h1>Info Micros</h1>,
+        path: "transport",
+        element: <h1>Transport</h1>,
       },
       {
         path: "to-do",

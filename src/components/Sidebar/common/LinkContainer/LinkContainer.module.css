@@ -1,0 +1,61 @@
+:root {
+  --paddin-inline: 1rem;
+  --gap: 10px;
+  --width-icon: 24px;
+
+  --clr-nav-selected-bg: hsl(260 80% 70% / 0.15);
+  --clr-nav-selected-bg-hover: var(--clr-violet);
+  --clr-nav-selected-border: hsl(260 80% 70% / 0.35);
+  --clr-nav-selected-text: hsl(260 90% 85%);
+  --clr-nav-selected-icon: var(--clr-violet-soft);
+  --shadow-nav-selected: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.link {
+  min-width: var(--width-sidebar-collapsed);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  box-sizing: border-box;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1;
+  transition: width 0.4s ease;
+}
+.link svg {
+  margin-inline: calc(var(--width-icon) / 2);
+}
+
+.link .text {
+  display: inline-block;
+  position: absolute;
+  left: calc(var(--width-icon) + var(--gap) + var(--paddin-inline));
+  width: fit-content;
+  transform: translateX(0);
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.link.collapsed .text {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-20px);
+}
+
+.link.active {
+  background: var(--clr-nav-selected-bg);
+  border: 1px solid var(--clr-nav-selected-border);
+  box-shadow: var(--shadow-nav-selected);
+  color: var(--clr-nav-selected-text);
+}
+.link:hover {
+  background: var(--clr-surface-3);
+}

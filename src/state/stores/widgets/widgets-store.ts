@@ -10,7 +10,7 @@ export type WidgetsState = {
   balance: WidgetState;
   calendar: WidgetState;
   focus: WidgetState;
-  infoMicros: WidgetState;
+  transport: WidgetState;
   toDo: WidgetState;
   weather: WidgetState;
 };
@@ -43,6 +43,6 @@ export const useWidgetsStore = create(
         }));
       },
     }),
-    { name: "widgets-store" }
-  )
+    { name: "widgets-store" },
+  ),
 );

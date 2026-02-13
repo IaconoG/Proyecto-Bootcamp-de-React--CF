@@ -1,6 +1,6 @@
 import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 
-import Navbar from "../../layouts/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 const Error404: React.FunctionComponent = () => {
   const error = useRouteError();
@@ -8,7 +8,7 @@ const Error404: React.FunctionComponent = () => {
   if (isRouteErrorResponse(error)) {
     return (
       <>
-        <Navbar page="" />
+        <Sidebar />
         <div className="">
           <h1 className="">{error?.status} Oops!</h1>
           <p className="">{error?.data}</p>

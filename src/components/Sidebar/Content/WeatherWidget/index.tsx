@@ -3,9 +3,9 @@ import styles from "./WeatherWidget.module.css";
 
 // ** Components **
 import DateSection from "./DateSection";
-// import LocationSection from "./LocationSection";
+import LocationSection from "./LocationSection";
 import TimeSection from "./TimeSection";
-import WeatherSection from "./WeatherSection";
+// import WeatherSection from "./WeatherSection";
 
 /* store */
 import { useSidebarStore } from "../../../../state/stores/sidebar/sidebar.store";
@@ -20,16 +20,16 @@ const WeatherWidget: React.FC = () => {
         ${isCollapsed ? styles.collapsed : ""}
       `}
     >
-      {/* <LocationSection
+      <LocationSection
         className={styles.locationSection}
         isCollapsed={isCollapsed}
-      /> */}
+      />
       <TimeSection className={styles.timeSection} isCollapsed={isCollapsed} />
       <DateSection className={styles.dateSection} isCollapsed={isCollapsed} />
-      <WeatherSection
+      {/* <WeatherSection
         className={styles.weatherSection}
         isCollapsed={isCollapsed}
-      />
+      /> */}
     </div>
   );
 };

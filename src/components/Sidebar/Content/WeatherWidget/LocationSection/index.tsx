@@ -1,24 +1,31 @@
+/* store */
+import { useUserInfoStore } from "../../../../../state/stores/userInfo/userInfo-store";
+/* types */
 import { UserLocation } from "../../../../../state/stores/userInfo/types";
+/* styles */
 import styles from "./LocationSection.module.css";
 
-type LocationSectionProps = Pick<UserLocation, "province" | "city"> & {
+type LocationSectionProps = {
   className?: string;
   isCollapsed: boolean;
 };
 
 const LocationSection: React.FC<LocationSectionProps> = ({
-  province,
-  city,
   className,
   isCollapsed,
 }) => {
+  const { province, city } = useUserInfoStore((s) =>
+    s.getUserLocation(),
+  ) as UserLocation;
+
   return (
     <div className={`${className || ""}`}>
       <p
-        className={`${styles.location} ${isCollapsed ? styles.collapsed : ""}`}
+        className={`
+        ${styles.location}
+        ${isCollapsed ? styles.collapsed : ""}`}
       >
-        <span>{province || "Provincia"}, </span>
-        {city || "Ciudad"}
+        {city || "Ciudad"} <span>,{province || "Provincia"}</span>
       </p>
     </div>
   );

@@ -1,5 +1,10 @@
 // ** Components **
-import InfoUser from "./InfoUser";
+import InfoUser from "./components/InfoUser";
+import WidgetManagment from "./components/WidgetManagment";
+import DataManagment from "./components/DataManagment";
+import NotificationPreferences from "./components/NotificationPreferences";
+// import GoogleDriveSettings from "./components/GoogleDriveSettings";
+
 // ** Styles **
 import styles from "./Settings.module.css";
 
@@ -8,9 +13,10 @@ const Settings: React.FC = () => {
     <div className={styles.settingsContainer}>
       <h1>Settings</h1>
       <InfoUser />
-      {/* <UserConfiSettings /> */}
+      <WidgetManagment />
+      <DataManagment />
+      <NotificationPreferences />
       {/* <GoogleDriveSettings /> */}
-      {/* <ThemeSettings /> */}
     </div>
   );
 };
